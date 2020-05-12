@@ -1,0 +1,15 @@
+@media only screen and (max-width: 425px) {
+    .produto-informacoes
+    {
+        font-size: 12px !important;
+    }
+    .nome-produto
+    {
+        font-size: 14px !important;
+    }
+
+    .produto-categoria
+    {
+        font-size: 12px !important;
+    }
+}

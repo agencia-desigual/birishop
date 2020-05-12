@@ -1,0 +1,22 @@
+.btn-promocoes
+{
+    background-color: #f85c70;
+    padding: 15px 20px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 50px;
+}
+
+.btn-pegar-promocao
+{
+    background-color: #28a745;
+    color: #fff;
+    width: 100% !important;
+    padding: 10px;
+}
+
+.btn-pegar-promocao:hover
+{
+    background-color: #249c40;
+    color: #fff;
+}
