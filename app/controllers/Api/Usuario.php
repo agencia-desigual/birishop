@@ -281,6 +281,13 @@ class Usuario extends CI_controller
 
 
 
+    /**
+     * Método responsável por inserir um novo
+     * usuário no sistema.
+     * -----------------------------------------------------------------
+     * @url api/usuario/insert
+     * @method POST
+     */
     public function insert()
     {
         // Variaveis
@@ -294,12 +301,71 @@ class Usuario extends CI_controller
         // Verifica se informou os campos obrigatórios
         if(!empty($post["email"]) && !empty($post["nome"]) && !empty($post["senha"]))
         {
+            // Verifica o nivel
+            $post["nivel"] = (!empty($post["nivel"])) ? $post["nivel"] : "associado";
 
+            // Verifica se é admin
+            if($post["nivel"] == "admin")
+            {
+                // Recupera o usuário logado
+                $usuario = $this->objSeguranca->security();
+
+                // Verifica se o usuário não possui permissão
+                if($usuario->nivel != "admin")
+                {
+                    // Avisa que deu erro
+                    $this->api(["mensagem" => "Usuário sem permissão"]);
+
+                    // Exit
+                    exit;
+                }
+            }
+            else
+            {
+                // Verifica se não informou os dados obrigatórios
+                if(empty($post["cnpj"]) || empty($post["nome_estabelecimento"]))
+                {
+                    // Avisa do erro
+                    $this->api(["mensagem" => "CNPJ e o nome da empresa são obrigatórios."]);
+
+                    // Exit
+                    exit;
+                }
+            }
+
+            // Insere
+            $obj = $this->objModelUsuario->insert($post);
+
+            // Verifica se inserio
+            if(!empty($obj))
+            {
+                // Busca o usuário
+                $obj = $this->objModelUsuario
+                    ->get(["id_usuario" => $obj])
+                    ->fetch(\PDO::FETCH_OBJ);
+
+                // Remove a senha
+                unset($obj->senha);
+
+                // Retorno
+                $dados = [
+                    "tipo" => true,
+                    "code" => 200,
+                    "mensagem" => "Cadastro realizado com sucesso.",
+                    "objeto" => $obj
+                ];
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Ocorreu um erro ao realizar o cadastro."];
+            } // Error >> Ocorreu um erro ao inserir o usuário.
         }
         else
         {
-
-        } // Error >>
+            // Msg
+            $dados = ["mensagem" => "Campos obrigatorios não informados"];
+        } // Error >> Campos obrigatorios não informados
 
         // Retorno
         $this->api($dados);
@@ -307,14 +373,228 @@ class Usuario extends CI_controller
     } // End >> fun::insert()
 
 
+    /**
+     * Método responsável por alterar as informações de um
+     * determinado usuário cadastrado no banco de dados.
+     * ------------------------------------------------------------------
+     * @param $id [Id do usuário]
+     * ------------------------------------------------------------------
+     * @url api/usuario/update/[ID]
+     * @method PUT
+     */
     public function update($id)
     {
+        // Variaveis
+        $dados = null;
+        $usuario = null;
+        $obj = null;
+        $objAlterado = null;
+        $put = null;
+
+        // Verifica se está logado
+        $usuario = $this->objSeguranca->security();
+
+        // Recupera os dados put
+        $put = $this->objInput->put();
+
+        // Recupera o usuario a ser alterado
+        $obj = $this->objModelUsuario
+            ->get(["id_usuario" => $id])
+            ->fetch(\PDO::FETCH_OBJ);
+
+        // Verifica se encontrou
+        if(!empty($obj))
+        {
+            // Verifica se possui permissão
+            if($usuario->nivel == "admin" || $usuario->id_usuario == $id)
+            {
+                // Verifica se não é admin
+                if($usuario->nivel == "associado")
+                {
+                    // Remove os dados que não pode alterar
+                    unset($put["status"]);
+                    unset($put["tipo"]);
+                }
+
+                // Verifica se vai alterar a senha
+                if(!empty($put["senha"]) && !empty($put["senha_repete"]))
+                {
+                    // Verifica se são identicas
+                    if($put["senha"] == $put["senha_repete"])
+                    {
+                        // Criptografa
+                        $put["senha"] = md5($put["senha"]);
+
+                        // Verifica se é igual a atual
+                        if($put["senha"] == $obj->senha)
+                        {
+                            // Avisa do erro
+                            $this->api(["mensagem" => "Senha informada é igual a anterior"]);
+
+                            // Exit
+                            exit;
+                        }
+
+                        // Remove o repete senha
+                        unset($put["senha_repete"]);
+                    }
+                    else
+                    {
+                        // Msg
+                        $dados = ["mensagem" => "Senhas não identicas."];
+                    } // Error >> Senhas não identicas
+                }
+                else
+                {
+                    // Remove
+                    unset($put["senha"]);
+                    unset($put["senha_repete"]);
+                }
+
+                // Altera
+                if($this->objModelUsuario->update($put, ["id_usuario" => $id]) != false)
+                {
+                    // Busca o usuário alterado
+                    $objAlterado = $this->objModelUsuario
+                        ->get(["id_usuario" => $id])
+                        ->fetch(\PDO::FETCH_OBJ);
+
+                    // Retorno
+                    $dados = [
+                        "tipo" => true,
+                        "code" => 200,
+                        "mensagem" => "Informações alteradas com sucesso",
+                        "objeto" => [
+                            "antes" => $obj,
+                            "atual" => $objAlterado
+                        ]
+                    ];
+                }
+                else
+                {
+                    // Msg
+                    $dados = ["mensagem" => "Ocorreu um erro ao alterar as informações."];
+
+                } // Error >> Ocorreu um erro ao alterar as informações.
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Usuário sem permissão."];
+            } // Error >> Usuário sem permissão.
+        }
+        else
+        {
+            // Msg
+            $dados = ["mensagem" => "Usuário não encontrado."];
+        } // Error >> Usuário não encontrado.
+
+        // Retorno
+        $this->api($dados);
 
     } // End >> fun::update()
 
 
-    public function delete()
+    /**
+     * Método responsável por deletar ou desativar um
+     * determinado usuário.
+     * ------------------------------------------------------------------
+     * @param $id [Id do usuário]
+     * ------------------------------------------------------------------
+     * @url api/usuario/delete/[ID]
+     * @method DELETE
+     */
+    public function delete($id)
     {
+        // Variaveis
+        $dados = null;
+        $usuario = null;
+        $obj = null;
+
+        // Verifica se está logado
+        $usuario = $this->objSeguranca->security();
+
+        // Busca o usuário
+        $obj = $this->objModelUsuario
+            ->get(['id_usuario' => $id])
+            ->fetch(\PDO::FETCH_OBJ);
+
+        // Verifica se encontrou o usuário
+        if(!empty($obj))
+        {
+            // Verifica se o usuário possui permissão
+            if($usuario->nivel == "admin")
+            {
+                // Verifica se vai deletar ou desativar
+                if($obj->nivel == "admin")
+                {
+                    // Deleta o usuário
+                    if($this->objModelUsuario->delete(["id_usuario" => $id]) != false)
+                    {
+                        // Msg
+                        $dados = [
+                            "tipo" => true,
+                            "code" => 200,
+                            "mensagem" => "Usuário deletado com sucesso",
+                            "objeto" => $obj
+                        ];
+                    }
+                    else
+                    {
+                        // Msg
+                        $dados = ["mensagem" => "Ocorreu um erro ao deletar o usuário."];
+                    } // Error >> Ocorreu um erro ao deletar o usuário.
+                }
+                else
+                {
+                    // Verifica se o usuário está ativo
+                    if($obj->status == true)
+                    {
+                        // Desativa o usuário
+                        $altera = ["status" => false];
+                    }
+                    else
+                    {
+                        // Ativa o usuário
+                        $altera = ["status" => true];
+                    }
+
+                    // Altera o status do usuário
+                    if($this->objModelUsuario->update($altera, ["id_usuario" => $id]) != false)
+                    {
+                        // Busca o usuário alterado
+                        $objAlterado = $obj;
+                        $objAlterado->status = $altera["status"];
+
+                        // Retorno de sucesso
+                        $dados = [
+                            "tipo" => true,
+                            "code" => 200,
+                            "mensagem" => "Status alterado com sucesso.",
+                            "objeto" => $objAlterado
+                        ];
+                    }
+                    else
+                    {
+                        // Msg
+                        $dados = ["mensagem" => "Ocorreu um erro ao alterar o status do usuário."];
+                    } // Error >> Ocorreu um erro ao alterar o status do usuário.
+                }
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Usuário sem permissão."];
+            } // Error >> Usuário sem permissão
+        }
+        else
+        {
+            // Msg
+            $dados = ["mensagem" => "Usuário não encontrado."];
+        } // Error >> Usuário não encontrado
+
+        // Retorno
+        $this->api($dados);
 
     } // End >> fun::delete()
 
