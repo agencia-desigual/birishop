@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>NOME DO PRODUTO</h1>
+                        <h1>LOGIN</h1>
                         <ul>
                             <li>
                                 <a href="<?= BASE_URL ?>">HOME</a>
@@ -43,9 +43,6 @@
                                 </div>
                                 <div class="form-group d-flex">
                                     <input type="submit" class="submit-btn" value="Login">
-                                </div>
-                                <div class="form-group">
-                                    <a href="#" class="forgot-password">Esqueci minha senha</a>
                                 </div>
                             </form>
                         </div>

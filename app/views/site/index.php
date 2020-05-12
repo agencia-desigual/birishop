@@ -3,46 +3,27 @@
     <!--=====================================-->
     <!--=            Banner Start           =-->
     <!--=====================================-->
-    <section class="main-banner-wrap-layout1 bg-dark-overlay bg-common minus-mgt-90" data-bg-image="<?= BASE_URL; ?>/assets/theme/site/media/banner/banner1.jpg">
-        <div class="container">
-            <div class="main-banner-box-layout1 animated-headline">
-                <h1 class="ah-headline item-title">
-                            <span class="ah-words-wrapper">
-                                <b class="is-visible">Buy, Sell, Rent &amp; Exchange in one click</b>
-                                <b>Buy, Sell, Rent &amp; Exchange in one click</b>
-                            </span>
-                </h1>
-                <div class="item-subtitle">Search from over 2000+ Active Ads in 29+ Categories for Free</div>
-                <div class="search-box-layout1">
-                    <form action="#">
-                        <div class="row no-gutters">
-                            <div class="col-lg-3 form-group">
-                                <div class="input-search-btn search-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <label>Select Location</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 form-group">
-                                <div class="input-search-btn search-category">
-                                    <i class="fas fa-tags"></i>
-                                    <label>Select Category</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 form-group">
-                                <div class="input-search-btn search-keyword">
-                                    <i class="fas fa-text-width"></i>
-                                    <input type="text" class="form-control" placeholder="Enter Keyword here ..." name="keyword">
-                                </div>
-                            </div>
-                            <div class="col-lg-2 form-group">
-                                <button type="submit" class="submit-btn"><i class="fas fa-search"></i>Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="<?= BASE_URL; ?>assets/theme/site/media/banner/banner2.jpg" alt="<?= SITE_NOME ?>">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="<?= BASE_URL; ?>assets/theme/site/media/banner/banner1.jpg" alt="<?= SITE_NOME ?>">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="<?= BASE_URL; ?>assets/theme/site/media/banner/banner2.jpg" alt="<?= SITE_NOME ?>">
             </div>
         </div>
-    </section>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 
     <!--=====================================-->
     <!--=            Category Start           =-->
@@ -50,10 +31,10 @@
     <section id="#produtos" class="section-padding-top-heading">
         <div class="container">
             <div class="heading-layout1">
-                <h2 class="heading-title">Categorias</h2>
+                <h4 style="letter-spacing: 5px" class="heading-title">CATEGORIAS</h4>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -66,7 +47,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -79,7 +60,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -92,7 +73,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -105,7 +86,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -118,7 +99,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -131,7 +112,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -144,7 +125,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-md-3 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
                             <div class="item-icon">
@@ -170,7 +151,7 @@
             <div class="row gutters-20">
                 <div class="col-xl-9 col-lg-8">
                     <div class="heading-layout2">
-                        <h2 class="heading-title">Promoções</h2>
+                        <h4 style="letter-spacing: 5px" class="heading-title">PROMOÇÕES</h4>
                     </div>
                     <div class="product-box-layout2">
                         <div class="item-img">
@@ -187,6 +168,37 @@
                             <div class="item-price">$2,500</div>
                         </div>
                     </div>
+                    <div class="product-box-layout2">
+                        <div class="item-img">
+                            <a href="single-product1.html"><img src="<?= BASE_URL; ?>/assets/theme/site/media/product/product9.jpg" alt="product"></a>
+                        </div>
+                        <div class="item-content">
+                            <h3 class="item-title"><a href="single-product1.html">Nome do produto</a></h3>
+                            <ul class="entry-meta">
+                                <li><i class="fas fa-tag"></i><a href="#">Categoria</a></li>
+                                <li><i class="far fa-clock"></i>Válido até 15/05/2020</li>
+                            </ul>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tempor incididunt
+                                ut labore et dolore magna aliqua. In eu mi bibendum…</p>
+                            <div class="item-price">$2,500</div>
+                        </div>
+                    </div>
+                    <div class="product-box-layout2">
+                        <div class="item-img">
+                            <a href="single-product1.html"><img src="<?= BASE_URL; ?>/assets/theme/site/media/product/product9.jpg" alt="product"></a>
+                        </div>
+                        <div class="item-content">
+                            <h3 class="item-title"><a href="single-product1.html">Nome do produto</a></h3>
+                            <ul class="entry-meta">
+                                <li><i class="fas fa-tag"></i><a href="#">Categoria</a></li>
+                                <li><i class="far fa-clock"></i>Válido até 15/05/2020</li>
+                            </ul>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tempor incididunt
+                                ut labore et dolore magna aliqua. In eu mi bibendum…</p>
+                            <div class="item-price">$2,500</div>
+                        </div>
+                    </div>
+
                     <div class="product-box-layout2">
                         <div class="item-img">
                             <a href="single-product1.html"><img src="<?= BASE_URL; ?>/assets/theme/site/media/product/product9.jpg" alt="product"></a>
@@ -236,69 +248,17 @@
                 </div>
                 <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-space-sm">
                     <div class="heading-layout2">
-                        <h2 class="heading-title">Lojas Populares</h2>
+                        <h4 style="letter-spacing: 5px" class="heading-title">LOJAS</h4>
                     </div>
-                    <div class="widget-bottom-margin widget-store">
-                        <div class="store-list">
-                            <div class="store-logo">
-                                <a href="store-detail.html"><img src="<?= BASE_URL; ?>assets/theme/site/media/figure/store1.png" alt="store"></a>
-                            </div>
-                            <div class="store-content">
-                                <h3 class="item-title"><a href="store-detail.html">Vix Fashion</a></h3>
-                                <div class="store-establish">Since 2019</div>
-                                <div class="item-count">1 Ad</div>
-                            </div>
-                        </div>
-                        <div class="store-list">
-                            <div class="store-logo">
-                                <a href="store-detail.html"><img src="<?= BASE_URL; ?>assets/theme/site/media/figure/store2.png" alt="store"></a>
-                            </div>
-                            <div class="store-content">
-                                <h3 class="item-title"><a href="store-detail.html">Wzaa Jewellers</a></h3>
-                                <div class="store-establish">Since 2019</div>
-                                <div class="item-count">1 Ad</div>
-                            </div>
-                        </div>
-                        <div class="store-list">
-                            <div class="store-logo">
-                                <a href="store-detail.html"><img src="<?= BASE_URL; ?>assets/theme/site/media/figure/store4.png" alt="store"></a>
-                            </div>
-                            <div class="store-content">
-                                <h3 class="item-title"><a href="store-detail.html">MJ Electronics</a></h3>
-                                <div class="store-establish">Since 2019</div>
-                                <div class="item-count">1 Ad</div>
-                            </div>
-                        </div>
-                        <div class="store-list">
-                            <div class="store-logo">
-                                <a href="store-detail.html"><img src="<?= BASE_URL; ?>assets/theme/site/media/figure/store3.png" alt="store"></a>
-                            </div>
-                            <div class="store-content">
-                                <h3 class="item-title"><a href="store-detail.html">RadiusTheme</a></h3>
-                                <div class="store-establish">Since 2019</div>
-                                <div class="item-count">1 Ad</div>
-                            </div>
-                        </div>
-                        <div class="store-list">
-                            <div class="store-logo">
-                                <a href="store-detail.html"><img src="<?= BASE_URL; ?>assets/theme/site/media/figure/store5.png" alt="store"></a>
-                            </div>
-                            <div class="store-content">
-                                <h3 class="item-title"><a href="store-detail.html">OPX Sports</a></h3>
-                                <div class="store-establish">Since 2019</div>
-                                <div class="item-count">1 Ad</div>
-                            </div>
-                        </div>
-                        <div class="store-list">
-                            <div class="store-logo">
-                                <a href="store-detail.html"><img src="<?= BASE_URL; ?>assets/theme/site/media/figure/store6.png" alt="store"></a>
-                            </div>
-                            <div class="store-content">
-                                <h3 class="item-title"><a href="store-detail.html">SKS Traders</a></h3>
-                                <div class="store-establish">Since 2019</div>
-                                <div class="item-count">1 Ad</div>
-                            </div>
-                        </div>
+                    <div class="widget-bottom-margin widget-banner">
+                        <a href="#">
+                            <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
+                        </a>
+                    </div>
+                    <div class="widget-bottom-margin widget-banner">
+                        <a href="#">
+                            <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
+                        </a>
                     </div>
                     <div class="widget-bottom-margin widget-banner">
                         <a href="#">
@@ -351,7 +311,7 @@
         });
 
         $('.carousel').carousel({
-            interval: 2000
+            interval: 5000
         })
 
     });

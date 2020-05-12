@@ -8,12 +8,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>Todas Promoções</h1>
+                        <h1>TODAS PROMOÇÕES</h1>
                         <ul>
                             <li>
-                                <a href="<?= BASE_URL ?>">Home</a>
+                                <a href="<?= BASE_URL ?>">HOME</a>
                             </li>
-                            <li>Todas Promoções</li>
+                            <li>TODAS PROMOÇÕES</li>
                         </ul>
                     </div>
                 </div>

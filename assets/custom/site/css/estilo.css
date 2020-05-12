@@ -7,6 +7,12 @@
     border-radius: 50px;
 }
 
+.btn-promocoes:hover
+{
+    background-color: #f87183;
+    color: #fff;
+}
+
 .btn-pegar-promocao
 {
     background-color: #28a745;
