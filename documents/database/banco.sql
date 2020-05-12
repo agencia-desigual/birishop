@@ -34,6 +34,7 @@ CREATE TABLE promocoes (
     imagem VARCHAR (150) NOT NULL,
     descricao TEXT NOT NULL,
     status ENUM('ativo','analise','reprovado','cancelado') NOT NULL DEFAULT 'analise',
+    data_validade DATE NOT NULL,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
     PRIMARY KEY (id_promocao)
