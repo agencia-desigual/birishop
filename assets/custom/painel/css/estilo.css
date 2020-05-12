@@ -1,0 +1,90 @@
+.btn-menu-mobile
+{
+    display: none !important;
+}
+
+.aprovar
+{
+    font-size: 25px;
+    color: #0ba70b;
+}
+
+.reprovar
+{
+    font-size: 25px;
+    color: #e60f24;
+}
+
+.editar
+{
+    font-size: 25px;
+    color: #30419b;
+}
+
+.cores-painel
+{
+    height: 40px;
+    width: 40px;
+    background-color: blue;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+.nome-cor
+{
+    display: inline;
+    position: relative;
+    top: -15px;
+    left: 5px;
+    font-size: 18px !important;
+}
+
+/*CSS para imprimir o pedido*/
+@media print
+{
+    .pedido-imprimir
+    {
+        width: 100%;
+    }
+
+    .topbar
+    {
+        display: none !important;
+    }
+
+    .side-menu
+    {
+        display: none !important;
+    }
+
+    .page-title-box
+    {
+        display: none !important;
+    }
+
+    #rastreio
+    {
+        display: none !important;
+
+    }
+    .footer
+    {
+        display: none !important;
+    }
+
+    .content-page
+    {
+        margin-left: 0px !important;
+    }
+
+    .col-8
+    {
+        flex: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #status
+    {
+        display: none !important;
+
+    }
+}

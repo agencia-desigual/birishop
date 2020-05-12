@@ -17,7 +17,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel"><?= SITE_NOME ?></a></li>
-                            <li class="breadcrumb-item active">Portfólios</li>
+                            <li class="breadcrumb-item active">Parceiros</li>
                         </ol>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
                     <div class="card m-b-30">
                         <div class="card-body">
 
-                            <h4 class="mt-0 header-title">TODAS OS PORTFÓLIOS</h4>
-                            <p class="sub-title../plugins">Gerencie seus portfólio, selecione as melhores imagens.</p>
+                            <h4 class="mt-0 header-title">TODAS OS PARCEIROS</h4>
+                            <p class="sub-title../plugins">Gerencie seus parceiros.</p>
                             <hr class="mt-3 mb-3">
                             <div class="row">
                                 <?php if(!empty($parceiros)): ?>
@@ -53,9 +53,9 @@
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <div class="col-md-12">
-                                        <h6 class="mb-4">Não possui nenhum portfólio cadastrado. </h6>
+                                        <h6 class="mb-4">Não possui nenhum parceiro cadastrado. </h6>
 
-                                        <a href="<?= BASE_URL ?>painel/parceiro/inserir" class="btn btn-primary mb-3">Adicionar um portfólio</a>
+                                        <a href="<?= BASE_URL ?>painel/parceiro/inserir" class="btn btn-primary mb-3">Adicionar um parceiro</a>
                                     </div>
                                 <?php endif; ?>
                             </div>

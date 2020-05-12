@@ -2,7 +2,8 @@ import Session from "./main/Session.js"
 
 // Dados importantes
 var Dados = {
-    "url": ""
+    "url": "http://localhost/git/birishop/",
+    "urlApi": "http://localhost/git/birishop/api/",
 }
 
 

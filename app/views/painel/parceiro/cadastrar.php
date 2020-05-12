@@ -1,7 +1,7 @@
 <?php $this->view("painel/include/header"); ?>
 
     <!-- ============================================================== -->
-    <!-- INICIO cadastrar parceira -->
+    <!-- INICIO cadastrar parceiro -->
     <!-- ============================================================== -->
     <div class="content-page">
         <div class="content">
@@ -11,12 +11,12 @@
                 <div class="page-title-box">
                     <div class="row align-items-center">
                         <div class="col-sm-6">
-                            <h4 class="page-title">Cadastrar Portfólio</h4>
+                            <h4 class="page-title">Cadastrar Parceiro</h4>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-right">
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><?= SITE_NOME ?></a></li>
-                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel/parceiros">Portfólios</a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel/parceiros">Parceiros</a></li>
                                 <li class="breadcrumb-item active">Cadastrar</li>
                             </ol>
                         </div>
@@ -29,10 +29,20 @@
                         <div class="card m-b-30">
                             <div class="card-body">
 
-                                <h4 class="mt-0 header-title">Cadastrar Portfólio</h4>
-                                <p class="sub-title">Cadastre um novo portfólio.</p>
+                                <h4 class="mt-0 header-title">Cadastrar Parceiro</h4>
+                                <p class="sub-title">Cadastre um novo parceiro.</p>
 
                                 <form id="formInserirParceiro">
+
+                                    <!-- NOME E EMAIL -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Link</label>
+                                                <input type="text" class="form-control" name="link" placeholder="Cole o link aqui" required="" />
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <!-- IMAGEM -->
                                     <div class="form-group">
