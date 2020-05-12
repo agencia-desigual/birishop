@@ -48,6 +48,11 @@ class Principal extends CI_controller
         $this->view("site/cadastro");
     }
 
+    public function dashboard()
+    {
+        $this->view("painel/dashboard");
+    }
+
 
 
 } // END::Class Principal

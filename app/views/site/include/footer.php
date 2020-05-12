@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright-text">
-                        © Copyright Classima 2019. Designed and Developed by <a target="_blank" href="https://www.radiustheme.com/">RadiusTheme</a>
+                        © <?= date("Y") ?> Todos os direitos reservados.
                     </div>
                 </div>
                 <div class="col-md-4">
