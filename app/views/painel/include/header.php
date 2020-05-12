@@ -76,7 +76,7 @@
                 <li class="dropdown notification-list list-inline-item">
                     <div class="dropdown notification-list nav-pro-img">
                         <a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="<?= BASE_URL ?>assets/custom/site/img/logo-preta.png" alt="<?= SITE_NOME; ?>" style="height: auto; width: 70px;">
+                            <img src="<?= BASE_URL ?>assets/custom/site/img/logo-preta.png" alt="<?= SITE_NOME; ?>" style="height: auto; width: 70px; display: none">
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -115,7 +115,7 @@
 
                     <!-- Início / Dashboard -->
                     <li>
-                        <a href="<?= BASE_URL ?>" class="waves-effect">
+                        <a href="<?= BASE_URL ?>painel" class="waves-effect">
                             <i class="icon-accelerator"></i> <span> Início </span>
                         </a>
                     </li>
@@ -129,8 +129,8 @@
                             </span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="<?= BASE_URL ?>painel/banners">Listar Todos</a></li>
-                            <li><a href="<?= BASE_URL ?>painel/banner/inserir">Adicionar</a></li>
+                            <li><a href="<?= BASE_URL ?>painel/associados">Listar Todos</a></li>
+                            <li><a href="<?= BASE_URL ?>painel/associado/inserir">Adicionar</a></li>
                         </ul>
                     </li>
 
@@ -143,14 +143,13 @@
 
                     <!-- NEWSLETTER -->
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect">
+                        <a href="<?= BASE_URL ?>painel/newsletter" class="waves-effect">
                             <i class="fas fa-list-ol"></i>
                             <span>
                                 Newsletter
                             </span>
                         </a>
                     </li>
-
 
                     <!-- BANNERS -->
                     <li>
@@ -166,7 +165,6 @@
                         </ul>
                     </li>
 
-
                     <!-- PARCEIROS -->
                     <li>
                         <a href="javascript:void(0);" class="waves-effect">
@@ -181,7 +179,6 @@
                         </ul>
                     </li>
 
-
                     <!-- USUÁRIOS -->
                     <li>
                         <a href="javascript:void(0);" class="waves-effect">
@@ -195,7 +192,6 @@
                             <li><a href="<?= BASE_URL ?>painel/usuario/inserir">Adicionar</a></li>
                         </ul>
                     </li>
-
 
                     <!-- SAIR -->
                     <li>

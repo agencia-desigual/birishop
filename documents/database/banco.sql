@@ -11,6 +11,7 @@ CREATE TABLE usuario (
     PRIMARY KEY (id_usuario)
 );
 
+
 CREATE TABLE token(
   id_token INT NOT NULL AUTO_INCREMENT,
   id_usuario INT NOT NULL,
@@ -21,7 +22,6 @@ CREATE TABLE token(
   PRIMARY KEY (id_token),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
-
 
 
 CREATE TABLE promocoes (

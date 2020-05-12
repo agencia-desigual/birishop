@@ -75,6 +75,34 @@ $Rotas->on("GET","cadastro","App\Principal::cadastro");
 // Páginas de dashboard
 $Rotas->on("GET","painel","App\Principal::dashboard");
 
+// Páginas banners
+$Rotas->on("GET","painel/banners","App\Banner::listar");
+$Rotas->on("GET","painel/banner/inserir","App\Banner::inserir");
+
+// Páginas parceiros
+$Rotas->on("GET","painel/parceiros","App\Parceiro::listar");
+$Rotas->on("GET","painel/parceiro/inserir","App\Parceiro::inserir");
+
+// Páginas usuario
+$Rotas->on("GET","painel/usuarios","App\Usuario::listar");
+$Rotas->on("GET","painel/usuario/alterar/{p}","App\Usuario::alterar");
+$Rotas->on("GET","painel/usuario/inserir","App\Usuario::inserir");
+
+// Páginas newsletter
+$Rotas->on("GET","painel/newsletter","App\Newsletter::listar");
+
+// Páginas de cliente
+$Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
+
+// Páginas de associados
+$Rotas->on("GET","painel/associados","App\Usuario::associados");
+$Rotas->on("GET","painel/associados/cadastrar","App\Usuario::associadosCadastrar");
+$Rotas->on("GET","painel/associados/editar","App\Usuario::associadosEditar");
+
+
+
+
+
 // Páginas de cliente
 $Rotas->on("GET","painel/clientes","App\Cliente::clientes");
 $Rotas->on("GET","painel/cliente/{p}","App\Cliente::clientes");
@@ -104,13 +132,9 @@ $Rotas->on("GET","painel/tamanhos","App\Tamanho::listar");
 $Rotas->on("GET","painel/tamanho/alterar/{p}","App\Tamanho::alterar");
 $Rotas->on("GET","painel/tamanho/inserir","App\Tamanho::inserir");
 
-// Páginas banners
-$Rotas->on("GET","painel/banners","App\Banner::listar");
-$Rotas->on("GET","painel/banner/inserir","App\Banner::inserir");
 
-// Páginas parceiros
-$Rotas->on("GET","painel/parceiros","App\Parceiro::listar");
-$Rotas->on("GET","painel/parceiro/inserir","App\Parceiro::inserir");
+
+
 
 // Páginas usuario
 $Rotas->on("GET","painel/usuarios","App\Usuario::listar");

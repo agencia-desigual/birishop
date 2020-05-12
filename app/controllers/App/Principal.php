@@ -21,8 +21,6 @@ class Principal extends CI_controller
         parent::__construct();
     }
 
-
-
     public function index()
     {
        $this->view("site/index");

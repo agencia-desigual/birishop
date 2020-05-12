@@ -2,67 +2,71 @@
 /**
  * Created by PhpStorm.
  * User: Igor
- * Date: 26/03/2019
- * Time: 18:29
+ * Date: 27/04/2020
+ * Time: 09:15
  */
 
+// NameSpace
 namespace Controller\App;
 
+// Importação
 use Helper\Apoio;
-use Sistema\Controller as CI_controller;
+use Sistema\Controller;
 
-
-class Banner extends CI_controller
+// Classe
+class Parceiro extends Controller
 {
 
     // Objetos
-    private $objModelBanner;
+    private $objModelParceiro;
     private $objHelperApoio;
 
     // Método construtor
-    function __construct()
+    public function __construct()
     {
-        // Carrega o contrutor da classe pai
+        // Chama o pai
         parent::__construct();
 
         // Instancia os objetos
-        $this->objModelBanner = new \Model\Banner();
+        $this->objModelParceiro = new \Model\Parceiro();
         $this->objHelperApoio = new Apoio();
 
-    }
+    } // End >> fun::__construct()
+
+
 
     /**
-     * Método responsável por montar a página de banners
+     * Método responsável por montar a página de parceiros
      * do painel administrativo.
-     * -------------------------------------------------------
-     * @url painel/banner
+     * --------------------------------------------------------
+     * @url painel/parceiros
      * @method GET
      */
     public function listar()
     {
         // Verifica a permissão do usuario
-        //$usuario = $this->objHelperApoio->seguranca();
+        // $usuario = $this->objHelperApoio->seguranca();
         $usuario->nivel = "admin";
 
         // Verifica se é admin
         if($usuario->nivel == "admin")
         {
-            // ========== LISTA DE BANNERS ========== //
-            $banners = $this->objModelBanner
-                ->get("","ordem ASC")
+            // ========== LISTA DE PARCEIROS ========== //
+            $parceiros = $this->objModelParceiro
+                ->get()
                 ->fetchAll(\PDO::FETCH_OBJ);
 
             // Array de dados
             $dados = [
                 "usuario" => $usuario,
-                "banners" => $banners,
+                "parceiros" => $parceiros,
                 "js" => [
-                    "modulos" => ["Banner"]
+                    "modulos" => ["Parceiro"]
                 ]
             ];
 
             // Carrega a view
-            $this->view("painel/banner/listar",$dados);
+            $this->view("painel/parceiro/listar",$dados);
         }
         else
         {
@@ -75,10 +79,10 @@ class Banner extends CI_controller
 
 
     /**
-     * Método responsável por montar a página de inserir banners
+     * Método responsável por montar a página de parceiros
      * do painel administrativo.
-     * -------------------------------------------------------
-     * @url painel/banner/inserir
+     * ---------------------------------------------------------
+     * @url painel/parceiro/inserir
      * @method GET
      */
     public function inserir()
@@ -94,12 +98,12 @@ class Banner extends CI_controller
             $dados = [
                 "usuario" => $usuario,
                 "js" => [
-                    "modulos" => ["Banner"]
+                    "modulos" => ["Parceiro"]
                 ]
             ];
 
             // Carrega a view
-            $this->view("painel/banner/cadastrar", $dados);
+            $this->view("painel/parceiro/cadastrar", $dados);
         }
         else
         {
@@ -107,7 +111,6 @@ class Banner extends CI_controller
             $this->view(ERRO_404);
         } // Error >> Usuário sem permissão
 
-    } // End >> fun::inserir()
+    } // End >> fun::parceiroCadastrar()
 
-
-} // END::Class Principal
+} // End >> Class::App\Parceiro
