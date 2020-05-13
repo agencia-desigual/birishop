@@ -53,6 +53,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtmXSwv4YmAKtcZyyad9W7D4AC08z0Rb4"></script>
 <!-- Site Scripts -->
 <script src="<?= BASE_URL; ?>/assets/theme/site/js/app.js"></script>
+<!-- Js Autoload -->
+<?php $this->view("autoload/js"); ?>
 
 </body>
 

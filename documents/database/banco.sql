@@ -5,7 +5,7 @@ CREATE TABLE usuario (
     cnpj VARCHAR (150) NULL DEFAULT NULL,
     email VARCHAR (150) NOT NULL,
     senha VARCHAR (150) NOT NULL,
-    tipo VARCHAR (150) NOT NULL DEFAULT 'associado',
+    nivel VARCHAR (150) NOT NULL DEFAULT 'associado',
     status BOOLEAN NOT NULL DEFAULT 0,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_usuario)

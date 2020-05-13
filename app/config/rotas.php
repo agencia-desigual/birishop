@@ -55,6 +55,7 @@ $Rotas->on("GET","","App\Principal::index");
 
 // -- Rotas sem grupo
 $Rotas->on("GET","login","App\Principal::login");
+$Rotas->on("GET","sair","App\Principal::sair");
 
 // -- Rotas sem grupo
 $Rotas->on("GET","promocoes","App\Principal::promocoes");
@@ -75,6 +76,11 @@ $Rotas->on("GET","cadastro","App\Principal::cadastro");
 // Páginas de dashboard
 $Rotas->on("GET","painel","App\Principal::dashboard");
 
+// Páginas de associados
+$Rotas->on("GET","painel/associados","App\Usuario::associados");
+$Rotas->on("GET","painel/associado/inserir","App\Usuario::associadosCadastrar");
+$Rotas->on("GET","painel/associado/alterar/{p}","App\Usuario::associadosEditar");
+
 // Páginas banners
 $Rotas->on("GET","painel/banners","App\Banner::listar");
 $Rotas->on("GET","painel/banner/inserir","App\Banner::inserir");
@@ -93,11 +99,6 @@ $Rotas->on("GET","painel/newsletter","App\Newsletter::listar");
 
 // Páginas de cliente
 $Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
-
-// Páginas de associados
-$Rotas->on("GET","painel/associados","App\Usuario::associados");
-$Rotas->on("GET","painel/associados/cadastrar","App\Usuario::associadosCadastrar");
-$Rotas->on("GET","painel/associados/editar","App\Usuario::associadosEditar");
 
 
 

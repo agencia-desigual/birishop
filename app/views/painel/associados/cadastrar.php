@@ -1,7 +1,7 @@
 <?php $this->view("painel/include/header"); ?>
 
     <!-- ============================================================== -->
-    <!-- INICIO cadastrar usuario -->
+    <!-- INICIO editar usuario -->
     <!-- ============================================================== -->
     <div class="content-page">
         <div class="content">
@@ -11,12 +11,12 @@
                 <div class="page-title-box">
                     <div class="row align-items-center">
                         <div class="col-sm-6">
-                            <h4 class="page-title">Cadastrar um Usuário</h4>
+                            <h4 class="page-title">Cadastrar Associado</h4>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-right">
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><?= SITE_NOME ?></a></li>
-                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel/usuarios">Usuários</a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel/associados">Associados</a></li>
                                 <li class="breadcrumb-item active">Cadastrar</li>
                             </ol>
                         </div>
@@ -29,36 +29,50 @@
                         <div class="card m-b-30">
                             <div class="card-body">
 
-                                <h4 class="mt-0 header-title">Cadastrar um novo Usuário</h4>
-                                <p class="sub-title">Cadastre um novo usuário, apenas os usuários tem acesso ao painel administrador.</p>
+                                <h4 class="mt-0 header-title">Cadastrar Associado</h4>
+                                <p class="sub-title">Cadastre um novo associado</p>
 
-                                <form id="formInserirUsuario">
+                                <form id="formCadastrarAssociado" data-alerta="swal">
+
+                                    <!-- NOME LOJA E CNPJ -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome da Loja</label>
+                                                <input type="text" class="form-control" name="nome_estabelecimento" value="" required="" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>CNPJ</label>
+                                                <input type="tel" class="form-control maskCNPJ" name="cnpj" value="" required="" />
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <!-- NOME E EMAIL -->
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Nome</label>
-                                                <input type="text" class="form-control" name="nome" placeholder="Nome do usuário" required="" />
+                                                <input type="text" class="form-control" name="nome" value="" required="" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label>E-mail</label>
-                                                <input type="email" class="form-control" name="email" placeholder="exemplo@site.com.br" required="" />
+                                                <input type="email" class="form-control" name="email" value="" required="" />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!--- SENHA e REPETE SENHA -->
+                                    <!--- SENHA E REPETE SENHA -->
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Senha</label>
-                                                <input name="senha" type="password" placeholder="Senha para acessar o sistema" class="form-control" />
+                                                <input name="senha" type="password" class="form-control" />
                                             </div>
 
                                             <div class="col-md-6">
                                                 <label>Repete a Senha</label>
-                                                <input name="senha_repete" type="password" placeholder="Repete a senha Informada" class="form-control" />
+                                                <input name="repete_senha" type="password" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -69,17 +83,16 @@
                                             <div class="col-md-12">
                                                 <label>Status</label>
                                                 <select name="status" class="form-control">
-                                                    <option value="1" selected>Ativo</option>
+                                                    <option selected disabled>Selecione</option>
+                                                    <option value="1">Ativo</option>
                                                     <option value="0">Destivado</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <input type="hidden" name="tipo" value="admin" />
-
-
                                     <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
+
                                 </form>
 
                             </div>

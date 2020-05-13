@@ -1,7 +1,7 @@
 <?php
 
 // NameSpace
-namespace Controller\Ap1;
+namespace Controller\Api;
 
 // Importação
 use Helper\Apoio;
@@ -51,6 +51,7 @@ class Usuario extends CI_controller
      */
     public function login()
     {
+
         // Variaveis
         $dados = null;
         $usuario = null;

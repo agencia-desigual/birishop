@@ -11,12 +11,12 @@
                 <div class="page-title-box">
                     <div class="row align-items-center">
                         <div class="col-sm-6">
-                            <h4 class="page-title">Alterar Usuário</h4>
+                            <h4 class="page-title">Alterar Associado</h4>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-right">
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><?= SITE_NOME ?></a></li>
-                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel/usuarios">Usuários</a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>painel/associados">Associados</a></li>
                                 <li class="breadcrumb-item active">Editar</li>
                             </ol>
                         </div>
@@ -24,55 +24,49 @@
                 </div>
                 <!-- FIM BREADCUMP -->
 
-                <?php if (!empty($user)) : ?>
+                <?php if (!empty($associado)) : ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card m-b-30">
                                 <div class="card-body">
 
-                                    <h4 class="mt-0 header-title">Editar Usuário</h4>
-                                    <p class="sub-title">Revise todos os dados do usuário, apenas os usuários tem acesso ao painel administrador.</p>
+                                    <h4 class="mt-0 header-title">Editar Associado</h4>
+                                    <p class="sub-title">Revise todos os dados do associado</p>
 
-                                    <form id="formAlteraUsuario"
-                                          data-id="<?= $user->id_usuario; ?>"
-                                          data-refresh="<?= ($user->id_usuario == $usuario->id_usuario) ? 1 : 0; ?>"
+                                    <form id="formAlteraAssociado"
+                                          data-id="<?= $associado->id_usuario; ?>"
+                                          data-refresh="<?= ($associado->id_usuario == $associado->id_usuario) ? 1 : 0; ?>"
                                           data-alerta="swal">
+
+                                        <!-- NOME LOJA E CNPJ -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Nome da Loja</label>
+                                                    <input type="text" class="form-control" name="nome" value="<?= $associado->nome_estabelecimento ?>" required="" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>CNPJ</label>
+                                                    <input type="tel" class="form-control maskCNPJ" name="email" value="<?= $associado->cnpj ?>" required="" />
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!-- NOME E EMAIL -->
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label>Nome</label>
-                                                    <input type="text" class="form-control" name="nome" value="<?= $user->nome ?>" required="" />
+                                                    <input type="text" class="form-control" name="nome" value="<?= $associado->nome ?>" required="" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>E-mail</label>
-                                                    <input type="email" class="form-control" name="email" value="<?= $user->email ?>" required="" />
+                                                    <input type="email" class="form-control" name="email" value="<?= $associado->email ?>" required="" />
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- CELULAR E SENHA -->
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Celular</label>
-                                                    <input type="text"
-                                                           class="form-control maskCel"
-                                                           name="celular"
-                                                           value="<?= $user->celular ?>" required/>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Status</label>
-                                                    <select name="status" class="form-control">
-                                                        <option value="1" <?php if($user->status == true){ echo "selected";} ?>>Ativo</option>
-                                                        <option value="0" <?php if($user->status == false){ echo "selected";} ?>>Destivado</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--- SENHA e REPETE SENHA -->
+                                        <!--- SENHA E REPETE SENHA -->
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -87,6 +81,18 @@
                                             </div>
                                         </div>
 
+                                        <!-- STATUS -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label>Status</label>
+                                                    <select name="status" class="form-control">
+                                                        <option value="1" <?php if($associado->status == true){ echo "selected";} ?>>Ativo</option>
+                                                        <option value="0" <?php if($associado->status == false){ echo "selected";} ?>>Destivado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <button type="submit" class="btn btn-primary float-right">Alterar</button>
                                     </form>

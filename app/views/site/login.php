@@ -32,7 +32,7 @@
                                 <i class="far fa-user mr-2"></i>Faça o login
                             </h3>
                             <hr style="padding-bottom: 15px">
-                            <form action="#">
+                            <form id="formLogin">
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" class="form-control" name="email" id="email">

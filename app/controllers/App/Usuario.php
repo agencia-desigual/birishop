@@ -170,16 +170,20 @@ class Usuario extends Controller
      */
     public function associados()
     {
-        // Verifica a permissão do usuario
-        // $usuario = $this->objHelperApoio->seguranca();
-        $usuario->nivel = "admin";
+         // Verifica a permissão do usuario
+         $usuario = $this->objHelperApoio->seguranca();
 
         // Verifica se é admin
         if($usuario->nivel == "admin")
         {
+            $associados = $this->objModelUsuario
+                ->get(['nivel' => 'associado'])
+                ->fetchAll(\PDO::FETCH_OBJ);
+
             // Dados de exibição
             $dados = [
                 "usuario" => $usuario,
+                "associados" => $associados,
                 "js" => [
                     "modulos" => ["Usuario"]
                 ]
@@ -223,7 +227,7 @@ class Usuario extends Controller
             ];
 
             // Carrega a view
-            $this->view("painel/associado/cadastrar", $dados);
+            $this->view("painel/associados/cadastrar", $dados);
         }
         else
         {
@@ -242,25 +246,39 @@ class Usuario extends Controller
      * @url painel/associados/cadastrar
      * @method GET
      */
-    public function associadosEditar()
+    public function associadosEditar($id)
     {
         // Verifica a permissão do usuario
-        // $usuario = $this->objHelperApoio->seguranca();
-        $usuario->nivel = "admin";
+         $usuario = $this->objHelperApoio->seguranca();
 
         // Verifica se é admin
         if($usuario->nivel == "admin")
         {
-            // Dados de exibição
-            $dados = [
-                "usuario" => $usuario,
-                "js" => [
-                    "modulos" => ["Usuario"]
-                ]
-            ];
 
-            // Carrega a view
-            $this->view("painel/associado/editar", $dados);
+            // ===== BUSCA O ASSOCIADO ===== //
+            $buscaAssociado = $this->objModelUsuario
+                ->get(['id_usuario' => $id])
+                ->rowCount();
+
+            if ($buscaAssociado == 1)
+            {
+
+                $associado = $this->objModelUsuario
+                    ->get(['id_usuario' => $id])
+                    ->fetch(\PDO::FETCH_OBJ);
+
+                // Dados de exibição
+                $dados = [
+                    "usuario" => $usuario,
+                    "associado" => $associado,
+                    "js" => [
+                        "modulos" => ["Usuario"]
+                    ]
+                ];
+
+                // Carrega a view
+                $this->view("painel/associados/editar", $dados);
+            }
         }
         else
         {

@@ -38,7 +38,7 @@
                                 <div>
                                     <h5 class="font-16">Promoções</h5>
                                 </div>
-                                <h3 class="mt-4"><?= $qtdeProdutos ?></h3>
+                                <h3 class="mt-4"><?= $qtdePromocoes ?></h3>
                                 <p class="text-muted mt-2 mb-0">Promoções ativa</p>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <div>
                                     <h5 class="font-16">Assosciados</h5>
                                 </div>
-                                <h3 class="mt-4"><?= $qtdeClientes ?></h3>
+                                <h3 class="mt-4"><?= $qtdeAssociados ?></h3>
                                 <p class="text-muted mt-2 mb-0">Associados ativo</p>
                             </div>
                         </div>
@@ -77,47 +77,32 @@
                                             <th scope="col">CNPJ</th>
                                             <th scope="col">NOME</th>
                                             <th scope="col">EMAIL</th>
-                                            <th class="text-center" scope="col"></th>
+                                            <th class="text-center" scope="col">AÇÕES</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if(!empty($clientes)): ?>
-                                                <?php foreach ($clientes as $cliente): ?>
-                                                    <tr id="associado_<?= $cliente->id_usuario; ?>">
-                                                        <td style="text-transform: capitalize;"><?= $cliente->nome; ?></td>
-                                                        <td><?= $cliente->email; ?></td>
-                                                        <td><?= preg_replace("/(\d{2})(\d{5})(\d{4})/", "(\$1) \$2-\$3", $cliente->celular); ?></td>
-                                                        <td><?= date("d/m/Y", strtotime($cliente->cadastro)); ?></td>
-                                                        <td>
-                                                            <button data-id="<?= $cliente->id_usuario; ?>" data-tipo="0" class="btn btn-icon alteraVerificacao">
+                                            <?php if(!empty($associados)): ?>
+                                                <?php foreach ($associados as $associado): ?>
+                                                    <tr id="associado_<?= $associado->id_usuario; ?>">
+                                                        <td><?= $associado->id_usuario; ?></td>
+                                                        <td style="text-transform: capitalize;"><?= $associado->nome_estabelecimento; ?></td>
+                                                        <td><?= $associado->cnpj; ?></td>
+                                                        <td><?= $associado->nome; ?></td>
+                                                        <td><?= $associado->email; ?></td>
+                                                        <td class="text-center">
+                                                            <button style="display: none" data-id="<?= $associado->id_usuario; ?>" data-tipo="0" class="btn btn-icon alteraStatusUsuario">
                                                                 <i class="fas fa-window-close reprovar"></i>
                                                             </button>
 
-                                                            <button data-id="<?= $cliente->id_usuario; ?>" data-tipo="1" class="btn btn-icon alteraVerificacao">
+                                                            <button data-id="<?= $associado->id_usuario; ?>" data-tipo="1" class="btn btn-icon alteraStatusUsuario">
                                                                 <i class="fas fa-check-circle aprovar"></i>
                                                             </button>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php else: ?>
                                                 <tr>
-                                                    <td colspan="5">Não possui clientes aguardando aprovação.</td>
+                                                    <td colspan="5">Não possui associados aguardando aprovação.</td>
                                                 </tr>
-                                                <tr id="associado_<?= $cliente->id_usuario; ?>">
-                                                    <td style="text-transform: capitalize;">1</td>
-                                                    <td>LOJA DE ROUPAS DO RIBAMAR</td>
-                                                    <td>1237475752727272</td>
-                                                    <td>Edilson</td>
-                                                    <td>Edilson</td>
-                                                    <td>
-                                                        <button data-id="<?= $cliente->id_usuario; ?>" data-tipo="0" class="btn btn-icon alteraVerificacao">
-                                                            <i class="fas fa-window-close reprovar"></i>
-                                                        </button>
-
-                                                        <button data-id="<?= $cliente->id_usuario; ?>" data-tipo="1" class="btn btn-icon alteraVerificacao">
-                                                            <i class="fas fa-check-circle aprovar"></i>
-                                                        </button>
-                                                </tr>
-
                                             <?php endif; ?>
                                         </tbody>
                                     </table>

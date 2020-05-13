@@ -47,43 +47,28 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($usuarios as $user) : ?>
-                                        <tr id="tb_<?= $user->id_usuario; ?>">
-                                            <td><?= $user->nome ?></td>
-                                            <td><?= $user->email ?></td>
-                                            <?php if ($user->status == 1) : ?>
+                                    <?php foreach ($associados as $associado) : ?>
+                                        <tr id="tb_<?= $associado->id_usuario; ?>">
+                                            <td><?= $associado->nome_estabelecimento ?></td>
+                                            <td><?= $associado->cnpj ?></td>
+                                            <td><?= $associado->email ?></td>
+                                            <?php if ($associado->status == 1) : ?>
                                                 <td><span class="badge badge-success">ATIVO</span></td>
                                             <?php else: ?>
                                                 <td><span class="badge badge-danger">INATIVO</span></td>
                                             <?php endif; ?>
                                             <td class="text-center">
-                                                <?php if($user->id_usuario != $usuario->id_usuario): ?>
-                                                    <button data-id="<?= $user->id_usuario; ?>"
-                                                            class="deletarUsuario btn btn-danger btn-icon btn-sm mr-2">
-                                                        <i class="fas fa-window-close"></i>
-                                                    </button>
-                                                <?php endif; ?>
+                                                <button data-id="<?= $associado->id_usuario; ?>"
+                                                        class="deletarUsuario btn btn-danger btn-icon btn-sm mr-2">
+                                                    <i class="fas fa-window-close"></i>
+                                                </button>
 
-                                                <a href="<?= BASE_URL; ?>painel/usuario/alterar/<?= $user->id_usuario; ?>" class="btn btn-primary btn-icon btn-sm">
+                                                <a href="<?= BASE_URL; ?>painel/associado/alterar/<?= $associado->id_usuario; ?>" class="btn btn-primary btn-icon btn-sm">
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                    </tr>
                                     </tbody>
                                 </table>
 

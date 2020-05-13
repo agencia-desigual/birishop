@@ -83,7 +83,7 @@
                         <div class="header-action-layout1">
                             <ul>
                                 <li class="header-login-icon">
-                                    <a href="<?= BASE_URL; ?>login" class="color-primary" data-toggle="tooltip" data-placement="top" title="Login/Register">
+                                    <a href="<?= BASE_URL; ?>login" class="color-primary" data-toggle="tooltip" data-placement="top">
                                         <i class="far fa-user mr-2"></i>login
                                     </a>
                                 </li>
