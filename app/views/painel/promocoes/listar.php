@@ -32,7 +32,7 @@
                             <div class="card-body">
 
                                 <h4 class="mt-0 header-title">TODAS AS PROMOÇÕES</h4>
-                                <p class="sub-title../plugins">Gerencie os clientes, você também pode exportar todos os contatos.
+                                <p class="sub-title../plugins">Gerencie todas as promoções.
                                 </p>
 
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -44,6 +44,7 @@
                                         <th scope="col">STATUS</th>
                                         <th scope="col">DTA. EXPIRAÇÃO</th>
                                         <th scope="col">DTA. CADASTRO</th>
+                                        <th class="text-center" scope="col">AÇÕES</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -53,9 +54,24 @@
                                                 <td><?= $promo->nome ?></td>
                                                 <td><?= $promo->empresa ?></td>
                                                 <td><?= $promo->valor ?></td>
-                                                <td><?= $promo->status ?></td>
-                                                <td><?= $promo->data_expira?></td>
+                                                <td>
+                                                    <?php if($promo->status == 'ativo') : ?>
+                                                        <span class="badge badge-success">ATIVO</span>
+                                                    <?php elseif($promo->status == 'analise') : ?>
+                                                        <span class="badge badge-primary">ANALISE</span>
+                                                    <?php elseif($promo->status == 'reprovado') : ?>
+                                                        <span class="badge badge-warning">REPROVADO</span>
+                                                    <?php else: ?>
+                                                        <span class="badge badge-danger">CANCELADO</span>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td><?= $promo->data_validade?></td>
                                                 <td><?= $promo->data_cadastro ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= BASE_URL; ?>painel/promocao/alterar/<?= $promo->id_promocao; ?>" class="btn btn-primary btn-icon btn-sm">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else: ?>

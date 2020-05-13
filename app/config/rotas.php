@@ -97,8 +97,9 @@ $Rotas->on("GET","painel/usuario/inserir","App\Usuario::inserir");
 // Páginas newsletter
 $Rotas->on("GET","painel/newsletter","App\Newsletter::listar");
 
-// Páginas de cliente
+// Páginas de promocoes
 $Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
+$Rotas->on("GET","painel/promocao/alterar/{p}","App\Promocoes::alterar");
 
 
 
