@@ -3,7 +3,7 @@
     <!--=====================================-->
     <!--=        Inner Banner Start         =-->
     <!--=====================================-->
-    <section class="inner-page-banner" data-bg-image="<?= BASE_URL; ?>assets/theme/site/media/banner/banner1.jpg">
+    <section class="inner-page-banner" data-bg-image="<?= BASE_URL; ?>assets/theme/site/img/breadcrump2.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -29,6 +29,11 @@
                     <div class="col-lg-10 pt-3 pb-3">
                         <div class="form-box login-form">
                             <h3 class="item-title text-center">Seja um Associado</h3>
+                            <p style="margin-top: -15px" class="text-center">
+                                <a class="text-center" href="https://www.acibirigui.com.br/como-associar-se" target="_blank">
+                                    Como associar-se
+                                </a>
+                            </p>
                             <hr style="padding-bottom: 20px"
                             <form id="formCadastro">
                                 <div class="row mb-2">

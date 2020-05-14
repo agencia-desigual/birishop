@@ -3,7 +3,7 @@
     <!--=====================================-->
     <!--=        Inner Banner Start         =-->
     <!--=====================================-->
-    <section class="inner-page-banner" data-bg-image="<?= BASE_URL; ?>assets/theme/site/media/banner/banner1.jpg">
+    <section class="inner-page-banner" data-bg-image="<?= BASE_URL; ?>assets/theme/site/img/breadcrump.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
