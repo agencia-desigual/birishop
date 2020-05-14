@@ -33,7 +33,7 @@
                                     <h4 class="mt-0 header-title">Editar Associado</h4>
                                     <p class="sub-title">Revise todos os dados do associado</p>
 
-                                    <form id="formAlteraAssociado"
+                                    <form id="formAlteraUsuario"
                                           data-id="<?= $associado->id_usuario; ?>"
                                           data-refresh="<?= ($associado->id_usuario == $associado->id_usuario) ? 1 : 0; ?>"
                                           data-alerta="swal">
@@ -43,11 +43,11 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label>Nome da Loja</label>
-                                                    <input type="text" class="form-control" name="nome" value="<?= $associado->nome_estabelecimento ?>" required="" />
+                                                    <input type="text" class="form-control" name="nome_estabelecimento" value="<?= $associado->nome_estabelecimento ?>" required="" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>CNPJ</label>
-                                                    <input type="tel" class="form-control maskCNPJ" name="email" value="<?= $associado->cnpj ?>" required="" />
+                                                    <input type="tel" class="form-control maskCNPJ" name="cnpj" value="<?= $associado->cnpj ?>" required="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>E-mail</label>
-                                                    <input type="email" class="form-control" name="email" value="<?= $associado->email ?>" required="" />
+                                                    <p><?= $associado->email ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@
 
                                                 <div class="col-md-6">
                                                     <label>Repete a Senha</label>
-                                                    <input name="repete_senha" type="password" class="form-control" />
+                                                    <input name="senha_repete" type="password" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>

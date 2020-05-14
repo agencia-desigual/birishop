@@ -76,7 +76,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="hidden" name="tipo" value="admin" />
+                                    <input type="hidden" name="nivel" value="admin" />
 
 
                                     <button type="submit" class="btn btn-primary float-right">Cadastrar</button>

@@ -302,65 +302,90 @@ class Usuario extends CI_controller
         // Verifica se informou os campos obrigatórios
         if(!empty($post["email"]) && !empty($post["nome"]) && !empty($post["senha"]))
         {
-            // Verifica o nivel
-            $post["nivel"] = (!empty($post["nivel"])) ? $post["nivel"] : "associado";
-
-            // Verifica se é admin
-            if($post["nivel"] == "admin")
+            // Verifica se as senhas conferem
+            if($post["senha"] == $post["senha_repete"])
             {
-                // Recupera o usuário logado
-                $usuario = $this->objSeguranca->security();
+                $objAtual = $this->objModelUsuario
+                    ->get(["email" => $post["email"]])
+                    ->rowCount();
 
-                // Verifica se o usuário não possui permissão
-                if($usuario->nivel != "admin")
+                // Verifica se existe algum cadastro
+                if($objAtual == 0)
                 {
-                    // Avisa que deu erro
-                    $this->api(["mensagem" => "Usuário sem permissão"]);
+                    // Remove o senha repete
+                    unset($post["senha_repete"]);
 
-                    // Exit
-                    exit;
+                    // Verifica o nivel
+                    $post["nivel"] = (!empty($post["nivel"])) ? $post["nivel"] : "associado";
+
+                    // Verifica se é admin
+                    if($post["nivel"] == "admin")
+                    {
+                        // Recupera o usuário logado
+                        $usuario = $this->objSeguranca->security();
+
+                        // Verifica se o usuário não possui permissão
+                        if($usuario->nivel != "admin")
+                        {
+                            // Avisa que deu erro
+                            $this->api(["mensagem" => "Usuário sem permissão"]);
+
+                            // Exit
+                            exit;
+                        }
+                    }
+                    else
+                    {
+                        // Verifica se não informou os dados obrigatórios
+                        if(empty($post["cnpj"]) || empty($post["nome_estabelecimento"]))
+                        {
+                            // Avisa do erro
+                            $this->api(["mensagem" => "CNPJ e o nome da empresa são obrigatórios."]);
+
+                            // Exit
+                            exit;
+                        }
+                    }
+
+                    // Insere
+                    $obj = $this->objModelUsuario->insert($post);
+
+                    // Verifica se inserio
+                    if(!empty($obj))
+                    {
+                        // Busca o usuário
+                        $obj = $this->objModelUsuario
+                            ->get(["id_usuario" => $obj])
+                            ->fetch(\PDO::FETCH_OBJ);
+
+                        // Remove a senha
+                        unset($obj->senha);
+
+                        // Retorno
+                        $dados = [
+                            "tipo" => true,
+                            "code" => 200,
+                            "mensagem" => "Cadastro realizado com sucesso.",
+                            "objeto" => $obj
+                        ];
+                    }
+                    else
+                    {
+                        // Msg
+                        $dados = ["mensagem" => "Ocorreu um erro ao realizar o cadastro."];
+                    } // Error >> Ocorreu um erro ao inserir o usuário.
                 }
+                else
+                {
+                    // Msg
+                    $dados = ["mensagem" => "Já existe um cadastro com o email informado."];
+                } // Error >> Já existe um cadastro com o email informado.
             }
             else
             {
-                // Verifica se não informou os dados obrigatórios
-                if(empty($post["cnpj"]) || empty($post["nome_estabelecimento"]))
-                {
-                    // Avisa do erro
-                    $this->api(["mensagem" => "CNPJ e o nome da empresa são obrigatórios."]);
-
-                    // Exit
-                    exit;
-                }
-            }
-
-            // Insere
-            $obj = $this->objModelUsuario->insert($post);
-
-            // Verifica se inserio
-            if(!empty($obj))
-            {
-                // Busca o usuário
-                $obj = $this->objModelUsuario
-                    ->get(["id_usuario" => $obj])
-                    ->fetch(\PDO::FETCH_OBJ);
-
-                // Remove a senha
-                unset($obj->senha);
-
-                // Retorno
-                $dados = [
-                    "tipo" => true,
-                    "code" => 200,
-                    "mensagem" => "Cadastro realizado com sucesso.",
-                    "objeto" => $obj
-                ];
-            }
-            else
-            {
-                // Msg
-                $dados = ["mensagem" => "Ocorreu um erro ao realizar o cadastro."];
-            } // Error >> Ocorreu um erro ao inserir o usuário.
+                // msg
+                $dados = ["mensagem" => "As senhas não conferem."];
+            } // Error >> Senhas não conferem
         }
         else
         {
@@ -442,7 +467,9 @@ class Usuario extends CI_controller
                     else
                     {
                         // Msg
-                        $dados = ["mensagem" => "Senhas não identicas."];
+                        $this->api(["mensagem" => "Senhas não identicas."]);
+
+                        exit;
                     } // Error >> Senhas não identicas
                 }
                 else
@@ -451,6 +478,7 @@ class Usuario extends CI_controller
                     unset($put["senha"]);
                     unset($put["senha_repete"]);
                 }
+
 
                 // Altera
                 if($this->objModelUsuario->update($put, ["id_usuario" => $id]) != false)
