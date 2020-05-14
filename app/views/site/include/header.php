@@ -7,11 +7,11 @@
     <!-- Meta Data -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Classima | Home One</title>
+    <title> <?= SITE_NOME ?> | Confira as promoções da nossa cidade</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL; ?>/assets/theme/site/media/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL; ?>assets/theme/site/img/favicon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/assets/theme/site/dependencies/bootstrap/css/bootstrap.min.css">
     <!-- FontAwesome CSS -->

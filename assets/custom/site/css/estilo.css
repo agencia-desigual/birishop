@@ -63,6 +63,7 @@
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
 }
 
@@ -118,4 +119,21 @@
     background-color: #1fbe8b !important;
     color: #fff !important;
     width: 100%;
+}
+
+.single-product-box-layout1 .product-info .product-content .item-details .nav-tabs .nav-item .nav-link.active
+{
+    background-color: #1fbe8b;
+    color: #ffffff;
+}
+
+.btn-pegar-promocao
+{
+    background-color: #1fbe8b;
+    color: #ffffff;
+}
+
+.tamanho-categoria
+{
+    min-height: 140px;
 }
