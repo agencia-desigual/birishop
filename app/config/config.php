@@ -4,7 +4,7 @@
 defined('BASE_URL') OR define('BASE_URL', 'http://localhost/git/birishop/');
 
 // URL base do storange
-defined('BASE_STORAGE') OR define('BASE_STORAGE', 'http://localhost/git/birishop/stotage/');
+defined('BASE_STORAGE') OR define('BASE_STORAGE', 'http://localhost/git/birishop/storage/');
 
 // Session | Caso deseje que a session seja iniciada em todas as páginas
 // Apenas mude a constante para true.

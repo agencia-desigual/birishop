@@ -9,7 +9,7 @@
                 <?php $cont = 0; ?>
                 <?php foreach ($banners as $banner) : ?>
                     <div class="carousel-item <?= ($cont == 0) ? 'active' : ''; ?>">
-                        <img class="d-block w-100" src="<?= BASE_URL; ?>assets/theme/site/media/banner/banner2.jpg" alt="<?= SITE_NOME ?>">
+                        <img class="d-block w-100" src="<?= $banner->url ?>" alt="<?= SITE_NOME ?>">
                     </div>
                 <?php $cont++; ?>
                 <?php endforeach; ?>
@@ -214,7 +214,7 @@
 
                     <?php foreach ($parceiros as $parceiro) : ?>
                         <div class="brand-box-layout1">
-                            <img src="<?= BASE_URL; ?>assets/theme/site/media/brand/<?= $parceiro->arquivo ?>" alt="brand">
+                            <img src="<?= $parceiro->url ?>" alt="brand">
                         </div>
                     <?php endforeach; ?>
 

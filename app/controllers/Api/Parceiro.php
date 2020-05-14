@@ -100,7 +100,7 @@ class Parceiro extends Controller
                             $salva = [
                                 "arquivo" => $arquivo,
                                 "link" => $post["link"],
-                                "cadastro" => date("Y-m-d H:i:s")
+                                "data_cadastro" => date("Y-m-d H:i:s")
                             ];
 
                             // Insere

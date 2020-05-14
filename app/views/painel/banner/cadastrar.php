@@ -37,9 +37,14 @@
                                 <!-- ORDEM -->
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label>Ordem</label>
                                             <input type="tel" class="form-control" name="ordem" required="" />
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label>Link</label>
+                                            <input type="tel" class="form-control" name="link" required="" />
                                         </div>
                                     </div>
                                 </div>

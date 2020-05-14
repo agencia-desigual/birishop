@@ -52,6 +52,12 @@ class Principal extends CI_controller
             ->get()
             ->fetchAll(\PDO::FETCH_OBJ);
 
+        foreach ($parceiros as $parceiro)
+        {
+            // Montando a URL do banner
+            $parceiro->url = BASE_STORAGE.'parceiro/'.$parceiro->arquivo;
+        }
+
         $promocoes = $this->objModelPromocoes
             ->get(["status" => 'ativo'], "id_promocao DESC", "0,6")
             ->fetchAll(\PDO::FETCH_OBJ);
@@ -72,8 +78,14 @@ class Principal extends CI_controller
 
 
         $banners = $this->objModelBanner
-            ->get(["status" => true],"ordem DESC")
+            ->get(["status" => true],"ordem ASC")
             ->fetchAll(\PDO::FETCH_OBJ);
+
+        foreach ($banners as $banner)
+        {
+            // Montando a URL do banner
+            $banner->url = BASE_STORAGE.'banner/'.$banner->arquivo;
+        }
 
         // Array de dados
         $dados = [
