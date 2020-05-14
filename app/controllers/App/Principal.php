@@ -19,6 +19,8 @@ class Principal extends CI_controller
     private $objHelperApoio;
     private $objModelUsuario;
     private $objModelPromocoes;
+    private $objModelParceiros;
+    private $objModelBanner;
 
 
     // Método construtor
@@ -41,8 +43,47 @@ class Principal extends CI_controller
      */
     public function index()
     {
+        // Instancoando os objetos
+        $this->objModelParceiros = new \Model\Parceiro();
+        $this->objModelPromocoes = new Promocao();
+        $this->objModelBanner = new \Model\Banner();
+
+        $parceiros = $this->objModelParceiros
+            ->get()
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        $promocoes = $this->objModelPromocoes
+            ->get(["status" => 'ativo'], "id_promocao DESC", "0,6")
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        foreach ($promocoes as $promo)
+        {
+            // Convertendo a data para o padrão BR
+            $promo->data_validade = date("d/m/Y",strtotime($promo->data_validade));
+            $promo->data_cadastro = date("d/m/Y",strtotime($promo->data_cadastro));
+
+            // Limitando a descrição
+            $promo->descricao = substr($promo->descricao,0,100).'...';
+
+            // Padrão moeda
+            $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");
+            $promo->valor = number_format($promo->valor, 2, ",", ".");
+        }
+
+
+        $banners = $this->objModelBanner
+            ->get(["status" => true],"ordem DESC")
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        // Array de dados
+        $dados = [
+            "parceiros" => $parceiros,
+            "promocoes" => $promocoes,
+            "banners" => $banners
+        ];
+
         // Carrega a view
-       $this->view("site/index");
+       $this->view("site/index", $dados);
     }
 
 
@@ -55,8 +96,51 @@ class Principal extends CI_controller
      */
     public function promocoes()
     {
+
+        // Instancoando os objetos
+        $this->objModelPromocoes = new Promocao();
+        $this->objModelUsuario = new \Model\Usuario();
+
+        // Quantidade de promoções
+        $qtdePromocoes = $this->objModelPromocoes
+            ->get(["status" => 'ativo'])
+            ->rowCount();
+
+        $promocoes = $this->objModelPromocoes
+            ->get(["status" => 'ativo'], "id_promocao DESC", "")
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        foreach ($promocoes as $promo)
+        {
+
+            // Buscando a empresa
+            $empresa = $this->objModelUsuario
+                ->get(["id_usuario" => $promo->id_usuario])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            // Atribuindo a empresa
+            $promo->empresa = $empresa;
+
+            // Convertendo a data para o padrão BR
+            $promo->data_validade = date("d/m/Y",strtotime($promo->data_validade));
+            $promo->data_cadastro = date("d/m/Y",strtotime($promo->data_cadastro));
+
+            // Limitando a descrição
+            $promo->descricao = substr($promo->descricao,0,100).'...';
+
+            // Padrão moeda
+            $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");
+            $promo->valor = number_format($promo->valor, 2, ",", ".");
+        }
+
+        // Array de dados
+        $dados = [
+            "promocoes" => $promocoes,
+            "qtdePromocoes" => $qtdePromocoes
+        ];
+
         // Carrega a view
-        $this->view("site/promocoes");
+        $this->view("site/promocoes",$dados);
     }
 
 
@@ -67,10 +151,51 @@ class Principal extends CI_controller
      * @url promocao-detalhes/{id}/{nome-do-produto}
      * @method GET
      */
-    public function promocaoDetalhes()
+    public function promocaoDetalhes($id)
     {
-        // Carrega a view
-        $this->view("site/promocao-detalhes");
+        // Instancoando os objetos
+        $this->objModelPromocoes = new Promocao();
+        $this->objModelUsuario = new \Model\Usuario();
+
+        $buscaPromocao = $this->objModelPromocoes
+            ->get(["status" => 'ativo', "id_promocao" => $id]);
+
+
+        if ($buscaPromocao->rowCount() == 1)
+        {
+
+            // Busca os dados da promoção
+            $promocao = $buscaPromocao->fetch(\PDO::FETCH_OBJ);
+
+            // Buscando a empresa
+            $empresa = $this->objModelUsuario
+                ->get(["id_usuario" => $promocao->id_usuario])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            // Atribuindo a empresa
+            $promocao->empresa = $empresa;
+
+            // Convertendo a data para o padrão BR
+            $promocao->data_validade = date("d/m/Y",strtotime($promocao->data_validade));
+            $promocao->data_cadastro = date("d/m/Y",strtotime($promocao->data_cadastro));
+
+            // Padrão moeda
+            $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
+            $promocao->valor = number_format($promocao->valor, 2, ",", ".");
+
+            // Array de dados
+            $dados = [
+                "promocao" => $promocao,
+            ];
+
+            // Carrega a view
+            $this->view("site/promocao-detalhes",$dados);
+        }
+        else
+        {
+            // Carrega a view
+            $this->view("site/erro404");
+        }
     }
 
 

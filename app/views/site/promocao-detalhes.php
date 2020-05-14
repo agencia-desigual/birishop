@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>NOME DO PRODUTO</h1>
+                        <h1 style="text-transform: uppercase"><?= $promocao->nome ?></h1>
                         <ul>
                             <li>
                                 <a href="<?= BASE_URL ?>">HOME</a>
@@ -16,7 +16,7 @@
                             <li>
                                 <a href="<?= BASE_URL ?>promocoes"">PROMOCÕES</a>
                             </li>
-                            <li>NOME DO PRODUTO</li>
+                            <li style="text-transform: uppercase"><?= $promocao->nome ?></li>
                         </ul>
                     </div>
                 </div>
@@ -33,32 +33,29 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-5 sidebar-break-md sidebar-widget-area">
                     <div class="widget-lg widget-price">
-                        <div class="item-price">
-                            <span class="currncy-symbol">$</span>
-                            1,300
+                        <div class="item-price" style="background-color: #fff !important;text-align: center;">
+                            <p style="display: inline" class="preco-antigo"><strike>DE R$ <?= $promocao->valor_antigo ?> </strike></p>
+                            <p style="display: inline" class="preco-atual">POR R$ <?= $promocao->valor ?></p>
                         </div>
                     </div>
                     <div class="widget-lg widget-author-info widget-light-bg">
-                        <h3 class="widget-border-title">Vendedor</h3>
+                        <h3 style="letter-spacing: 3px" class="widget-border-title">LOJA</h3>
                         <div class="author-content">
                             <div class="author-name">
                                 <div class="item-img">
-                                    <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/author.jpg" alt="author">
+                                    <i class="fas fa-home ml-2"></i>
+                                    <!-- <img src="--><?//= BASE_URL; ?><!--assets/theme/site/media/figure/author.jpg" alt="author"> -->
                                 </div>
-                                <h4 class="author-title"><a href="store-detail.html">RadiusTheme</a></h4>
+                                <h4 class="author-title"><a href="store-detail.html"><?= $promocao->empresa->nome_estabelecimento ?></a></h4>
                             </div>
-                            <div class="author-meta">
-                                <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i>Kansas, Abilene House#18, Road#07</li>
-                                    <li><i class="fas fa-shopping-basket"></i><a href="store-detail.html">Ver Loja</a></li>
-                                </ul>
-                            </div>
-                            <div class="phone-number classima-phone-reveal not-revealed" data-phone="(18) 99635-6488">
-                                <div class="number"><i class="fas fa-phone"></i><span>(18) 9963X-XXXX</span></div>
-                                <div class="item-text">Click para ver o número</div>
-                            </div>
+                            <?php if (!empty($promocao->empresa->telefone)) : ?>
+                                <div class="phone-number classima-phone-reveal not-revealed" data-phone="<?= $promocao->empresa->telefone ?>">
+                                    <div class="number"><i class="fas fa-phone"></i><span><?= substr($promocao->empresa->telefone,0,7).'X-XXXX'; ?></span></div>
+                                    <div class="item-text">Click para ver o número</div>
+                                </div>
+                            <?php endif; ?>
                             <div class="author-mail">
-                                <a href="#" class="btn btn-pegar-promocao">
+                                <a href="<?= $promocao->link ?>" target="_blank" class="btn btn-pegar-promocao">
                                     PEGAR PROMOÇÃO
                                 </a>
                             </div>
@@ -85,9 +82,8 @@
                                 </div>
                                 <div class="single-entry-meta">
                                     <ul>
-                                        <li><i class="far fa-clock"></i>Válida até 15/05/2020</li>
-                                        <li><i class="fas fa-home"></i>Nome da loja</li>
-                                        <li><i class="far fa-eye"></i>223 views</li>
+                                        <li><i class="far fa-clock"></i>Válida até <?= $promocao->data_validade ?></li>
+                                        <li><i class="fas fa-home"></i><?= $promocao->empresa->nome_estabelecimento ?></li>
                                     </ul>
                                 </div>
                                 <div class="item-details">
@@ -98,8 +94,7 @@
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="details" role="tabpanel">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In eu mi bibendum neque egestas congue quisque. At urna condimentum mattis pellentesque id nibh tortor. Aliquam eleifend mi in nulla posuere. Sed sed risus pretium quam vulputate. Sit amet dictum sit amet justo donec enim diam vulputate. Condimentum lacinia quis vel eros donec ac odio. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Id interdum velit laoreet id. Enim diam vulputate ut pharetra sit. Dictum sit amet justo donec enim diam vulputate. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa.</p>
-                                            <p>Molestie a iaculis at erat pellentesque. Augue interdum velit euismod in. Aliquam id diam maecenas ultricies mi eget mauris pharetra et. Orci sagittis eu volutpat odio facilisis. Euismod nisi porta lorem mollis. Viverra accumsan in nisl nisi. Porttitor eget dolor morbi non arcu risus quis. Magna fringilla urna porttitor rhoncus dolor purus. Eget mi proin sed libero. Vitae justo eget magna fermentum iaculis eu non diam. Leo vel fringilla est ullamcorper eget nulla. Faucibus ornare suspendisse sed nisi lacus sed. Semper risus in hendrerit gravida rutrum. Urna cursus eget nunc scelerisque viverra mauris in. Fermentum posuere urna nec tincidunt.</p>
+                                            <p><?= $promocao->descricao ?></p>
                                         </div>
                                     </div>
                                 </div>
