@@ -41,8 +41,7 @@ class Newsletter extends CI_controller
     public function listar()
     {
         // Verifica a permissão do usuario
-        //$usuario = $this->objHelperApoio->seguranca();
-        $usuario->nivel = "admin";
+        $usuario = $this->objHelperApoio->seguranca();
 
         // Verifica se é admin
         if($usuario->nivel == "admin")

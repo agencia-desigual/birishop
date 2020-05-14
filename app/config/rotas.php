@@ -44,11 +44,11 @@ $Rotas->onGroup("api-associado","POST","insert","insert");
 $Rotas->onGroup("api-associado","PUT","update/{p}","update");
 $Rotas->onGroup("api-associado","DELETE","delete/{p}","delete");
 
-// -- Seta os grupos
-//$Rotas->group("Principal","api","Principal");
-
-// -- Rotas de Grupos
-//$Rotas->onGroup("Principal","GET","a","index");
+/**
+ *  ================================================
+ *  =================== SITE ======================
+ *  ================================================
+ */
 
 // -- Rotas sem grupo
 $Rotas->on("GET","","App\Principal::index");
@@ -66,7 +66,6 @@ $Rotas->on("GET","promocao-detalhes","App\Principal::promocaoDetalhes");
 // -- Rotas sem grupo
 $Rotas->on("GET","cadastro","App\Principal::cadastro");
 
-
 /**
  *  ================================================
  *  =================== PAINEL =====================
@@ -81,6 +80,13 @@ $Rotas->on("GET","painel/associados","App\Usuario::associados");
 $Rotas->on("GET","painel/associado/inserir","App\Usuario::associadosCadastrar");
 $Rotas->on("GET","painel/associado/alterar/{p}","App\Usuario::associadosEditar");
 
+// Páginas de promocoes
+$Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
+$Rotas->on("GET","painel/promocao/alterar/{p}","App\Promocoes::alterar");
+
+// Páginas newsletter
+$Rotas->on("GET","painel/newsletter","App\Newsletter::listar");
+
 // Páginas banners
 $Rotas->on("GET","painel/banners","App\Banner::listar");
 $Rotas->on("GET","painel/banner/inserir","App\Banner::inserir");
@@ -88,55 +94,6 @@ $Rotas->on("GET","painel/banner/inserir","App\Banner::inserir");
 // Páginas parceiros
 $Rotas->on("GET","painel/parceiros","App\Parceiro::listar");
 $Rotas->on("GET","painel/parceiro/inserir","App\Parceiro::inserir");
-
-// Páginas usuario
-$Rotas->on("GET","painel/usuarios","App\Usuario::listar");
-$Rotas->on("GET","painel/usuario/alterar/{p}","App\Usuario::alterar");
-$Rotas->on("GET","painel/usuario/inserir","App\Usuario::inserir");
-
-// Páginas newsletter
-$Rotas->on("GET","painel/newsletter","App\Newsletter::listar");
-
-// Páginas de promocoes
-$Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
-$Rotas->on("GET","painel/promocao/alterar/{p}","App\Promocoes::alterar");
-
-
-
-
-
-// Páginas de cliente
-$Rotas->on("GET","painel/clientes","App\Cliente::clientes");
-$Rotas->on("GET","painel/cliente/{p}","App\Cliente::clientes");
-
-// Páginas produto
-$Rotas->on("GET","painel/produtos","App\Produto::listar");
-$Rotas->on("GET","painel/produto/alterar/{p}/{p}","App\Produto::alterar");
-$Rotas->on("GET","painel/produto/alterar/{p}","App\Produto::alterar");
-$Rotas->on("GET","painel/produto/inserir","App\Produto::inserir");
-
-// Páginas pedidos
-$Rotas->on("GET","painel/pedidos","App\Pedidos::listar");
-$Rotas->on("GET","painel/pedido/{p}","App\Pedidos::detalhes");
-
-// Páginas categoria
-$Rotas->on("GET","painel/categorias","App\Categoria::listar");
-$Rotas->on("GET","painel/categoria/alterar/{p}","App\Categoria::alterar");
-$Rotas->on("GET","painel/categoria/inserir","App\Categoria::inserir");
-
-// Páginas cores
-$Rotas->on("GET","painel/cores","App\Cor::listar");
-$Rotas->on("GET","painel/cor/alterar/{p}","App\Cor::alterar");
-$Rotas->on("GET","painel/cor/inserir","App\Cor::inserir");
-
-// Páginas tamanhos
-$Rotas->on("GET","painel/tamanhos","App\Tamanho::listar");
-$Rotas->on("GET","painel/tamanho/alterar/{p}","App\Tamanho::alterar");
-$Rotas->on("GET","painel/tamanho/inserir","App\Tamanho::inserir");
-
-
-
-
 
 // Páginas usuario
 $Rotas->on("GET","painel/usuarios","App\Usuario::listar");

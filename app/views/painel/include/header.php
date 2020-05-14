@@ -53,7 +53,7 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="<?= BASE_URL; ?>" class="logo">
+            <a href="<?= BASE_URL; ?>painel" class="logo">
                 <span class="logo-light">
                     Desigual
                 </span>

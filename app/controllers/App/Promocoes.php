@@ -101,31 +101,32 @@ class Promocoes extends CI_controller
         if($usuario->nivel == "admin")
         {
             // ========== LISTA DE PROMOCOES ========== //
-            $promocoes = $this->objModelPromocoes
-                ->get("","id_promocao ASC")
-                ->fetchAll(\PDO::FETCH_OBJ);
+            $promocao = $this->objModelPromocoes
+                ->get(["id_promocao" => $id],"")
+                ->fetch(\PDO::FETCH_OBJ);
 
-            foreach ($promocoes as $promo)
-            {
-                $empresa = $this->objModelUsuario
-                    ->get(["id_usuario" => $promo->id_usuario])
-                    ->fetch(\PDO::FETCH_OBJ);
+            $empresa = $this->objModelUsuario
+                ->get(["id_usuario" => $promocao->id_usuario])
+                ->fetch(\PDO::FETCH_OBJ);
 
-                $promo->empresa = $empresa->nome_estabelecimento;
+            // Removendo a senha
+            unset($empresa->senha);
 
-                // Convertendo a data para o padrão BR
-                $promo->data_validade = date("d/m/Y",strtotime($promo->data_validade));
-                $promo->data_cadastro = date("d/m/Y",strtotime($promo->data_cadastro));
-            }
+            // Convertendo a data para o padrão BR
+            $promocao->data_validade = date("d/m/Y",strtotime($promocao->data_validade));
+            $promocao->data_cadastro = date("d/m/Y",strtotime($promocao->data_cadastro));
+
+            // Pegando a empresa
+            $promocao->empresa = $empresa;
 
             // Array de dados
             $dados = [
                 "usuario" => $usuario,
-                "promocoes" => $promocoes
+                "promocao" => $promocao
             ];
 
             // Carrega a view
-            $this->view("painel/promocoes/listar",$dados);
+            $this->view("painel/promocoes/editar",$dados);
         }
         else
         {

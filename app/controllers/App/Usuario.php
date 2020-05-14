@@ -37,8 +37,7 @@ class Usuario extends Controller
     public function listar()
     {
         // Verifica a permissão do usuario
-        // $usuario = $this->objHelperApoio->seguranca();
-        $usuario->nivel = "admin";
+         $usuario = $this->objHelperApoio->seguranca();
 
         // Verifica se é admin
         if($usuario->nivel == "admin")
@@ -47,7 +46,7 @@ class Usuario extends Controller
 
             // Pegando usuarios admin
             $usuarios = $this->objModelUsuario
-                ->get()
+                ->get(["nivel" => "admin"])
                 ->fetchAll(\PDO::FETCH_OBJ);
 
             // Array de dados
