@@ -55,7 +55,21 @@
 <script src="<?= BASE_URL; ?>/assets/theme/site/js/app.js"></script>
 <!-- Js Autoload -->
 <?php $this->view("autoload/js"); ?>
-
+<script>
+    function menu(tipo)
+    {
+        if(tipo === "abre")
+        {
+            $(".sidebar-menu-mobile").css("left","0px");
+            $(".fundo-menu").fadeIn();
+        }
+        else
+        {
+            $(".sidebar-menu-mobile").css("left","-250px");
+            $(".fundo-menu").fadeOut();
+        }
+    }
+</script>
 </body>
 
 </html>

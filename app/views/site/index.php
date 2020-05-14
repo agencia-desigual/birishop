@@ -34,110 +34,199 @@
                 <h4 style="letter-spacing: 5px" class="heading-title">CATEGORIAS</h4>
             </div>
             <div class="row">
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="far fa-building"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Property</h3>
-                                <div class="item-count">1 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Alimentação</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="fas fa-male"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Home Appliances</h3>
-                                <div class="item-count">3 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Bares e Restaurantes</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="fas fa-glass-martini"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Electronics</h3>
-                                <div class="item-count">6 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Saúde</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="fas fa-archive"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Business & Industry</h3>
-                                <div class="item-count">0 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Serviços automotivos</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Education</h3>
-                                <div class="item-count">0 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Eletrônicos</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="far fa-futbol"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Hobby, Sport & Kids</h3>
-                                <div class="item-count">4 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Pet's</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Health & Beauty</h3>
-                                <div class="item-count">1 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Beleza</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="#">
-                            <div class="item-icon">
-                                <i class="far fa-file-archive"></i>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Others</h3>
-                                <div class="item-count">1 Ad</div>
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Vestuário</h3>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="#">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Calçados</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="#">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Acessórios</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="#">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Papelarias</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="#">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-building"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Diversos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
