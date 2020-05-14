@@ -36,13 +36,22 @@ $Rotas->onGroup("api-banner","POST","insert","insert");
 $Rotas->onGroup("api-banner","PUT","update/{p}","update");
 $Rotas->onGroup("api-banner","DELETE","delete/{p}","delete");
 
-// Associado
-$Rotas->group("api-associado","api/associado","Api\Associado");
-$Rotas->onGroup("api-associado","GET","get","getAll");
-$Rotas->onGroup("api-associado","GET","get/{p}","get");
-$Rotas->onGroup("api-associado","POST","insert","insert");
-$Rotas->onGroup("api-associado","PUT","update/{p}","update");
-$Rotas->onGroup("api-associado","DELETE","delete/{p}","delete");
+// Parceiro
+$Rotas->group("api-parceiro","api/parceiro","Api\Parceiro");
+$Rotas->onGroup("api-parceiro","GET","get","getAll");
+$Rotas->onGroup("api-parceiro","GET","get/{p}","get");
+$Rotas->onGroup("api-parceiro","POST","insert","insert");
+$Rotas->onGroup("api-parceiro","PUT","update/{p}","update");
+$Rotas->onGroup("api-parceiro","DELETE","delete/{p}","delete");
+
+// Promocao
+$Rotas->group("api-promocao","api/promocao","Api\Promocao");
+$Rotas->onGroup("api-promocao","GET","get","getAll");
+$Rotas->onGroup("api-promocao","GET","get/{p}","get");
+$Rotas->onGroup("api-promocao","POST","insert","insert");
+$Rotas->onGroup("api-promocao","PUT","update/{p}","update");
+$Rotas->onGroup("api-promocao","DELETE","delete/{p}","delete");
+
 
 /**
  *  ================================================
