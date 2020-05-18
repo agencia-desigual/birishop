@@ -40,7 +40,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-hamburger"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Alimentação</h3>
@@ -56,7 +56,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-utensils"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Bares e Restaurantes</h3>
@@ -72,7 +72,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-heartbeat"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Saúde</h3>
@@ -88,7 +88,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-tools"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Serviços automotivos</h3>
@@ -104,7 +104,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-laptop"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Eletrônicos</h3>
@@ -120,7 +120,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-paw"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Pet's</h3>
@@ -152,7 +152,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-tshirt"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Vestuário</h3>
@@ -168,7 +168,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-shoe-prints"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Calçados</h3>
@@ -216,7 +216,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-stream"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Diversos</h3>
@@ -247,7 +247,7 @@
                             <div class="product-box-layout2">
                                 <div class="item-img">
                                     <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
-                                        <img src="<?= BASE_URL; ?>/assets/theme/site/media/product/product9.jpg" alt="<?= $promo->nome ?>">
+                                        <img src="<?= $promo->imagem ?>" alt="<?= $promo->nome ?>">
                                     </a>
                                 </div>
                                 <div class="item-content">
@@ -257,7 +257,7 @@
                                         </a>
                                     </h3>
                                     <ul class="entry-meta">
-                                        <li><i class="fas fa-tag"></i><a href="#">Categoria</a></li>
+                                        <li><i class="fas fa-tag"></i><a href="#"><?= $promo->categoria ?></a></li>
                                         <li><i class="far fa-clock"></i>Válido até <?= $promo->data_validade ?></li>
                                     </ul>
                                     <p><?= $promo->descricao ?></p>

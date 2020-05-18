@@ -12,7 +12,6 @@ CREATE TABLE usuario (
     PRIMARY KEY (id_usuario)
 );
 
-
 CREATE TABLE token(
   id_token INT NOT NULL AUTO_INCREMENT,
   id_usuario INT NOT NULL,
@@ -24,10 +23,17 @@ CREATE TABLE token(
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+CREATE TABLE categoria (
+    id_categoria INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR (150) NOT NULL,
+    data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_categoria)
+);
 
 CREATE TABLE promocoes (
     id_promocao INT NOT NULL AUTO_INCREMENT,
     id_usuario INT NOT NULL,
+    id_categoria INT NOT NULL,
     nome VARCHAR (150) NOT NULL,
     valor_antigo DOUBLE NOT NULL,
     valor DOUBLE NOT NULL,
@@ -38,6 +44,7 @@ CREATE TABLE promocoes (
     data_validade DATE NOT NULL,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
+    FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
     PRIMARY KEY (id_promocao)
 );
 

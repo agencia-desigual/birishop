@@ -50,7 +50,7 @@
                                         <div class="grid-view-layout2">
                                             <div class="product-box-layout1 top-rated-grid">
                                                 <div class="item-img">
-                                                    <a href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>" class="item-trending"><img src="<?= BASE_URL ?>assets/theme/site/media/product/product18.jpg" alt="Product"></a>
+                                                    <a href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>" class="item-trending"><img src="<?= $promo->imagem ?>" alt="Product"></a>
                                                 </div>
                                                 <div class="item-content">
                                                     <div class="item-price">
@@ -58,7 +58,7 @@
                                                         <p class="preco-atual">POR R$ <?= $promo->valor ?></p>
                                                     </div>
                                                     <div class="item-tag">
-                                                        <a class="produto-categoria" href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>">CATEGORIA</a>
+                                                        <a class="produto-categoria" href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>"><?= $promo->categoria ?></a>
                                                     </div>
                                                     <h3 class="item-title">
                                                         <a class="nome-produto" href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>">

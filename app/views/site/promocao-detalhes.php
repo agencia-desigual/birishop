@@ -31,51 +31,15 @@
     <section class="single-product-wrap-layout1 section-padding-equal-70 bg-accent">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-lg-5 sidebar-break-md sidebar-widget-area">
-                    <div class="widget-lg widget-price">
-                        <div class="item-price" style="background-color: #fff !important;text-align: center;">
-                            <p style="display: inline" class="preco-antigo"><strike>DE R$ <?= $promocao->valor_antigo ?> </strike></p>
-                            <p style="display: inline" class="preco-atual">POR R$ <?= $promocao->valor ?></p>
-                        </div>
-                    </div>
-                    <div class="widget-lg widget-author-info widget-light-bg">
-                        <h3 style="letter-spacing: 3px" class="widget-border-title">LOJA</h3>
-                        <div class="author-content">
-                            <div class="author-name">
-                                <div class="item-img">
-                                    <i class="fas fa-home ml-2"></i>
-                                    <!-- <img src="--><?//= BASE_URL; ?><!--assets/theme/site/media/figure/author.jpg" alt="author"> -->
-                                </div>
-                                <h4 class="author-title"><a href="store-detail.html"><?= $promocao->empresa->nome_estabelecimento ?></a></h4>
-                            </div>
-                            <?php if (!empty($promocao->empresa->telefone)) : ?>
-                                <div class="phone-number classima-phone-reveal not-revealed" data-phone="<?= $promocao->empresa->telefone ?>">
-                                    <div class="number"><i class="fas fa-phone"></i><span><?= substr($promocao->empresa->telefone,0,7).'X-XXXX'; ?></span></div>
-                                    <div class="item-text">Click para ver o número</div>
-                                </div>
-                            <?php endif; ?>
-                            <div class="author-mail">
-                                <a href="<?= $promocao->link ?>" target="_blank" class="btn btn-pegar-promocao">
-                                    PEGAR PROMOÇÃO
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="widget widget-banner pb-5">
-                        <a href="#">
-                            <img width="100%" src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner1.jpg" alt="banner">
-                        </a>
-                    </div>
-                </div>
                 <div class="col-xl-8 col-lg-6">
                     <div class="single-product-box-layout1">
                         <div class="product-info light-shadow-bg">
                             <div class="product-content light-box-content">
                                 <div class="item-img-gallery">
                                     <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="gallery1" role="tabpanel">
+                                        <div class="tab-pane fade show active centraliza-itens" id="gallery1" role="tabpanel">
                                             <a href="#">
-                                                <img class="zoom_01" src="<?= BASE_URL ?>assets/theme/site/media/product/product24.jpg" alt="product" data-zoom-image="media/product/product24.jpg">
+                                                <img style="width: 50%" class="zoom_01" src="<?= $promocao->imagem ?>" alt="<?= $promocao->nome ?>" data-zoom-image="<?= $promocao->imagem ?>"">
                                             </a>
                                         </div>
                                     </div>
@@ -112,6 +76,42 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 sidebar-break-md sidebar-widget-area">
+                    <div class="widget-lg widget-price">
+                        <div class="item-price" style="background-color: #fff !important;text-align: center;">
+                            <p style="display: inline" class="preco-antigo"><strike>DE R$ <?= $promocao->valor_antigo ?> </strike></p>
+                            <p style="display: inline" class="preco-atual">POR R$ <?= $promocao->valor ?></p>
+                        </div>
+                    </div>
+                    <div class="widget-lg widget-author-info widget-light-bg">
+                        <h3 style="letter-spacing: 3px" class="widget-border-title">LOJA</h3>
+                        <div class="author-content">
+                            <div class="author-name">
+                                <div class="item-img">
+                                    <i class="fas fa-home ml-2"></i>
+                                    <!-- <img src="--><?//= BASE_URL; ?><!--assets/theme/site/media/figure/author.jpg" alt="author"> -->
+                                </div>
+                                <h4 class="author-title"><a href="store-detail.html"><?= $promocao->empresa->nome_estabelecimento ?></a></h4>
+                            </div>
+                            <?php if (!empty($promocao->empresa->telefone)) : ?>
+                                <div class="phone-number classima-phone-reveal not-revealed" data-phone="<?= $promocao->empresa->telefone ?>">
+                                    <div class="number"><i class="fas fa-phone"></i><span><?= substr($promocao->empresa->telefone,0,7).'X-XXXX'; ?></span></div>
+                                    <div class="item-text">Click para ver o número</div>
+                                </div>
+                            <?php endif; ?>
+                            <div class="author-mail">
+                                <a href="<?= $promocao->link ?>" target="_blank" class="btn btn-pegar-promocao">
+                                    PEGAR PROMOÇÃO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget widget-banner pb-5">
+                        <a href="#">
+<!--                            <img width="100%" src="--><?//= BASE_URL; ?><!--assets/theme/site/media/figure/widget-banner1.jpg" alt="banner">-->
+                        </a>
                     </div>
                 </div>
             </div>

@@ -91,6 +91,7 @@ $Rotas->on("GET","painel/associado/alterar/{p}","App\Usuario::associadosEditar")
 
 // Páginas de promocoes
 $Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
+$Rotas->on("GET","painel/promocao/inserir","App\Promocoes::inserir");
 $Rotas->on("GET","painel/promocao/alterar/{p}","App\Promocoes::alterar");
 
 // Páginas newsletter

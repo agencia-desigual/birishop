@@ -194,6 +194,17 @@ class Promocao extends Controller
             !empty($post["descricao"]) &&
             !empty($post["data_validade"]))
         {
+
+            // Convertando a data para o padrão
+            $post["data_validade"] = date("Y-m-d", strtotime($post["data_validade"]));
+
+            $post["valor"] = str_replace(".",'',$post["valor"]);
+            $post["valor"] = str_replace(",",'.',$post["valor"]);
+
+            $post["valor_antigo"] = str_replace(".",'',$post["valor_antigo"]);
+            $post["valor_antigo"] = str_replace(",",'.',$post["valor_antigo"]);
+
+
             // Verifica se informou a imagem
             if($_FILES["arquivo"]["size"] > 0)
             {
@@ -205,9 +216,9 @@ class Promocao extends Controller
 
                 // Configurações
                 $objUpload->setStorange($caminho);
-                $objUpload->setMaxSize(2 * MB);
+                $objUpload->setMaxSize(5 * MB);
                 $objUpload->setExtensaoValida(["jpg","png","jpeg"]);
-                $objUpload->setFile($_FILES);
+                $objUpload->setFile($_FILES['arquivo']);
 
                 // Verifica se o tamanho é permitido
                 if($objUpload->validaSize())

@@ -9,6 +9,7 @@
 namespace Controller\App;
 
 use Helper\Apoio;
+use Model\Categoria;
 use Model\Promocao;
 use Sistema\Controller as CI_controller;
 
@@ -21,6 +22,7 @@ class Principal extends CI_controller
     private $objModelPromocoes;
     private $objModelParceiros;
     private $objModelBanner;
+    private $objModelCategoria;
 
 
     // Método construtor
@@ -47,6 +49,7 @@ class Principal extends CI_controller
         $this->objModelParceiros = new \Model\Parceiro();
         $this->objModelPromocoes = new Promocao();
         $this->objModelBanner = new \Model\Banner();
+        $this->objModelCategoria = new Categoria();
 
         $parceiros = $this->objModelParceiros
             ->get()
@@ -74,6 +77,17 @@ class Principal extends CI_controller
             // Padrão moeda
             $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");
             $promo->valor = number_format($promo->valor, 2, ",", ".");
+
+            // Imagem do produto
+            $promo->imagem = BASE_STORAGE.'promocao/'.$promo->imagem;
+
+            // Busca categoria
+            $categoria = $this->objModelCategoria
+                ->get(['id_categoria' => $promo->id_categoria])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            // Atribuindo a categoria
+            $promo->categoria = $categoria->nome;
         }
 
 
@@ -112,6 +126,7 @@ class Principal extends CI_controller
         // Instancoando os objetos
         $this->objModelPromocoes = new Promocao();
         $this->objModelUsuario = new \Model\Usuario();
+        $this->objModelCategoria = new Categoria();
 
         // Quantidade de promoções
         $qtdePromocoes = $this->objModelPromocoes
@@ -143,6 +158,17 @@ class Principal extends CI_controller
             // Padrão moeda
             $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");
             $promo->valor = number_format($promo->valor, 2, ",", ".");
+
+            // Busca categoria
+            $categoria = $this->objModelCategoria
+                ->get(['id_categoria' => $promo->id_categoria])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            // Atribuindo a categoria
+            $promo->categoria = $categoria->nome;
+
+            // Imagem do produto
+            $promo->imagem = BASE_STORAGE.'promocao/'.$promo->imagem;
         }
 
         // Array de dados
@@ -194,6 +220,9 @@ class Principal extends CI_controller
             // Padrão moeda
             $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
             $promocao->valor = number_format($promocao->valor, 2, ",", ".");
+
+            // Imagem do produto
+            $promocao->imagem = BASE_STORAGE.'promocao/'.$promocao->imagem;
 
             // Array de dados
             $dados = [
@@ -291,7 +320,7 @@ class Principal extends CI_controller
         $this->objModelUsuario = new \Model\Usuario();
         $this->objModelPromocoes= new Promocao();
 
-        // ===== CONTADORES ===== //
+        // ===== CONTADORES DO ADMIN ===== //
         $qtdePromocoes = $this->objModelPromocoes
             ->get(['status' => 'ativo'])
             ->rowCount();
@@ -300,10 +329,32 @@ class Principal extends CI_controller
             ->get(['status' => true, 'nivel' => 'associado'])
             ->rowCount();
 
-        // ===== LISTA DE ASSOCIADOS AINDA NÃO APROVADOS ===== //
+
+        // ===== CONTADORES DO CLIENTE ===== //
+        $qtdePromocoesAtiva = $this->objModelPromocoes
+            ->get(['status' => 'ativo', 'id_usuario' => $usuario->id_usuario])
+            ->rowCount();
+
+        $qtdePromocoesInativa = $this->objModelPromocoes
+            ->get(['status' => 'cancelado', 'id_usuario' => $usuario->id_usuario])
+            ->rowCount();
+
+        // ===== LISTA DE ASSOCIADOS AINDA NÃO APROVADOS DO PAINEL ADMIN ===== //
         $associados = $this->objModelUsuario
             ->get(['status' => false, 'nivel' => 'associado'])
             ->fetchAll(\PDO::FETCH_OBJ);
+
+        // ===== LISTA DE PROMOÇÕES DO PAINEL CLIENTE ===== //
+        $promocoes = $this->objModelPromocoes
+            ->get(['id_usuario' => $usuario->id_usuario])
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        foreach ($promocoes as $promocao)
+        {
+            // Padrão moeda
+            $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
+            $promocao->valor = number_format($promocao->valor, 2, ",", ".");
+        }
 
 
         // Buscando os associados
@@ -314,12 +365,32 @@ class Principal extends CI_controller
             "qtdePromocoes" => $qtdePromocoes,
             "qtdeAssociados" => $qtdeAssociados,
             "associados" => $associados,
-            "js" => [
-                "modulos" => ["Usuario"]
-            ]
+
+            "promocoes" => $promocoes,
+            "qtdePromocoesAtiva" => $qtdePromocoesAtiva,
+            "qtdePromocoesInativa" => $qtdePromocoesInativa,
         ];
 
-        $this->view("painel/dashboard",$dados);
+        if ($usuario->nivel == "admin")
+        {
+            // Adiciona as funções do usuario
+            $dados["js"] = [
+                "modulos" => ["Usuario"]
+            ];
+
+            $this->view("painel/dashboard",$dados);
+        }
+        else
+        {
+            // Adiciona as funções do associado
+            $dados["js"] = [
+                "modulos" => ["Promocoes"]
+            ];
+
+            $this->view("associado/dashboard",$dados);
+
+        }
+
     }
 
 
