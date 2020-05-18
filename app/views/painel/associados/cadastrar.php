@@ -32,7 +32,7 @@
                                 <h4 class="mt-0 header-title">Cadastrar Associado</h4>
                                 <p class="sub-title">Cadastre um novo associado</p>
 
-                                <form id="formCadastrarAssociado" data-alerta="swal">
+                                <form id="formInserirUsuario">
 
                                     <!-- NOME LOJA E CNPJ -->
                                     <div class="form-group">
@@ -72,7 +72,7 @@
 
                                             <div class="col-md-6">
                                                 <label>Repete a Senha</label>
-                                                <input name="repete_senha" type="password" class="form-control" />
+                                                <input name="senha_repete" type="password" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -90,6 +90,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <input type="hidden" name="nivel" value="associado" />
 
                                     <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
 

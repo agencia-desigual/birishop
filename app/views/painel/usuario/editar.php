@@ -47,7 +47,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>E-mail</label>
-                                                    <input type="email" class="form-control" name="email" value="<?= $user->email ?>" required="" />
+                                                    <p><?= $user->email ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -59,8 +59,8 @@
                                                     <label>Celular</label>
                                                     <input type="text"
                                                            class="form-control maskCel"
-                                                           name="celular"
-                                                           value="<?= $user->celular ?>" required/>
+                                                           name="telefone"
+                                                           value="<?= $user->telefone; ?>" required/>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Status</label>
@@ -82,7 +82,7 @@
 
                                                 <div class="col-md-6">
                                                     <label>Repete a Senha</label>
-                                                    <input name="repete_senha" type="password" class="form-control" />
+                                                    <input name="senha_repete" type="password" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
