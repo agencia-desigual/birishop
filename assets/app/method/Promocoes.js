@@ -138,3 +138,45 @@ $("#formAlteraPromocao").on("submit", function () {
     // Não atualiza mesmo
     return false;
 });
+
+
+
+$(".btn-whats").on("click", function () {
+
+    // Não atualiza a página
+    event.preventDefault();
+
+    // Remove e limpa os input
+    $(".input-link").val("");
+    $(".input-whats").val("");
+
+    $(".input-link").css("display","none");
+    $(".input-whats").css("display","inline-flex");
+
+    // Remove os btn
+    $(".btn-whats").css("display","none");
+    $(".btn-link").css("display","inline-flex");
+
+    // Não atualiza mesmo
+    return false;
+});
+
+$(".btn-link").on("click", function () {
+
+    // Não atualiza a página
+    event.preventDefault();
+
+    // Remove e limpa os input
+    $(".input-link").val("");
+    $(".input-whats").val("");
+
+    $(".input-link").css("display","inline-flex");
+    $(".input-whats").css("display","none");
+
+    // Remove os btn
+    $(".btn-whats").css("display","inline-flex");
+    $(".btn-link").css("display","none");
+
+    // Não atualiza mesmo
+    return false;
+});

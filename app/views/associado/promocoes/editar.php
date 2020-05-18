@@ -40,15 +40,15 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label>Nome do Produto</label>
-                                                    <input type="text" class="form-control" name="nome" required="" />
+                                                    <input type="text" class="form-control" name="nome" value="<?= $promocaoUsuario->nome ?>" required="" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Antigo</label>
-                                                    <input type="tel" class="form-control maskValor" name="valor_antigo" required="" />
+                                                    <input type="tel" class="form-control maskValor" value="<?= $promocaoUsuario->valor_antigo?>" name="valor_antigo" required="" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Promoção</label>
-                                                    <input type="tel" class="form-control maskValor" name="valor" required="" />
+                                                    <input type="tel" class="form-control maskValor" name="valor" value="<?= $promocaoUsuario->valor ?>" required="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -78,6 +78,7 @@
                                                     <label>Data validade</label>
                                                     <div>
                                                         <div class="input-group">
+                                                            <!-- PADRÃO DA DATA -->
                                                             <input type="text"  name="data_validade" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
                                                             <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="mdi mdi-calendar"></i></span></div>
                                                         </div><!-- input-group -->

@@ -88,3 +88,22 @@
 
     }
 }
+
+.btn-whats
+{
+    font-weight: 900;
+    color: #1fbe8b;
+    float: right;
+}
+
+.input-whats
+{
+    display: none;
+}
+.btn-link
+{
+    font-weight: 900;
+    color: #30419B;
+    float: right;
+    display: none;
+}

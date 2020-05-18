@@ -56,8 +56,11 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Link</label>
-                                                <input type="text" class="form-control" name="link" required="" />
+                                                <label>Link / Whatsapp</label>
+                                                <a class="btn-whats" href="#">WHATSAPP</a>
+                                                <a class="btn-link" href="#">LINK SITE</a>
+                                                <input type="text" class="form-control input-link" placeholder="https://meusite.com.br" name="link-site"/>
+                                                <input type="tel" class="form-control maskCel input-whats" placeholder="(18) 99635-xxxx" name="link-whats"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Status</label>

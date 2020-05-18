@@ -184,114 +184,138 @@ class Promocao extends Controller
             $post["status"] = "analise";
         }
 
-        // Verifica se informou os dados obrigatórios
-        if(!empty($post["nome"]) &&
-            !empty($post["id_usuario"]) &&
-            !empty($post["id_categoria"]) &&
-            !empty($post["valor_antigo"]) &&
-            !empty($post["valor"]) &&
-            !empty($post["link"]) &&
-            !empty($post["descricao"]) &&
-            !empty($post["data_validade"]))
+        // Verificando se informou o whats ou link
+        if(!empty($post['link-site']) || !empty($post['link-whats']))
         {
 
-            // Convertando a data para o padrão
-            $post["data_validade"] = date("Y-m-d", strtotime($post["data_validade"]));
-
-            $post["valor"] = str_replace(".",'',$post["valor"]);
-            $post["valor"] = str_replace(",",'.',$post["valor"]);
-
-            $post["valor_antigo"] = str_replace(".",'',$post["valor_antigo"]);
-            $post["valor_antigo"] = str_replace(",",'.',$post["valor_antigo"]);
-
-
-            // Verifica se informou a imagem
-            if($_FILES["arquivo"]["size"] > 0)
+            // Validando o link
+            if($post['link-site'] == "" || $post['link-site'] == null)
             {
-                // Caminho
-                $caminho = "./storage/promocao/";
+                $caracteres = ["(",")",",","-"," "];
+                $post['link-whats'] = str_replace($caracteres,"",$post['link-whats']);
+                $post['link'] = "https://api.whatsapp.com/send?phone=55{$post['link-whats']}&text=Encontrei%20sua%20promoção%20no%20Birishop.&source=&data=";
+            }
+            else
+            {
+                $post['link'] = $post['link-site'];
+            }
 
-                // Instancia o objeto de upload
-                $objUpload = new File();
+            unset($post['link-site']);
+            unset($post['link-whats']);
 
-                // Configurações
-                $objUpload->setStorange($caminho);
-                $objUpload->setMaxSize(5 * MB);
-                $objUpload->setExtensaoValida(["jpg","png","jpeg"]);
-                $objUpload->setFile($_FILES['arquivo']);
+            // Verifica se informou os dados obrigatórios
+            if(!empty($post["nome"]) &&
+                !empty($post["id_usuario"]) &&
+                !empty($post["id_categoria"]) &&
+                !empty($post["valor_antigo"]) &&
+                !empty($post["valor"]) &&
+                !empty($post["link"]) &&
+                !empty($post["descricao"]) &&
+                !empty($post["data_validade"]))
+            {
 
-                // Verifica se o tamanho é permitido
-                if($objUpload->validaSize())
+                // Convertando a data para o padrão
+                $post["data_validade"] = date("Y-m-d", strtotime($post["data_validade"]));
+
+                $post["valor"] = str_replace(".",'',$post["valor"]);
+                $post["valor"] = str_replace(",",'.',$post["valor"]);
+
+                $post["valor_antigo"] = str_replace(".",'',$post["valor_antigo"]);
+                $post["valor_antigo"] = str_replace(",",'.',$post["valor_antigo"]);
+
+
+                // Verifica se informou a imagem
+                if($_FILES["arquivo"]["size"] > 0)
                 {
-                    // Verifica se a extensão é válida
-                    if($objUpload->validaExtensao())
+                    // Caminho
+                    $caminho = "./storage/promocao/";
+
+                    // Instancia o objeto de upload
+                    $objUpload = new File();
+
+                    // Configurações
+                    $objUpload->setStorange($caminho);
+                    $objUpload->setMaxSize(5 * MB);
+                    $objUpload->setExtensaoValida(["jpg","png","jpeg"]);
+                    $objUpload->setFile($_FILES['arquivo']);
+
+                    // Verifica se o tamanho é permitido
+                    if($objUpload->validaSize())
                     {
-                        // Realiza o upload
-                        $arquivo = $objUpload->upload();
-
-                        // Verifica se deu certo
-                        if($arquivo != false)
+                        // Verifica se a extensão é válida
+                        if($objUpload->validaExtensao())
                         {
-                            // Add o arquivo a ser salvo
-                            $post["imagem"] = $arquivo;
+                            // Realiza o upload
+                            $arquivo = $objUpload->upload();
 
-                            // Adiciona a promocao
-                            $obj = $this->objModelPromocao->insert($post);
-
-                            // Verifica se salvou
-                            if(!empty($obj))
+                            // Verifica se deu certo
+                            if($arquivo != false)
                             {
-                                // Busca a promocao
-                                $obj = $this->objModelPromocao
-                                    ->get(["id_promocao" => $obj])
-                                    ->fetch(\PDO::FETCH_OBJ);
+                                // Add o arquivo a ser salvo
+                                $post["imagem"] = $arquivo;
 
-                                // Array de retorno
-                                $dados = [
-                                    "tipo" => true,
-                                    "code" => 200,
-                                    "objeto" => $obj,
-                                    "mensagem" => "Promoção adicionada com sucesso."
-                                ];
+                                // Adiciona a promocao
+                                $obj = $this->objModelPromocao->insert($post);
+
+                                // Verifica se salvou
+                                if(!empty($obj))
+                                {
+                                    // Busca a promocao
+                                    $obj = $this->objModelPromocao
+                                        ->get(["id_promocao" => $obj])
+                                        ->fetch(\PDO::FETCH_OBJ);
+
+                                    // Array de retorno
+                                    $dados = [
+                                        "tipo" => true,
+                                        "code" => 200,
+                                        "objeto" => $obj,
+                                        "mensagem" => "Promoção adicionada com sucesso."
+                                    ];
+                                }
+                                else
+                                {
+                                    // Deleta a imagem
+                                    unlink($caminho . $arquivo);
+
+                                    // Avisa que deu erro
+                                    $dados = ["mensagem" => "Ocorreu um erro ao salvar promocao."];
+                                } // Error >> Ocorreu um erro ao salvar promocao
                             }
                             else
                             {
-                                // Deleta a imagem
-                                unlink($caminho . $arquivo);
-
-                                // Avisa que deu erro
-                                $dados = ["mensagem" => "Ocorreu um erro ao salvar promocao."];
-                            } // Error >> Ocorreu um erro ao salvar promocao
+                                // Msg
+                                $dados = ["mensagem" => "Ocorreu um erro ao realizar o upload da imagem."];
+                            } // Error >> Ocorreu um erro ao realizar o upload da imagem.
                         }
                         else
                         {
                             // Msg
-                            $dados = ["mensagem" => "Ocorreu um erro ao realizar o upload da imagem."];
-                        } // Error >> Ocorreu um erro ao realizar o upload da imagem.
+                            $dados = ["mensagem" => "A extensão da imagem não é suportada."];
+                        } // Error >> A extensão da imagem não é suportada.
                     }
                     else
                     {
                         // Msg
-                        $dados = ["mensagem" => "A extensão da imagem não é suportada."];
-                    } // Error >> A extensão da imagem não é suportada.
+                        $dados = ["mensagem" => "O tamanho da imagem é maior que 2MB."];
+                    } // Error >> O tamanho da imagem é maior que 2MB
                 }
                 else
                 {
                     // Msg
-                    $dados = ["mensagem" => "O tamanho da imagem é maior que 2MB."];
-                } // Error >> O tamanho da imagem é maior que 2MB
+                    $dados = ["mensagem" => "Imagem não informada."];
+                } // Error >> Imagem não informada.
             }
             else
             {
                 // Msg
-                $dados = ["mensagem" => "Imagem não informada."];
-            } // Error >> Imagem não informada.
+                $dados = ["mensagem" => "Campos obrigatórios não informados."];
+            } // Error >> Campos obrigatórios não informados.
         }
         else
         {
-            // Msg
-            $dados = ["mensagem" => "Campos obrigatórios não informados."];
-        } // Error >> Campos obrigatórios não informados.
+            $dados = ["mensagem" => "Informe o link da promoção."];
+        }
 
         // Retorno
         $this->api($dados);
