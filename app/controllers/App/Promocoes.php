@@ -199,11 +199,17 @@ class Promocoes extends CI_controller
             // Pegando a empresa
             $promocao->empresa = $empresa;
 
+            // ========== LISTA DE CATEORIAS DAS PROMOCOES DO ASSOCIADO ========== //
+            $categorias = $this->objModelCategoria
+                ->get()
+                ->fetchAll(\PDO::FETCH_OBJ);
+
             // Array de dados
             $dados = [
                 "usuario" => $usuario,
                 "promocao" => $promocao,
                 "promocaoUsuario" => $promocaoUsuario,
+                "categorias" => $categorias,
                 "js" => [
                     "modulos" => ["Promocoes"]
                 ]

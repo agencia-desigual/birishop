@@ -86,8 +86,8 @@
                                                 <tr id="promocao_<?= $promocao->id_promocao; ?>">
                                                     <td><?= $promocao->id_promocao; ?></td>
                                                     <td style="text-transform: capitalize;"><?= $promocao->nome; ?></td>
-                                                    <td><?= $promocao->valor_antigo; ?></td>
-                                                    <td><?= $promocao->valor; ?></td>
+                                                    <td>R$<?= $promocao->valor_antigo; ?></td>
+                                                    <td>R$<?= $promocao->valor ?></td>
                                                     <td>
                                                         <?php if($promocao->status == 'ativo') : ?>
                                                             <span class="badge badge-success">ATIVO</span>

@@ -53,7 +53,7 @@
                                             <tr id="tb_<?= $promo->id_promocao; ?>">
                                                 <td><?= $promo->nome ?></td>
                                                 <td><?= $promo->empresa ?></td>
-                                                <td><?= $promo->valor ?></td>
+                                                <td>R$<?= number_format($promo->valor, 2, ",", "."); ?></td>
                                                 <td>
                                                     <?php if($promo->status == 'ativo') : ?>
                                                         <span class="badge badge-success">ATIVO</span>

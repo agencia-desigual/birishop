@@ -35,6 +35,8 @@
 
                                     <form id="formAlteraPromocao">
 
+                                        <input type="hidden" value="<?= $promocaoUsuario->id_promocao ?>" id="inputId">
+
                                         <!-- NOME DO PRODUTO, VALOR ANTIGO, VALOR PROMOÇÃO -->
                                         <div class="form-group">
                                             <div class="row">
@@ -44,11 +46,11 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Antigo</label>
-                                                    <input type="tel" class="form-control maskValor" value="<?= $promocaoUsuario->valor_antigo?>" name="valor_antigo" required="" />
+                                                    <input type="tel" class="form-control maskValor" value="<?= number_format($promocaoUsuario->valor_antigo, 2, ",", "."); ?>" name="valor_antigo" required="" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Promoção</label>
-                                                    <input type="tel" class="form-control maskValor" name="valor" value="<?= $promocaoUsuario->valor ?>" required="" />
+                                                    <input type="tel" class="form-control maskValor" name="valor" value="<?= number_format($promocaoUsuario->valor, 2, ",", "."); ?>" required="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -57,15 +59,18 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <label>Link</label>
-                                                    <input type="text" class="form-control" name="link" required="" />
+                                                    <label>Link / Whatsapp</label>
+                                                    <a class="btn-whats" href="#">WHATSAPP</a>
+                                                    <a class="btn-link" href="#">LINK SITE</a>
+                                                    <input type="text" class="form-control input-link" placeholder="https://meusite.com.br" name="link-site"/>
+                                                    <input type="tel" class="form-control maskCel input-whats" placeholder="(18) 99635-xxxx" name="link-whats"/>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Status</label>
                                                     <select name="status" class="form-control">
                                                         <option>Selecione</option>
-                                                        <option value="1">Ativo</option>
-                                                        <option value="0">Destivado</option>
+                                                        <option <?php if($promocaoUsuario->status == 'ativo' || $promocaoUsuario->status == 'analise'){ echo "selected"; } ?> value="analise">Ativo</option>
+                                                        <option <?php if($promocaoUsuario->status == 'cancelado'){ echo "selected"; } ?> value="cancelado">Destivado</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -79,7 +84,7 @@
                                                     <div>
                                                         <div class="input-group">
                                                             <!-- PADRÃO DA DATA -->
-                                                            <input type="text"  name="data_validade" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
+                                                            <input type="text"  name="data_validade" class="form-control" value="<?= date("m/d/Y", strtotime($promocaoUsuario->data_validade)) ?>" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
                                                             <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="mdi mdi-calendar"></i></span></div>
                                                         </div><!-- input-group -->
                                                     </div>
@@ -89,7 +94,7 @@
                                                     <select name="id_categoria" class="form-control">
                                                         <option>Selecione</option>
                                                         <?php foreach ($categorias as $categoria) : ?>
-                                                            <option value="<?= $categoria->id_categoria ?>"><?= $categoria->nome ?></option>
+                                                            <option <?php if ($promocaoUsuario->id_categoria == $categoria->id_categoria) { echo "selected"; } ?>  value="<?= $categoria->id_categoria ?>"><?= $categoria->nome ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
@@ -106,7 +111,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
+                                        <button type="submit" class="btn btn-primary float-right">Alterar</button>
 
                                     </form>
 

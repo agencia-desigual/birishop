@@ -356,7 +356,7 @@ class Promocao extends Controller
         if(!empty($obj))
         {
             // Verifica se possui permissão
-            if($usuario->nivel == "admin" || $obj->id_usuario == $usuario->id_usuario)
+            if(($usuario->nivel == "admin") || ($usuario->nivel == "associado" || $obj->id_usuario == $usuario->id_usuario))
             {
                 // Verifica se não é admin
                 if($usuario->nivel != "admin")
@@ -372,6 +372,30 @@ class Promocao extends Controller
                 // Verifica se vai alterar algo
                 if(!empty($put))
                 {
+                    // Caso for update link do admin
+                    if(!isset($put['link']))
+                    {
+                        // Validando o link
+                        if(($put['link-site'] == "" || $put['link-site'] == null) &&
+                            ($put['link-whats'] != "" || $put['link-whats'] != null))
+                        {
+                            $caracteres = ["(",")",",","-"," "];
+                            $put['link-whats'] = str_replace($caracteres,"",$put['link-whats']);
+                            $put['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Encontrei%20sua%20promoção%20no%20Birishop.&source=&data=";
+                        }
+                        elseif(($put['link-site'] != "" || $put['link-site'] != null) &&
+                            ($put['link-whats'] == "" || $put['link-whats'] == null))
+                        {
+                            $put['link'] = $put['link-site'];
+                        }
+
+                        unset($put['link-whats']);
+                        unset($put['link-site']);
+                    }
+
+                    // Convertando a data para o padrão
+                    $put["data_validade"] = date("Y-m-d", strtotime($put["data_validade"]));
+
                     // Altera e verifica se alterou
                     if($this->objModelPromocao->update($put, ["id_promocao" => $id]) != false)
                     {

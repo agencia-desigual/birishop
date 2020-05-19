@@ -46,11 +46,11 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Antigo</label>
-                                                    <input type="tel" class="form-control maskValor" name="valor_antigo" value="<?= $promocao->valor_antigo ?>" required="" />
+                                                    <input type="tel" class="form-control maskValor" name="valor_antigo" value="<?= number_format($promocao->valor_antigo, 2, ",", "."); ?>" required="" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Promoção</label>
-                                                    <input type="tel" class="form-control maskValor" name="valor" value="<?= $promocao->valor ?>" required="" />
+                                                    <input type="tel" class="form-control maskValor" name="valor" value="<?= number_format($promocao->valor, 2, ",", "."); ?>" required="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -60,13 +60,40 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label>Link</label>
-                                                    <input type="text" class="form-control" name="nome" value="<?= $promocao->link ?>" required="" />
+                                                    <input type="text" class="form-control" name="link" value="<?= $promocao->link ?>" required="" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Status</label>
                                                     <select name="status" class="form-control">
-                                                        <option value="1" <?php if($promocao->status == true){ echo "selected";} ?>>Ativo</option>
-                                                        <option value="0" <?php if($promocao->status == false){ echo "selected";} ?>>Destivado</option>
+                                                        <option value="ativo" <?php if($promocao->status == 'ativo'){ echo "selected";} ?>>Ativo</option>
+                                                        <option value="analise" <?php if($promocao->status == 'analise'){ echo "selected";} ?>>Analise</option>
+                                                        <option value="reprovado" <?php if($promocao->status == 'reprovado'){ echo "selected";} ?>>Reprovado</option>
+                                                        <option value="cancelado" <?php if($promocao->status == 'cancelado'){ echo "selected";} ?>>Cancelado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- CATEGORIA E VALIDADE  -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Data validade</label>
+                                                    <div>
+                                                        <div class="input-group">
+                                                            <!-- PADRÃO DA DATA -->
+                                                            <input type="text"  name="data_validade" class="form-control" value="<?= date("m/d/Y", strtotime($promocao->data_validade)) ?>" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
+                                                            <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="mdi mdi-calendar"></i></span></div>
+                                                        </div><!-- input-group -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Categoria</label>
+                                                    <select name="id_categoria" class="form-control">
+                                                        <option>Selecione</option>
+                                                        <?php foreach ($categorias as $categoria) : ?>
+                                                            <option <?php if ($promocao->id_categoria == $categoria->id_categoria) { echo "selected"; } ?>  value="<?= $categoria->id_categoria ?>"><?= $categoria->nome ?></option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -78,16 +105,6 @@
                                                 <div class="col-md-12">
                                                     <label>Decrição</label>
                                                     <textarea id="textarea" name="descricao" class="form-control" maxlength="500" rows="3" required=""><?= $promocao->descricao ?></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- IMAGEM -->
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label>Imagem</label>
-                                                    <input name="arquivo" type="file" class="dropify">
                                                 </div>
                                             </div>
                                         </div>
