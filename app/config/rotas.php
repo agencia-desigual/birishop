@@ -22,7 +22,7 @@ $Rotas->onGroup("api-usuario","POST","alterar-senha","alterarSenha");
 $Rotas->onGroup("api-usuario","POST","recuperar-senha","recuperarSenha");
 
 // NewsLatter
-$Rotas->group("api-newslatter","api/newslatter","Api\Newslatter");
+$Rotas->group("api-newslatter","api/newsletter","Api\Newsletter");
 $Rotas->onGroup("api-newslatter","GET","get","getAll");
 $Rotas->onGroup("api-newslatter","GET","get/{p}","get");
 $Rotas->onGroup("api-newslatter","POST","insert","insert");

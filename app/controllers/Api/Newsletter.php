@@ -186,7 +186,7 @@ class Newsletter extends Controller
             if($this->objModelNewslatter->get(["email" => $salva["email"]])->rowCount() == 0)
             {
                 // Data do cadastro
-                $salva["cadastro"] = date("Y-m-d H:i:s");
+                $salva["data_cadastro"] = date("Y-m-d H:i:s");
 
                 // Salva
                 $obj = $this->objModelNewslatter->insert($salva);

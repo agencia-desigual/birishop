@@ -305,6 +305,9 @@ class Usuario extends CI_controller
             // Verifica se as senhas conferem
             if($post["senha"] == $post["senha_repete"])
             {
+
+                $post['senha'] = md5($post['senha']);
+
                 $objAtual = $this->objModelUsuario
                     ->get(["email" => $post["email"]])
                     ->rowCount();
@@ -365,7 +368,7 @@ class Usuario extends CI_controller
                         $dados = [
                             "tipo" => true,
                             "code" => 200,
-                            "mensagem" => "Cadastro realizado com sucesso.",
+                            "mensagem" => "Cadastro realizado, aguarde a validação do seus dados.",
                             "objeto" => $obj
                         ];
                     }

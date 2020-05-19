@@ -105,7 +105,10 @@ class Principal extends CI_controller
         $dados = [
             "parceiros" => $parceiros,
             "promocoes" => $promocoes,
-            "banners" => $banners
+            "banners" => $banners,
+            "js" => [
+                "modulos" => ["Newsletter"]
+            ]
         ];
 
         // Carrega a view
@@ -249,8 +252,12 @@ class Principal extends CI_controller
      */
     public function cadastro()
     {
+        $dados["js"] = [
+            "modulos" => ["Usuario"]
+        ];
+
         // Carrega a view
-        $this->view("site/cadastro");
+        $this->view("site/cadastro",$dados);
     }
 
 

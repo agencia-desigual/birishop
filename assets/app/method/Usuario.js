@@ -78,12 +78,13 @@ $(".alteraStatusUsuario").on("click", function () {
 
     Swal.fire({
         title: 'Aterar status',
-        text: "Deseja realmente alterar o status?",
+        text: "Deseja realmente aprovar a empresa?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim, alterar!'
+        confirmButtonText: 'Sim, aprovar!',
+        cancelButtonText: 'Cancelar',
     }).then((result) => {
         if (result.value) {
 
@@ -141,15 +142,15 @@ $("#formUsuarioCadastro").on("submit", function(){
             .then((data) => {
 
                 // Avisa que deu certo
-                alertify.success("Seu cadastro foi realizado com sucesso.");
+                alertify.success(data.mensagem);
 
                 // Limpa o formulário
                 Global.limparFormulario("#formUsuarioCadastro");
 
                 // Redireciona para o login
-                setTimeout(() => {
-                    location.href = Global.config.url + "acesso/login";
-                }, 800);
+                // setTimeout(() => {
+                //     location.href = Global.config.url + "login";
+                // }, 2000);
 
             })
             .catch((error) => {

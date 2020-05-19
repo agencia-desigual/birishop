@@ -34,23 +34,27 @@
                                     Como associar-se
                                 </a>
                             </p>
-                            <hr style="padding-bottom: 20px"
-                            <form id="formCadastro">
+                            <hr style="padding-bottom: 20px">
+                            <form id="formUsuarioCadastro">
                                 <div class="row mb-2">
                                     <div class="col-md-6">
                                         <label>Nome do usuário</label>
-                                        <input type="nome" class="form-control" name="nome" id="nome">
+                                        <input type="text" class="form-control" name="nome" id="nome">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Nome do estabelecimento</label>
-                                        <input type="nome-loja" class="form-control" name="nome-loja" id="nome-loja">
+                                        <input type="text" class="form-control" name="nome_estabelecimento" id="nome-estabelecimento">
                                     </div>
                                 </div>
 
                                 <div class="row mb-2">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="email" id="email">
+                                    </div>
+                                    <div class="col-md-6">
                                         <label>CNPJ</label>
-                                        <input type="cnpj" class="form-control" name="cnpj" id="cnpj">
+                                        <input type="text" class="form-control maskCNPJ" name="cnpj" id="cnpj">
                                     </div>
                                 </div>
 
@@ -61,12 +65,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Confirmar Senha</label>
-                                        <input type="password" class="form-control" name="c_senha" id="c_senha">
+                                        <input type="password" class="form-control" name="senha_repete" id="senha_repete">
                                     </div>
                                 </div>
 
                                 <div class="form-group d-flex pt-3">
-                                    <input type="submit" class="submit-btn" value="Cadastrar">
+                                    <button type="submit" class="submit-btn">Cadastrar</button>
                                 </div>
                             </form>
                         </div>

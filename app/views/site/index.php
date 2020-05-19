@@ -292,6 +292,36 @@
         </div>
     </section>
 
+    <!--=====================================-->
+    <!--=          Newaletter      		    =-->
+    <!--=====================================-->
+    <section style="background-color: #0476d9;background-image: url('http://localhost/git/birishop/storage/banner/2020-05-18-031650.jpg');" class="">
+      <div class="brand-wrap-layout1" style="background-color: #000000ad">
+          <div class="container">
+              <div class="col-md-12">
+                  <div class="centraliza-itens">
+                      <h2 style="color: #fff;font-weight: 900;font-style: italic;">Fique por dentro das <br>nossas promoções</h2>
+                  </div>
+                  <form id="formNewslleter">
+                      <div class="row mb-2">
+                          <div class="col"></div>
+                          <div class="col-md-6">
+                              <input value="seu melhor email" type="email" class="form-control input-newslleter" name="email">
+                          </div>
+                          <div class="col"></div>
+                      </div>
+                      <div class="form-group d-flex pt-3">
+                          <div class="col"></div>
+                          <div class="col-md-6 centraliza-itens">
+                              <button type="submit" class="submit-btn btn-newslleter">Cadastrar</button>
+                          </div>
+                          <div class="col"></div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </section>
 
     <!--=====================================-->
     <!--=          Parceiros      		    =-->

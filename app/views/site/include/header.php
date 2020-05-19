@@ -159,7 +159,7 @@
                                     </a>
                                 </li>
                                 <li class="header-btn">
-                                    <a href="<?= BASE_URL; ?>cadastro" class="item-btn btn-azul-escuro"><i class="fas fa-plus"></i>Seja um Associado</a>
+                                    <a href="<?= BASE_URL; ?>cadastro" class="item-btn btn-azul-escuro"><i class="fas fa-plus"></i>Faça seu cadastro</a>
                                 </li>
                             </ul>
                         </div>
