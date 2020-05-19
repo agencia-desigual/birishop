@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="single-entry-meta">
                                     <ul>
-                                        <li><i class="far fa-clock"></i>Válida até <?= $promocao->data_validade ?></li>
+                                        <li><i class="far fa-clock"></i>Válida até <?= date("d/m/Y",strtotime($promocao->data_validade)); ?></li>
                                         <li><i class="fas fa-home"></i><?= $promocao->empresa->nome_estabelecimento ?></li>
                                     </ul>
                                 </div>
@@ -95,17 +95,26 @@
                                 </div>
                                 <h4 class="author-title"><a href="store-detail.html"><?= $promocao->empresa->nome_estabelecimento ?></a></h4>
                             </div>
-                            <?php if (!empty($promocao->empresa->telefone)) : ?>
-                                <div class="phone-number classima-phone-reveal not-revealed" data-phone="<?= $promocao->empresa->telefone ?>">
-                                    <div class="number"><i class="fas fa-phone"></i><span><?= substr($promocao->empresa->telefone,0,7).'X-XXXX'; ?></span></div>
-                                    <div class="item-text">Click para ver o número</div>
+                            <?php if($promocao->data_validade < date("Y-m-d") || $promocao->status != "cancelado" ) : ?>
+                                <?php if (!empty($promocao->empresa->telefone)) : ?>
+                                    <div class="phone-number classima-phone-reveal not-revealed" data-phone="<?= $promocao->empresa->telefone ?>">
+                                        <div class="number"><i class="fas fa-phone"></i><span><?= substr($promocao->empresa->telefone,0,7).'X-XXXX'; ?></span></div>
+                                        <div class="item-text">Click para ver o número</div>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="author-mail">
+                                    <a href="<?= $promocao->link ?>" target="_blank" class="btn btn-pegar-promocao">
+                                        PEGAR PROMOÇÃO
+                                    </a>
+                                </div>
+                            <?php else : ?>
+                                <div class="author-mail">
+                                    <a href="#" class="btn btn-promocao-encerrada">
+                                        PROMOÇÃO ENCERRADA
+                                    </a>
                                 </div>
                             <?php endif; ?>
-                            <div class="author-mail">
-                                <a href="<?= $promocao->link ?>" target="_blank" class="btn btn-pegar-promocao">
-                                    PEGAR PROMOÇÃO
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                     <div class="widget widget-banner pb-5">

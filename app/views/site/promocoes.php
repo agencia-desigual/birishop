@@ -45,7 +45,7 @@
                     <div id="product-view" class="product-box-grid">
                         <div class="row">
                             <?php foreach ($promocoes as $promo) : ?>
-                                <div class="col-xl-3 col-md-6">
+                                <div class="col-xl-3 col-md-6 <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?>">
                                     <div class="product-grid-view">
                                         <div class="grid-view-layout2">
                                             <div class="product-box-layout1 top-rated-grid">
@@ -66,7 +66,7 @@
                                                             <?= $promo->nome ?>
                                                         </a>
                                                         <ul class="entry-meta">
-                                                            <li class="produto-informacoes"><i class="far fa-clock"></i>Válida até <?= $promo->data_validade ?></li>
+                                                            <li class="produto-informacoes"><i class="far fa-clock"></i>Válida até <?= date("d/m/Y",strtotime($promo->data_validade)); ?></li>
                                                             <li class="produto-informacoes"><i class="fas fa-home"></i><?= $promo->empresa->nome_estabelecimento ?></li>
                                                         </ul>
                                                 </div>

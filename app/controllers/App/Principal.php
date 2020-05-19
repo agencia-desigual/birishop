@@ -62,14 +62,11 @@ class Principal extends CI_controller
         }
 
         $promocoes = $this->objModelPromocoes
-            ->get(["status" => 'ativo'], "id_promocao DESC", "0,6")
+            ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC", "0,6")
             ->fetchAll(\PDO::FETCH_OBJ);
 
         foreach ($promocoes as $promo)
         {
-            // Convertendo a data para o padrão BR
-            $promo->data_validade = date("d/m/Y",strtotime($promo->data_validade));
-            $promo->data_cadastro = date("d/m/Y",strtotime($promo->data_cadastro));
 
             // Limitando a descrição
             $promo->descricao = substr($promo->descricao,0,100).'...';
@@ -100,6 +97,7 @@ class Principal extends CI_controller
             // Montando a URL do banner
             $banner->url = BASE_STORAGE.'banner/'.$banner->arquivo;
         }
+
 
         // Array de dados
         $dados = [
@@ -137,7 +135,7 @@ class Principal extends CI_controller
             ->rowCount();
 
         $promocoes = $this->objModelPromocoes
-            ->get(["status" => 'ativo'], "id_promocao DESC", "")
+            ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC")
             ->fetchAll(\PDO::FETCH_OBJ);
 
         foreach ($promocoes as $promo)
@@ -150,10 +148,6 @@ class Principal extends CI_controller
 
             // Atribuindo a empresa
             $promo->empresa = $empresa;
-
-            // Convertendo a data para o padrão BR
-            $promo->data_validade = date("d/m/Y",strtotime($promo->data_validade));
-            $promo->data_cadastro = date("d/m/Y",strtotime($promo->data_cadastro));
 
             // Limitando a descrição
             $promo->descricao = substr($promo->descricao,0,100).'...';
@@ -199,7 +193,7 @@ class Principal extends CI_controller
         $this->objModelUsuario = new \Model\Usuario();
 
         $buscaPromocao = $this->objModelPromocoes
-            ->get(["status" => 'ativo', "id_promocao" => $id]);
+            ->get(["id_promocao" => $id, "status" => "IN('ativo','cancelado')"]);
 
 
         if ($buscaPromocao->rowCount() == 1)
@@ -215,10 +209,6 @@ class Principal extends CI_controller
 
             // Atribuindo a empresa
             $promocao->empresa = $empresa;
-
-            // Convertendo a data para o padrão BR
-            $promocao->data_validade = date("d/m/Y",strtotime($promocao->data_validade));
-            $promocao->data_cadastro = date("d/m/Y",strtotime($promocao->data_cadastro));
 
             // Padrão moeda
             $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");

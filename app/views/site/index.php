@@ -244,7 +244,7 @@
                             <h4 style="letter-spacing: 5px" class="heading-title">PROMOÇÕES</h4>
                         </div>
                         <?php foreach ($promocoes as $promo) : ?>
-                            <div class="product-box-layout2 row padding-mobile">
+                            <div class="product-box-layout2 row padding-mobile <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?> ">
                                 <div class="col-md-4 promocao-img" style="background-image: url('<?= $promo->imagem ?>');"></div>
                                 <div class="col-md-6 item-content">
                                     <h3 class="item-title">
@@ -254,7 +254,7 @@
                                     </h3>
                                     <ul class="entry-meta">
                                         <li><i class="fas fa-tag"></i><a href="#"><?= $promo->categoria ?></a></li><br>
-                                        <li><i class="far fa-clock"></i>Válido até <?= $promo->data_validade ?></li>
+                                        <li><i class="far fa-clock"></i>Válido até <?= date("d/m/Y",strtotime($promo->data_validade)); ?></li>
                                     </ul>
                                     <p><?= $promo->descricao ?></p>
                                     <div class="item-price">

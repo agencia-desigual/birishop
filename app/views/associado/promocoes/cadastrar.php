@@ -80,7 +80,7 @@
                                                 <label>Data validade</label>
                                                 <div>
                                                     <div class="input-group">
-                                                        <input type="text"  name="data_validade" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
+                                                        <input type="text"  name="data_validade" class="form-control" placeholder="dd/mm/yyyy" id="datepicker2">
                                                         <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="mdi mdi-calendar"></i></span></div>
                                                     </div><!-- input-group -->
                                                 </div>
@@ -141,6 +141,10 @@
         // Basic
         $('.dropify').dropify();
 
+        $("#datepicker2").datepicker({
+            format: 'dd/mm/yyyy',
+            dateFormat: 'yyyy-mm-dd'
+        })
     });
 
 </script>

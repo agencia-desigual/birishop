@@ -27,6 +27,19 @@
     color: #fff;
 }
 
+.btn-promocao-encerrada
+{
+    background-color: #e42b2b;
+    color: #fff;
+    width: 100% !important;
+    padding: 10px;
+}
+
+.btn-promocao-encerrada:hover
+{
+    color: #fff;
+}
+
 .preco-antigo
 {
     display: inline;
@@ -182,4 +195,10 @@
     height: 300px;
     background-size: cover;
     background-position: center center;
+}
+
+.opacidade
+{
+    background-color: #ffffff;
+    opacity: 0.3;
 }

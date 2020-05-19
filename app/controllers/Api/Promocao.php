@@ -215,7 +215,8 @@ class Promocao extends Controller
             {
 
                 // Convertando a data para o padrão
-                $post["data_validade"] = date("Y-m-d", strtotime($post["data_validade"]));
+                $auxData = explode("/",$post["data_validade"]);
+                $post["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
 
                 $post["valor"] = str_replace(".",'',$post["valor"]);
                 $post["valor"] = str_replace(",",'.',$post["valor"]);
@@ -394,7 +395,8 @@ class Promocao extends Controller
                     }
 
                     // Convertando a data para o padrão
-                    $put["data_validade"] = date("Y-m-d", strtotime($put["data_validade"]));
+                    $auxData = explode("/",$put["data_validade"]);
+                    $put["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
 
                     // Altera e verifica se alterou
                     if($this->objModelPromocao->update($put, ["id_promocao" => $id]) != false)
