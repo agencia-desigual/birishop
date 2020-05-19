@@ -244,20 +244,16 @@
                             <h4 style="letter-spacing: 5px" class="heading-title">PROMOÇÕES</h4>
                         </div>
                         <?php foreach ($promocoes as $promo) : ?>
-                            <div class="product-box-layout2">
-                                <div class="item-img">
-                                    <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
-                                        <img src="<?= $promo->imagem ?>" alt="<?= $promo->nome ?>">
-                                    </a>
-                                </div>
-                                <div class="item-content">
+                            <div class="product-box-layout2 row padding-mobile">
+                                <div class="col-md-4 promocao-img" style="background-image: url('<?= $promo->imagem ?>');"></div>
+                                <div class="col-md-6 item-content">
                                     <h3 class="item-title">
                                         <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
                                             <?= $promo->nome ?>
                                         </a>
                                     </h3>
                                     <ul class="entry-meta">
-                                        <li><i class="fas fa-tag"></i><a href="#"><?= $promo->categoria ?></a></li>
+                                        <li><i class="fas fa-tag"></i><a href="#"><?= $promo->categoria ?></a></li><br>
                                         <li><i class="far fa-clock"></i>Válido até <?= $promo->data_validade ?></li>
                                     </ul>
                                     <p><?= $promo->descricao ?></p>

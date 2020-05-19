@@ -13,9 +13,27 @@
         font-size: 12px !important;
     }
 }
+
+@media only screen and (max-width: 767px)
+{
+    .product-box-layout2 {
+        display: block !important;
+    }
+    .promocao-img
+    {
+        width: 100%;
+        height: 300px;
+    }
+}
+
 @media only screen and (max-width: 991px) {
     .header-mobile
     {
         display: block;
+    }
+
+    .padding-mobile
+    {
+        padding: 20px !important;
     }
 }

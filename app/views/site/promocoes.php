@@ -45,13 +45,14 @@
                     <div id="product-view" class="product-box-grid">
                         <div class="row">
                             <?php foreach ($promocoes as $promo) : ?>
-                                <div class="col-xl-3 col-md-6 col-6">
+                                <div class="col-xl-3 col-md-6">
                                     <div class="product-grid-view">
                                         <div class="grid-view-layout2">
                                             <div class="product-box-layout1 top-rated-grid">
-                                                <div class="item-img">
-                                                    <a href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>" class="item-trending"><img src="<?= $promo->imagem ?>" alt="Product"></a>
+                                                <a class="nome-produto" href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>">
+                                                <div class="promocoes-img" style="background-image: url('<?= $promo->imagem ?>');">
                                                 </div>
+                                                </a>
                                                 <div class="item-content">
                                                     <div class="item-price">
                                                         <p class="preco-antigo"><strike>DE R$ <?= $promo->valor_antigo ?> </strike></p>
