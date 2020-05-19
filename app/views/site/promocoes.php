@@ -32,7 +32,9 @@
                     <div class="product-filter-heading">
                         <div class="row align-items-center">
                             <div class="col-md-6">
-                                <h2 class="item-title">Encontramos <?= $qtdePromocoes ?> ofertas</h2>
+                                <?php if ($qtdePromocoes >= 1) : ?>
+                                    <h2 class="item-title">Encontramos diversas ofertas para você</h2>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6 d-flex justify-content-md-end justify-content-center">
                                 <div class="product-sorting">
