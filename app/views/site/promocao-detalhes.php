@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="item-action-area">
                                     <ul>
-                                        <li class="item-social">
+                                        <li style="display: none" class="item-social">
                                                     <span class="share-title">
                                                         <i class="fas fa-share-alt"></i>
                                                         Compartilhar:
@@ -95,7 +95,7 @@
                                 </div>
                                 <h4 class="author-title"><a href="store-detail.html"><?= $promocao->empresa->nome_estabelecimento ?></a></h4>
                             </div>
-                            <?php if($promocao->data_validade < date("Y-m-d") || $promocao->status != "cancelado" ) : ?>
+                            <?php if(date("Y-m-d") <= $promocao->data_validade && $promocao->status != "cancelado" ) : ?>
                                 <?php if (!empty($promocao->empresa->telefone)) : ?>
                                     <div class="phone-number classima-phone-reveal not-revealed" data-phone="<?= $promocao->empresa->telefone ?>">
                                         <div class="number"><i class="fas fa-phone"></i><span><?= substr($promocao->empresa->telefone,0,7).'X-XXXX'; ?></span></div>

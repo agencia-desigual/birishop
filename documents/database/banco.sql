@@ -48,14 +48,12 @@ CREATE TABLE promocoes (
     PRIMARY KEY (id_promocao)
 );
 
-
 CREATE TABLE newsletter (
     id_newsletter INT NOT NULL AUTO_INCREMENT,
     email VARCHAR (150) NOT NULL,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_newsletter)
 );
-
 
 CREATE TABLE banner (
     id_banner INT NOT NULL AUTO_INCREMENT,
@@ -67,7 +65,6 @@ CREATE TABLE banner (
     PRIMARY KEY (id_banner)
 );
 
-
 CREATE TABLE parceiro (
     id_parceiro INT NOT NULL AUTO_INCREMENT,
     arquivo VARCHAR (150) NOT NULL,
@@ -76,4 +73,3 @@ CREATE TABLE parceiro (
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_parceiro)
 );
-
