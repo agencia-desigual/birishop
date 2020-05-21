@@ -52,7 +52,7 @@
                                     <i class="far fa-user bg-danger text-white"></i>
                                 </div>
                                 <div>
-                                    <h5 class="font-16">Assosciados</h5>
+                                    <h5 class="font-16">Associados</h5>
                                 </div>
                                 <h3 class="mt-4"><?= $qtdeAssociados ?></h3>
                                 <p class="text-muted mt-2 mb-0">Associados ativo</p>

@@ -73,3 +73,35 @@ CREATE TABLE parceiro (
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_parceiro)
 );
+
+-- INSERT TABELA USUARIO
+
+INSERT INTO `usuario` (`id_usuario`, `nome`, `nome_estabelecimento`, `cnpj`, `email`, `senha`, `telefone`, `nivel`, `status`, `data_cadastro`)
+VALUES (NULL, 'Edilson Pereira Mendonça', NULL, NULL, 'edilson@desigual.com.br', '202cb962ac59075b964b07152d234b70', '(18) 99635-6488', 'admin', '1', '2020-05-20 09:59:30');
+
+-- INSERT TABELA CATEGORIA
+
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Alimentação', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Bares e Restaurantes', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Sáude', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Serviços automotivos', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Eletrônicos', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Pet''s', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Beleza', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Vestuário', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Calçados', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Acessorios', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Papelaria', CURRENT_TIMESTAMP);
+INSERT INTO `categoria` (`id_categoria`, `nome`, `data_cadastro`)
+VALUES (NULL, 'Diversos', CURRENT_TIMESTAMP);

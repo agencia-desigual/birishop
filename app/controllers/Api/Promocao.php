@@ -332,7 +332,7 @@ class Promocao extends Controller
      * @param $id [Id Promoção]
      * ------------------------------------------------------
      * @url api/promocao/update/[ID]
-     * @method PUT
+     * @method POST
      */
     public function update($id)
     {
@@ -346,7 +346,7 @@ class Promocao extends Controller
         $usuario = $this->objSeguranca->security();
 
         // Recupera os dados put
-        $put = $this->objInput->put();
+        $put = $_POST;
 
         // Recupera os dados do objeto
         $obj = $this->objModelPromocao
@@ -397,6 +397,66 @@ class Promocao extends Controller
                     // Convertando a data para o padrão
                     $auxData = explode("/",$put["data_validade"]);
                     $put["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
+
+                    $put["valor"] = str_replace(".",'',$put["valor"]);
+                    $put["valor"] = str_replace(",",'.',$put["valor"]);
+
+                    $put["valor_antigo"] = str_replace(".",'',$put["valor_antigo"]);
+                    $put["valor_antigo"] = str_replace(",",'.',$put["valor_antigo"]);
+
+
+                    // Verifica se informou a imagem
+                    if($_FILES["arquivo"]["size"] > 0)
+                    {
+                        // Caminho
+                        $caminho = "./storage/promocao/";
+
+                        // Instancia o objeto de upload
+                        $objUpload = new File();
+
+                        // Configurações
+                        $objUpload->setStorange($caminho);
+                        $objUpload->setMaxSize(5 * MB);
+                        $objUpload->setExtensaoValida(["jpg","png","jpeg"]);
+                        $objUpload->setFile($_FILES['arquivo']);
+
+                        // Verifica se o tamanho é permitido
+                        if($objUpload->validaSize())
+                        {
+                            // Verifica se a extensão é válida
+                            if($objUpload->validaExtensao())
+                            {
+                                // Realiza o upload
+                                $arquivo = $objUpload->upload();
+
+                                // Verifica se deu certo
+                                if($arquivo != false)
+                                {
+                                    // Add o arquivo a ser salvo
+                                    $put["imagem"] = $arquivo;
+
+                                    // Remove a imagem antiga
+                                    $imgAntiga = $caminho.$obj->imagem;
+                                    unlink($imgAntiga);
+                                }
+                                else
+                                {
+                                    // Msg
+                                    $dados = ["mensagem" => "Ocorreu um erro ao realizar o upload da imagem."];
+                                } // Error >> Ocorreu um erro ao realizar o upload da imagem.
+                            }
+                            else
+                            {
+                                // Msg
+                                $dados = ["mensagem" => "A extensão da imagem não é suportada."];
+                            } // Error >> A extensão da imagem não é suportada.
+                        }
+                        else
+                        {
+                            // Msg
+                            $dados = ["mensagem" => "O tamanho da imagem é maior que 2MB."];
+                        } // Error >> O tamanho da imagem é maior que 2MB
+                    }
 
                     // Altera e verifica se alterou
                     if($this->objModelPromocao->update($put, ["id_promocao" => $id]) != false)

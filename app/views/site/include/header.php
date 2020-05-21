@@ -172,9 +172,10 @@
     <div class="header-mobile">
         <div class="container">
             <div class="row">
-                <div style="padding: 20px;" class="col-6 text-left">
+                <div style="padding: 20px;" class="col-9 text-left">
                     <div>
-                        <svg width="280"  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        <a href="<?= BASE_URL; ?>">
+                            <svg class="logo-mobile-svg" width="280"  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 514.6 120.8" style="enable-background:new 0 0 514.6 120.8;" xml:space="preserve">
 <style type="text/css">
     .st0{fill:#575756;}
@@ -246,6 +247,7 @@
                                 </g>
                             </g>
 </svg>
+                        </a>
                     </div>
                 </div>
                 <div class="col text-right" style="margin-top: 35px">

@@ -199,6 +199,9 @@ class Promocoes extends CI_controller
             // Pegando a empresa
             $promocao->empresa = $empresa;
 
+            // Montando a imagem
+            $promocao->imagem = BASE_STORAGE.'promocao/'.$promocao->imagem;
+
             // ========== LISTA DE CATEORIAS DAS PROMOCOES DO ASSOCIADO ========== //
             $categorias = $this->objModelCategoria
                 ->get()

@@ -44,7 +44,7 @@
 
                                         <div class="col-md-6">
                                             <label>Link</label>
-                                            <input type="tel" class="form-control" name="link" required="" />
+                                            <input type="tel" class="form-control" name="link" value="#" required="" />
                                         </div>
                                     </div>
                                 </div>

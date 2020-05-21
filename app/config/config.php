@@ -2,10 +2,10 @@
 
 // URL base do site.
 defined('BASE_URL') OR define('BASE_URL', 'http://localhost/git/birishop/');
-//defined('BASE_URL') OR define('BASE_URL', 'http://192.168.0.192/git/birishop/');
+//defined('BASE_URL') OR define('BASE_URL', 'https://desigual.com.br/birishop/');
 
 // URL base do storange
-//defined('BASE_STORAGE') OR define('BASE_STORAGE', 'http://192.168.0.192/git/birishop/storage/');
+//defined('BASE_STORAGE') OR define('BASE_STORAGE', 'https://desigual.com.br/birishop/storage/');
 defined('BASE_STORAGE') OR define('BASE_STORAGE', 'http://localhost/git/birishop/storage/');
 
 // Session | Caso deseje que a session seja iniciada em todas as páginas

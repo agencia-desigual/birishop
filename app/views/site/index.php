@@ -244,26 +244,28 @@
                             <h4 style="letter-spacing: 5px" class="heading-title">PROMOÇÕES</h4>
                         </div>
                         <?php foreach ($promocoes as $promo) : ?>
-                            <div class="product-box-layout2 row padding-mobile <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?> ">
-                                <div class="col-md-4 promocao-img" style="background-image: url('<?= $promo->imagem ?>');"></div>
-                                <div class="col-md-6 item-content">
-                                    <h3 class="item-title">
-                                        <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
-                                            <?= $promo->nome ?>
-                                        </a>
-                                    </h3>
-                                    <ul class="entry-meta">
-                                        <li><i class="fas fa-tag"></i><a href="#"><?= $promo->categoria ?></a></li><br>
-                                        <li><i class="far fa-clock"></i>Válido até <?= date("d/m/Y",strtotime($promo->data_validade)); ?></li>
-                                    </ul>
-                                    <p><?= $promo->descricao ?></p>
-                                    <div class="item-price">
-                                        <p class="preco-antigo"><strike>DE R$ <?= $promo->valor_antigo ?></strike></p>
-                                        <p class="preco-atual">POR R$ <?= $promo->valor ?></p>
+                            <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
+                                <div class="card-promocao container">
+                                    <div class="row">
+                                        <div class="col-4 img-promocao" style="background-image: url('<?= $promo->imagem ?>');"></div>
+                                        <div class="col-8  justify-content-start">
+                                            <div class="conteudo-promocao">
+                                                <h3 class="titulo-promocao mb-2">
+                                                        <?= $promo->nome ?>
+                                                </h3>
+                                                <p class="mb-0 descricao-promocao"><i class="fas fa-tag mr-1"></i><?= $promo->categoria ?></p>
+                                                <p class="mb-0 data-validade-promocao"><i class="far fa-clock mr-1"></i><?= date("d/m/Y",strtotime($promo->data_validade)); ?></p>
+                                                <p class="mb-0 descricao-promocao"><?= $promo->descricao ?></p>
+                                                <p class="mb-0 preco-antigo"><strike>DE R$ <?= $promo->valor_antigo ?></strike></p>
+                                                <p class="mb-0 preco-atual">POR R$ <?= $promo->valor ?></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <button class="btn btn-eu-quero float-right">Eu quero</button>
+                            </a>
                         <?php endforeach; ?>
+                        <br>
                         <a href="<?= BASE_URL ?>promocoes" class="btn-promocoes">Todas Promoções</a>
                     </div>
                     <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-space-sm">
@@ -291,7 +293,7 @@
     <!--=====================================-->
     <!--=          Newaletter      		    =-->
     <!--=====================================-->
-    <section style="background-color: #0476d9;background-image: url('http://localhost/git/birishop/storage/banner/2020-05-18-031650.jpg');" class="">
+    <section style="background-color: #0476d9;background-image: url('<?= BASE_URL; ?>assets/theme/site/img/bg.jpg');" class="">
       <div class="brand-wrap-layout1" style="background-color: #000000ad">
           <div class="container">
               <div class="col-md-12">

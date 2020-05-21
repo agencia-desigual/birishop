@@ -118,7 +118,7 @@ $("#formAlteraPromocao").on("submit", function () {
     var token = Global.session.get("token");
 
     // Realiza a requisição
-    Global.enviaApi("PUT", url, form, token.token)
+    Global.enviaApi("POST", url, form, token.token)
         .then((data) => {
             // Avisa que deu certo
             Global.setSuccess(data.mensagem);

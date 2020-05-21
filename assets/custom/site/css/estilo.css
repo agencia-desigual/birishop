@@ -52,6 +52,7 @@
     font-size: 18px;
     color: #1fbe8b;
     margin-top: -10px;
+    font-weight: 700;
 }
 
 .header-action-layout1 ul .header-btn .item-btn
@@ -181,14 +182,6 @@
     background-color: transparent !important;
     border-color: #fff !important;
 }
-
-.promocao-img
-{
-    width: 300px;
-    background-size: cover;
-    background-position: center center;
-}
-
 .promocoes-img
 {
     width: 100%;
@@ -201,4 +194,47 @@
 {
     background-color: #ffffff;
     opacity: 0.3;
+}
+
+.card-promocao
+{
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.img-promocao
+{
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.titulo-promocao
+{
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.conteudo-promocao
+{
+    padding: 20px;
+}
+
+.btn-eu-quero
+{
+    position: relative;
+    top: -65px;
+    right: 13px;
+    background-color: #1fbe8b !important;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 50px
+}
+
+.btn-eu-quero:hover
+{
+    color: #fff;
 }
