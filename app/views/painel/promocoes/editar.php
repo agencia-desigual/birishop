@@ -65,7 +65,7 @@
                                                 <div class="col-md-6">
                                                     <label>Status</label>
                                                     <select name="status" class="form-control">
-                                                        <option value="ativo" <?php if($promocao->status == 'ativo'){ echo "selected";} ?>>Ativo</option>
+                                                        <option value="ativo" <?php if($promocao->status == 'ativo'){ echo "selected";} ?>>Aprovado</option>
                                                         <option value="analise" <?php if($promocao->status == 'analise'){ echo "selected";} ?>>Analise</option>
                                                         <option value="reprovado" <?php if($promocao->status == 'reprovado'){ echo "selected";} ?>>Reprovado</option>
                                                         <option value="cancelado" <?php if($promocao->status == 'cancelado'){ echo "selected";} ?>>Cancelado</option>
@@ -136,7 +136,8 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary float-right">Alterar</button>
+                                        <a href="<?= BASE_URL; ?>pre-visualizar/<?= $promocao->id_promocao ?>" target="_blank" class="btn btn-primary float-right">Pré visualizar</a>
+                                        <button type="submit" class="btn btn-primary float-right mr-2">Alterar</button>
 
                                     </form>
 

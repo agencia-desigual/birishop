@@ -75,6 +75,9 @@ $Rotas->on("GET","promocao/detalhes/{p}","App\Principal::promocaoDetalhes");
 // -- Rotas sem grupo
 $Rotas->on("GET","cadastro","App\Principal::cadastro");
 
+// -- Rotas sem grupo
+$Rotas->on("GET","pre-visualizar/{p}","App\Principal::preVisualizar");
+
 /**
  *  ================================================
  *  =================== PAINEL =====================

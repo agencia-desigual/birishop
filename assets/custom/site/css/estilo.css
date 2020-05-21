@@ -201,6 +201,7 @@
     width: 100%;
     background-color: #fff;
     margin-bottom: 20px;
+    box-shadow: 0px 1px 10px 1px #e2dddd;
 }
 
 .img-promocao
@@ -235,6 +236,25 @@
 }
 
 .btn-eu-quero:hover
+{
+    color: #fff;
+}
+
+
+.btn-eu-quero-promo
+{
+    position: relative;
+    top: -10px;
+    background-color: #1fbe8b !important;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 50px;
+    width: 90%;
+    margin: 5px 10px;
+}
+
+.btn-eu-quero-promo:hover
 {
     color: #fff;
 }

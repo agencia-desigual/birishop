@@ -72,6 +72,15 @@
                                                             <li class="produto-informacoes"><i class="fas fa-home"></i><?= $promo->empresa->nome_estabelecimento ?></li>
                                                         </ul>
                                                 </div>
+                                                <?php if($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado") : ?>
+                                                    <div class="centraliza-itens">
+                                                        <a href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>" class="btn btn-eu-quero-promo" style="background-color: #c108084f !important" >Encerrado</a>
+                                                    </div>
+                                                <?php else: ?>
+                                                <div class="centraliza-itens">
+                                                    <a href="<?= BASE_URL; ?>promocao/detalhes/<?= $promo->id_promocao ?>" class="btn btn-eu-quero-promo">Eu quero</a>
+                                                </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>

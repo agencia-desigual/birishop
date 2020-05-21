@@ -245,7 +245,7 @@
                         </div>
                         <?php foreach ($promocoes as $promo) : ?>
                             <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
-                                <div class="card-promocao container">
+                                <div class="card-promocao container <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?>">
                                     <div class="row">
                                         <div class="col-4 img-promocao" style="background-image: url('<?= $promo->imagem ?>');"></div>
                                         <div class="col-8  justify-content-start">
@@ -262,7 +262,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-eu-quero float-right">Eu quero</button>
+                                <?php if($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado") : ?>
+                                    <button class="btn btn-eu-quero float-right" style="background-color: #c108084f !important" >Encerrado</button>
+                                <?php else: ?>
+                                    <button class="btn btn-eu-quero float-right">Eu quero</button>
+                                <?php endif; ?>
                             </a>
                         <?php endforeach; ?>
                         <br>

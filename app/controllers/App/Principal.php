@@ -390,6 +390,46 @@ class Principal extends CI_controller
 
     }
 
+    public function preVisualizar($id)
+    {
+        // Verificando o usuario
+        $usuario = $this->objHelperApoio->seguranca();
+
+        // Instanciando
+        $this->objModelPromocoes = new Promocao();
+        $this->objModelCategoria = new Categoria();
+        $this->objModelUsuario = new \Model\Usuario();
+
+        // Buscando a promoção
+        $promocao = $this->objModelPromocoes->get(["id_promocao" => $id])->fetch(\PDO::FETCH_OBJ);
+
+        // Busca a categoria
+        $cateogoria = $this->objModelCategoria->get(["id_categoria" => $promocao->id_categoria])->fetch(\PDO::FETCH_OBJ);
+
+        // Busca o associado
+        $associado = $this->objModelUsuario->get(["id_usuario" => $promocao->id_usuario])->fetch(\PDO::FETCH_OBJ);
+
+        // Atribuindo os valores
+        $promocao->categoria = $cateogoria;
+        $promocao->associado = $associado;
+
+        // Padrão moeda
+        $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
+        $promocao->valor = number_format($promocao->valor, 2, ",", ".");
+
+
+        // Imagem da promocao
+        $promocao->imagem = BASE_STORAGE.'promocao/'.$promocao->imagem;
+
+        // Limitando a descrição
+        $promocao->descricao = substr($promocao->descricao,0,100).'...';
+
+        $dados = ["promocao" => $promocao];
+
+        $this->view("site/pre-visualizar",$dados);
+
+    }
+
 
 
 } // END::Class Principal
