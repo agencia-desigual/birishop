@@ -69,6 +69,13 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-2 ml-2">
+                                    <div class="col-md-12">
+                                        <input required type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1" style="font-size: 13px;position: relative;top: -3px;">Eu aceito todos os termos da <a href="#">Politica e privacidade</a></label>
+                                    </div>
+                                </div>
+
                                 <div class="form-group d-flex pt-3">
                                     <button type="submit" class="submit-btn">Cadastrar</button>
                                 </div>

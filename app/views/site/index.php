@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/1">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/2">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/3">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/4">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/5">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/6">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -132,7 +132,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/7">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -148,7 +148,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/8">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -164,7 +164,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/9">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -180,7 +180,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/10">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/11">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -212,7 +212,7 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
-                        <a href="#">
+                        <a href="<?= BASE_URL; ?>promocoes/12">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
@@ -226,7 +226,6 @@
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

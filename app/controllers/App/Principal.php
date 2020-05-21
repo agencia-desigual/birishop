@@ -121,22 +121,36 @@ class Principal extends CI_controller
      * @url promocoes
      * @method GET
      */
-    public function promocoes()
+    public function promocoes($id = null)
     {
 
         // Instancoando os objetos
         $this->objModelPromocoes = new Promocao();
         $this->objModelUsuario = new \Model\Usuario();
         $this->objModelCategoria = new Categoria();
+        $nomeCategoria = null;
 
         // Quantidade de promoções
         $qtdePromocoes = $this->objModelPromocoes
             ->get(["status" => 'ativo'])
             ->rowCount();
 
-        $promocoes = $this->objModelPromocoes
-            ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC")
-            ->fetchAll(\PDO::FETCH_OBJ);
+        if(!empty($id))
+        {
+            $promocoes = $this->objModelPromocoes
+                ->get(["status" => 'IN("ativo","cancelado")', "id_categoria" => $id], " status ASC, data_validade DESC, id_promocao DESC")
+                ->fetchAll(\PDO::FETCH_OBJ);
+
+            $nomeCategoria = $this->objModelCategoria->get(["id_categoria" => $id])->fetch(\PDO::FETCH_OBJ);
+            $nomeCategoria = $nomeCategoria->nome;
+        }
+        else
+        {
+            $promocoes = $this->objModelPromocoes
+                ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC")
+                ->fetchAll(\PDO::FETCH_OBJ);
+        }
+
 
         foreach ($promocoes as $promo)
         {
@@ -170,6 +184,7 @@ class Principal extends CI_controller
 
         // Array de dados
         $dados = [
+            "nomeCategoria" => $nomeCategoria,
             "promocoes" => $promocoes,
             "qtdePromocoes" => $qtdePromocoes
         ];

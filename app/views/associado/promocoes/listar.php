@@ -68,6 +68,11 @@
                                                 <td><?= $promo->data_validade?></td>
                                                 <td><?= $promo->data_cadastro ?></td>
                                                 <td class="text-center">
+                                                    <?php if($promo->status == 'ativo') : ?>
+                                                        <a style="color: #fff" class="btn btn-danger btn-icon btn-sm pausarAnuncio">
+                                                            PAUSAR ANUNCIO
+                                                        </a>
+                                                    <?php endif; ?>
                                                     <a href="<?= BASE_URL; ?>painel/promocao/alterar/<?= $promo->id_promocao; ?>" class="btn btn-primary btn-icon btn-sm">
                                                         <i class="far fa-edit"></i>
                                                     </a>

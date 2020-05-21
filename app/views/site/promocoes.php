@@ -8,12 +8,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>TODAS PROMOÇÕES</h1>
+                        <?php if(!empty($nomeCategoria)) : ?>
+                            <h1 style="text-transform: uppercase"><?= $nomeCategoria ?></h1>
+                        <?php else: ?>
+                            <h1>TODAS PROMOÇÕES</h1>
+                        <?php endif; ?>
                         <ul>
                             <li>
                                 <a href="<?= BASE_URL ?>">HOME</a>
                             </li>
-                            <li>TODAS PROMOÇÕES</li>
+                            <?php if(!empty($nomeCategoria)) : ?>
+                                <li style="text-transform: uppercase"><?= $nomeCategoria ?></li>
+                            <?php else: ?>
+                                <li>TODAS PROMOÇÕES</li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>

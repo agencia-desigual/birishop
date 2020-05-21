@@ -140,6 +140,66 @@ $("#formAlteraPromocao").on("submit", function () {
 });
 
 
+/**
+ * Método responsável por alterar a verificação de um
+ * determinado usuário.
+ * ----------------------------------------------------------
+ */
+$(".pausarAnuncio").on("click", function () {
+
+    // Não atualiza a página
+    event.preventDefault();
+
+    // Busca as informações necessarias
+    var id = $(this).data("id");
+    var altera = $(this).data("tipo");
+
+    // Instancia o formulário
+    var form = new FormData();
+
+    // Insere os dados
+    form.set("status", altera);
+
+    // Url e Token
+    var url = Global.config.urlApi + "usuario/update/" + id;
+    var token = Global.session.get("token");
+
+
+    Swal.fire({
+        title: 'Aterar status',
+        text: "Deseja realmente aprovar a empresa?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, aprovar!',
+        cancelButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.value) {
+
+            // Realiza a requisição
+            Global.enviaApi("PUT", url, form, token.token)
+                .then((data) => {
+
+                    // Avisa que deu certo
+                    Global.setSuccess("Associado aprovado");
+
+                    // Atualiza a página
+                    setTimeout(() => {
+
+                        // Manda para o painel
+                        location.href = Global.config.url + 'painel';
+
+                    }, 1500);
+
+                });
+
+        }
+    })
+
+    // Não atualiza mesmo
+    return false;
+});
 
 $(".btn-whats").on("click", function () {
 

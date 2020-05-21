@@ -68,6 +68,7 @@ $Rotas->on("GET","sair","App\Principal::sair");
 
 // -- Rotas sem grupo
 $Rotas->on("GET","promocoes","App\Principal::promocoes");
+$Rotas->on("GET","promocoes/{p}","App\Principal::promocoes");
 
 // -- Rotas sem grupo
 $Rotas->on("GET","promocao/detalhes/{p}","App\Principal::promocaoDetalhes");
