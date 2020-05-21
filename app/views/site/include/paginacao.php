@@ -12,7 +12,7 @@
 
 
     <div class="page-number">
-        <?php for($i = ($pag - 3); $i <= ($pag + 3); $i++): ?>
+        <?php for($i = ($pag - 4); $i <= ($pag + 4); $i++): ?>
             <?php if($i > 0 && $i <= $total): ?>
                 <a href="<?= $url; ?>pag=<?= $i; ?>" class="<?php if($i == $pag){echo 'active';} ?>"><?= $i; ?></a>
             <?php endif; ?>
