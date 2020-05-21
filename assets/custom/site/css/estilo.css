@@ -258,3 +258,8 @@
 {
     color: #fff;
 }
+
+.minpage
+{
+    min-height: calc(100vh - 409px) !important;
+}

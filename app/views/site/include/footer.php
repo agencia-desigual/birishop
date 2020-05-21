@@ -55,6 +55,7 @@
 <script src="<?= BASE_URL; ?>/assets/theme/site/js/app.js"></script>
 <!-- Js Autoload -->
 <?php $this->view("autoload/js"); ?>
+
 <script>
     function menu(tipo)
     {

@@ -61,6 +61,7 @@ class Principal extends CI_controller
             $parceiro->url = BASE_STORAGE.'parceiro/'.$parceiro->arquivo;
         }
 
+
         $promocoes = $this->objModelPromocoes
             ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC", "0,6")
             ->fetchAll(\PDO::FETCH_OBJ);
@@ -129,27 +130,51 @@ class Principal extends CI_controller
         $this->objModelUsuario = new \Model\Usuario();
         $this->objModelCategoria = new Categoria();
         $nomeCategoria = null;
+        $where = ["status" => 'IN("ativo","cancelado")'];
 
         // Quantidade de promoções
         $qtdePromocoes = $this->objModelPromocoes
             ->get(["status" => 'ativo'])
             ->rowCount();
 
+        // URL
+        $url = BASE_URL . "promocoes";
+
         if(!empty($id))
         {
-            $promocoes = $this->objModelPromocoes
-                ->get(["status" => 'IN("ativo","cancelado")', "id_categoria" => $id], " status ASC, data_validade DESC, id_promocao DESC")
-                ->fetchAll(\PDO::FETCH_OBJ);
+            $where["id_categoria"] = $id;
+            $url = $url . "/" . $id;
 
-            $nomeCategoria = $this->objModelCategoria->get(["id_categoria" => $id])->fetch(\PDO::FETCH_OBJ);
+            $nomeCategoria = $this->objModelCategoria
+                ->get(["id_categoria" => $id])
+                ->fetch(\PDO::FETCH_OBJ);
+
             $nomeCategoria = $nomeCategoria->nome;
         }
-        else
-        {
-            $promocoes = $this->objModelPromocoes
-                ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC")
-                ->fetchAll(\PDO::FETCH_OBJ);
-        }
+
+
+        // Informações sobre paginação ---------------------------
+        $pag = (isset($_GET["pag"])) ? $_GET["pag"] : 1;
+        $limite = 24;
+
+        // Atribui a variável inicio, o inicio de onde os registros vão ser mostrados
+        // por página, exemplo 0 à 10, 11 à 20 e assim por diante
+        $inicio = ($pag * $limite) - $limite;
+
+        // Busca as promoções
+        $promocoes = $this->objModelPromocoes
+            ->get($where, "status ASC, data_validade DESC, id_promocao DESC", "{$inicio},{$limite}")
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        // Total de resultados
+        $total = $this->objModelPromocoes
+            ->get($where)
+            ->rowCount();
+
+        // Total de páginas
+        $totalPaginas = $total / $limite;
+        $totalPaginas = ceil($totalPaginas);
+
 
 
         foreach ($promocoes as $promo)
@@ -186,7 +211,12 @@ class Principal extends CI_controller
         $dados = [
             "nomeCategoria" => $nomeCategoria,
             "promocoes" => $promocoes,
-            "qtdePromocoes" => $qtdePromocoes
+            "qtdePromocoes" => $qtdePromocoes,
+            "paginacao" => [
+                "url" => $url,
+                "pag" => $pag,
+                "total" => $totalPaginas
+            ],
         ];
 
         // Carrega a view
