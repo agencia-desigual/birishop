@@ -28,7 +28,7 @@
     <!--=====================================-->
     <!--=          Product Start         =-->
     <!--=====================================-->
-    <section class="single-product-wrap-layout1 section-padding-equal-70 bg-accent">
+    <section class="single-product-wrap-layout1 section-padding-equal-70 bg-accent minpage">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-6">

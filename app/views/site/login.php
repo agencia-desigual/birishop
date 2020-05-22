@@ -21,7 +21,7 @@
         </div>
     </section>
 
-    <div style="min-height: calc(100vh - 409px);" class="container">
+    <div class="container minpage">
         <div class="myaccount-login-form light-shadow-bg">
             <div class="light-box-content">
                 <div class="row">
