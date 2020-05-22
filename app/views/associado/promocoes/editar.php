@@ -111,6 +111,18 @@
                                             </div>
                                         </div>
 
+                                        <!-- IMG ATUAL E NOVA IMG -->
+                                        <div class="form-group pt-3 pb-3">
+                                            <label>Imagem Atual</label>
+                                            <div class="row">
+                                                <div class="col-md-6 produto-painel" style="background-image: url('<?= $promocao->imagem ?>')"></div>
+                                                <div class="col-md-6">
+                                                    <label>Nova Imagem</label>
+                                                    <input name="arquivo" type="file" class="dropify">
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <button type="submit" class="btn btn-primary float-right">Alterar</button>
 
                                     </form>

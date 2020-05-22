@@ -7,11 +7,11 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <?php $cont = 0; ?>
-                <?php foreach ($banners as $banner) : ?>
-                    <div class="carousel-item <?= ($cont == 0) ? 'active' : ''; ?>">
-                        <img class="d-block w-100" src="<?= $banner->url ?>" alt="<?= SITE_NOME ?>">
-                    </div>
-                <?php $cont++; ?>
+                    <?php foreach ($banners as $banner) : ?>
+                        <div class="carousel-item <?= ($cont == 0) ? 'active' : ''; ?>">
+                            <img class="d-block w-100" src="<?= $banner->url ?>" alt="<?= SITE_NOME ?>">
+                        </div>
+                    <?php $cont++; ?>
                 <?php endforeach; ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

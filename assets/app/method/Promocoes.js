@@ -40,6 +40,10 @@ $(".deletarPromocao").on("click", function () {
                     // Remove a visualização
                     $("#promocao_" + id).css("display","none");
 
+                    setTimeout(function () {
+                        location.href = Global.config.url + "painel/promocoes";
+                    },2000)
+
                 });
         }
     });
@@ -74,7 +78,7 @@ $("#formInserirPromocao").on("submit", function () {
     Global.enviaApi("POST", url, form, token.token)
         .then((data) => {
             // Avisa que deu certo
-            Global.setSuccess(data.mensagem);
+            Global.setSuccess("Veja como está seu anuncio, antes de publicar");
 
             // Limpa o formulário
             Global.limparFormulario("#formInserirPromocao");
@@ -84,6 +88,12 @@ $("#formInserirPromocao").on("submit", function () {
 
             // Desbloqueia o Form
             $(this).removeClass("bloqueiaForm");
+
+            setTimeout(function () {
+
+                location.href = Global.config.url + 'pre-visualizar/'+data.objeto.id_promocao;
+
+            },2000);
 
         })
         .catch((error) => {

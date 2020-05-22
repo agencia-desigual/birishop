@@ -58,6 +58,14 @@
       <div style="padding-top:50px; padding-bottom: 50px">
 
           <div class="container">
+              <a href="<?= BASE_URL ?>painel/promocao/alterar/<?= $promocao->id_promocao ?>" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Alterar</a>
+              <button data-id="<?= $promocao->id_promocao ?>" class="btn btn-danger deletarPromocao">
+                  <i class="far fa-trash-alt"></i> Deletar
+              </button>
+              <?php if ($usuario->nivel == "associado") : ?>
+                  <a href="<?= BASE_URL ?>painel/promocoes" class="btn btn-success"> Publicar</a>
+              <?php endif; ?>
+              <br><br>
               <h3>Exemplo na home</h3>
               <div class="row">
                   <div class="col-xl-9 col-lg-8">
@@ -259,6 +267,8 @@
 <script src="<?= BASE_URL; ?>/assets/theme/site/js/app.js"></script>
 <!-- Js Autoload -->
 <?php $this->view("autoload/js"); ?>
+<script type='module' src='<?= BASE_URL; ?>assets/app/method/Promocoes.js'></script>
+
 <script>
     function menu(tipo)
     {

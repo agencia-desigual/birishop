@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
+                                    <button type="submit" class="btn btn-primary float-right">Continuar</button>
 
                                 </form>
 

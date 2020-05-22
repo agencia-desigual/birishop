@@ -48,7 +48,7 @@
                                                             <i class="fas fa-window-close"></i>
                                                         </button>
 
-                                                        <button data-id="<?= $banner->id_banner; ?>" data-ordem="<?= $banner->ordem; ?>" class="alterarBanner btn btn-primary btn-icon btn-sm">
+                                                        <button data-id="<?= $banner->id_banner; ?>" data-ordem="<?= $banner->ordem; ?>" data-link="<?= $banner->link; ?>" class="alterarBanner btn btn-primary btn-icon btn-sm">
                                                             <i class="far fa-edit"></i>
                                                         </button>
                                                     </div>
@@ -97,6 +97,25 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <label>Link</label>
+                                            <input name="link" type="text" class="form-control" value="" id="inputLink"  />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- IMAGEM -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Novo Banner</label>
+                                            <input required name="arquivo" type="file" class="dropify">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary">Alterar</button>
                                         </div>
                                     </div>
@@ -124,3 +143,13 @@
 <!-- ============================================================== -->
 
 <?php $this->view("painel/include/footer"); ?>
+<script>
+
+    $(document).ready(function(){
+
+        // Basic
+        $('.dropify').dropify();
+
+    });
+
+</script>

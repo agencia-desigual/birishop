@@ -33,7 +33,7 @@ $Rotas->group("api-banner","api/banner","Api\Banner");
 $Rotas->onGroup("api-banner","GET","get","getAll");
 $Rotas->onGroup("api-banner","GET","get/{p}","get");
 $Rotas->onGroup("api-banner","POST","insert","insert");
-$Rotas->onGroup("api-banner","PUT","update/{p}","update");
+$Rotas->onGroup("api-banner","POST","update/{p}","update");
 $Rotas->onGroup("api-banner","DELETE","delete/{p}","delete");
 
 // Parceiro
