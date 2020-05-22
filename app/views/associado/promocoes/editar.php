@@ -84,7 +84,7 @@
                                                     <div>
                                                         <div class="input-group">
                                                             <!-- PADRÃO DA DATA -->
-                                                            <input type="text"  name="data_validade" class="form-control" value="<?= date("m/d/Y", strtotime($promocaoUsuario->data_validade)) ?>" placeholder="dd/mm/yyyy" id="datepicker2">
+                                                            <input type="text"  name="data_validade" class="form-control" value="<?= date("d/m/Y", strtotime($promocaoUsuario->data_validade)) ?>" placeholder="dd/mm/yyyy" id="datepicker2">
                                                             <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="mdi mdi-calendar"></i></span></div>
                                                         </div><!-- input-group -->
                                                     </div>

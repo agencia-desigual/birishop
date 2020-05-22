@@ -80,6 +80,12 @@ $Rotas->on("GET","cadastro","App\Principal::cadastro");
 // -- Rotas sem grupo
 $Rotas->on("GET","pre-visualizar/{p}","App\Principal::preVisualizar");
 
+// -- Rotas sem grupo
+$Rotas->on("GET","termos-e-condicoes","App\Principal::politicaPrivacidade");
+
+// -- Rotas sem grupo
+$Rotas->on("GET","como-funciona","App\Principal::comoFunciona");
+
 /**
  *  ================================================
  *  =================== PAINEL =====================

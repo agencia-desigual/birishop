@@ -9,7 +9,9 @@
                 <?php $cont = 0; ?>
                     <?php foreach ($banners as $banner) : ?>
                         <div class="carousel-item <?= ($cont == 0) ? 'active' : ''; ?>">
+                            <a href="<?= $banner->link ?>">
                             <img class="d-block w-100" src="<?= $banner->url ?>" alt="<?= SITE_NOME ?>">
+                            </a>
                         </div>
                     <?php $cont++; ?>
                 <?php endforeach; ?>
@@ -24,6 +26,68 @@
             </a>
         </div>
     <?php endif; ?>
+
+    <!--=====================================-->
+    <!--=            Product Start          =-->
+    <!--=====================================-->
+    <section class="section-padding-top-heading bg-accent">
+        <div class="container">
+            <?php if (!empty($promocoes)) : ?>
+                <div class="row gutters-20">
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="heading-layout2">
+                            <h4 style="letter-spacing: 5px" class="heading-title">PROMOÇÕES</h4>
+                        </div>
+                        <?php foreach ($promocoes as $promo) : ?>
+                            <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
+                                <div class="card-promocao container <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?>">
+                                    <div class="row">
+                                        <div class="col-4 img-promocao" style="background-image: url('<?= $promo->imagem ?>');"></div>
+                                        <div class="col-8  justify-content-start">
+                                            <div class="conteudo-promocao">
+                                                <h3 class="titulo-promocao mb-2">
+                                                    <?= $promo->nome ?>
+                                                </h3>
+                                                <p class="mb-0 descricao-promocao"><i class="fas fa-tag mr-1"></i><?= $promo->categoria ?></p>
+                                                <p class="mb-0 data-validade-promocao"><i class="far fa-clock mr-1"></i><?= date("d/m/Y",strtotime($promo->data_validade)); ?></p>
+                                                <p class="mb-0 descricao-promocao"><?= $promo->descricao ?></p>
+                                                <p class="mb-0 preco-antigo"><strike>DE R$ <?= $promo->valor_antigo ?></strike></p>
+                                                <p class="mb-0 preco-atual">POR R$ <?= $promo->valor ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php if($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado") : ?>
+                                    <button class="btn btn-eu-quero float-right" style="background-color: #c108084f !important" >Encerrado</button>
+                                <?php else: ?>
+                                    <button class="btn btn-eu-quero float-right">Eu quero</button>
+                                <?php endif; ?>
+                            </a>
+                        <?php endforeach; ?>
+                        <br>
+                        <a href="<?= BASE_URL ?>promocoes" class="btn-promocoes">Todas Promoções</a>
+                    </div>
+                    <div style="display: none" class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-space-sm">
+                        <div class="heading-layout2">
+                            <h4 style="letter-spacing: 5px" class="heading-title">LOJAS</h4>
+                        </div>
+                        <div class="widget-bottom-margin widget-banner">
+                            <a href="#">
+                                <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
+                            </a>
+                        </div>
+                        <div class="widget-bottom-margin widget-banner">
+                            <a href="#">
+                                <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php else: ?>
+                <h4 style="letter-spacing: 2px">SEM PROMOÇÕES</h4>
+            <?php endif; ?>
+        </div>
+    </section>
 
     <!--=====================================-->
     <!--=            Category Start           =-->
@@ -136,7 +200,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="far fa-kiss-wink-heart"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Beleza</h3>
@@ -184,7 +248,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="fas fa-gem"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Acessórios</h3>
@@ -200,7 +264,7 @@
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
                                     <div class="item-icon">
-                                        <i class="far fa-building"></i>
+                                        <i class="far fa-newspaper"></i>
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">Papelarias</h3>
@@ -227,69 +291,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
-    <!--=====================================-->
-    <!--=            Product Start          =-->
-    <!--=====================================-->
-    <section class="section-padding-top-heading bg-accent">
-        <div class="container">
-            <?php if (!empty($promocoes)) : ?>
-                <div class="row gutters-20">
-                    <div class="col-xl-9 col-lg-8">
-                        <div class="heading-layout2">
-                            <h4 style="letter-spacing: 5px" class="heading-title">PROMOÇÕES</h4>
-                        </div>
-                        <?php foreach ($promocoes as $promo) : ?>
-                            <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
-                                <div class="card-promocao container <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?>">
-                                    <div class="row">
-                                        <div class="col-4 img-promocao" style="background-image: url('<?= $promo->imagem ?>');"></div>
-                                        <div class="col-8  justify-content-start">
-                                            <div class="conteudo-promocao">
-                                                <h3 class="titulo-promocao mb-2">
-                                                        <?= $promo->nome ?>
-                                                </h3>
-                                                <p class="mb-0 descricao-promocao"><i class="fas fa-tag mr-1"></i><?= $promo->categoria ?></p>
-                                                <p class="mb-0 data-validade-promocao"><i class="far fa-clock mr-1"></i><?= date("d/m/Y",strtotime($promo->data_validade)); ?></p>
-                                                <p class="mb-0 descricao-promocao"><?= $promo->descricao ?></p>
-                                                <p class="mb-0 preco-antigo"><strike>DE R$ <?= $promo->valor_antigo ?></strike></p>
-                                                <p class="mb-0 preco-atual">POR R$ <?= $promo->valor ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php if($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado") : ?>
-                                    <button class="btn btn-eu-quero float-right" style="background-color: #c108084f !important" >Encerrado</button>
-                                <?php else: ?>
-                                    <button class="btn btn-eu-quero float-right">Eu quero</button>
-                                <?php endif; ?>
-                            </a>
-                        <?php endforeach; ?>
-                        <br>
-                        <a href="<?= BASE_URL ?>promocoes" class="btn-promocoes">Todas Promoções</a>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-space-sm">
-                        <div class="heading-layout2">
-                            <h4 style="letter-spacing: 5px" class="heading-title">LOJAS</h4>
-                        </div>
-                        <div class="widget-bottom-margin widget-banner">
-                            <a href="#">
-                                <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
-                            </a>
-                        </div>
-                        <div class="widget-bottom-margin widget-banner">
-                            <a href="#">
-                                <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <?php else: ?>
-                <h4 style="letter-spacing: 2px">SEM PROMOÇÕES</h4>
-            <?php endif; ?>
         </div>
     </section>
 

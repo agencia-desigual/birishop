@@ -132,9 +132,7 @@ class Principal extends CI_controller
         $nomeCategoria = null;
         $where = ["status" => 'IN("ativo","cancelado")'];
 
-
-
-            // URL
+        // URL
         $url = BASE_URL . "promocoes";
 
         if(!empty($id))
@@ -187,6 +185,7 @@ class Principal extends CI_controller
 
             // Limitando a descrição
             $promo->descricao = substr($promo->descricao,0,100).'...';
+            $promo->nome = substr($promo->nome,0,25).'...';
 
             // Padrão moeda
             $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");
@@ -489,6 +488,16 @@ class Principal extends CI_controller
         }
 
 
+    }
+
+    public function politicaPrivacidade()
+    {
+        $this->view("site/politica-privacidade");
+    }
+
+    public function comoFunciona()
+    {
+        $this->view("site/como-funciona");
     }
 
 

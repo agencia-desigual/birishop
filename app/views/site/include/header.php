@@ -4,6 +4,17 @@
 
 
 <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167431256-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-167431256-1');
+    </script>
+
     <!-- Meta Data -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +49,29 @@
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i,800,800i&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;display=swap" rel="stylesheet">
+
+    <!-- SEO -------------------------------->
+    <meta name="keywords" content="<?= SITE_NOME ?> | Confira as promoções da nossa cidade">
+    <meta name="description" content="Fique por dentro das melhores promoções da nossa cidade.">
+    <meta name="author" content="<?= SITE_NOME ?>">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="googlebot" content="all, index, follow">
+    <meta name="revisit" content="10 days">
+    <meta name="Revisit-After" content="2 Days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="General">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- SMO ------------------------------>
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="<?= BASE_URL ?>">
+    <meta property="og:title" content="<?= SITE_NOME ?> | Confira as promoções da nossa cidade">
+    <meta property="og:site_name" content="<?= SITE_NOME ?>">
+    <meta property="og:description" content="Fique por dentro das melhores promoções da nossa cidade.">
+    <meta property="og:image" content="<?= BASE_URL ?>assets/custom/site/img/capa-face.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="960">
+    <meta property="og:image:height" content="960">
 
 </head>
 
@@ -145,7 +179,10 @@
                                     <a href="<?= BASE_URL; ?>">HOME</a>
                                 </li>
                                 <li>
-                                    <a href="<?= BASE_URL; ?>promocoes">PROMOCOES</a>
+                                    <a href="<?= BASE_URL; ?>promocoes">PROMOÇÕES</a>
+                                </li>
+                                <li>
+                                    <a href="<?= BASE_URL; ?>como-funciona">COMO FUNCIONA</a>
                                 </li>
                             </ul>
                         </nav>
@@ -159,7 +196,7 @@
                                     </a>
                                 </li>
                                 <li class="header-btn">
-                                    <a href="<?= BASE_URL; ?>cadastro" class="item-btn btn-azul-escuro"><i class="fas fa-plus"></i>Faça seu cadastro</a>
+                                    <a href="<?= BASE_URL; ?>cadastro" class="item-btn btn-azul-escuro"><i class="fas fa-plus"></i>Cadastre sua empresa</a>
                                 </li>
                             </ul>
                         </div>
@@ -351,6 +388,12 @@
             <div style="margin-bottom: 10px; margin-top: 20px" class="row">
                 <div class="col-md-12">
                     <a href="<?= BASE_URL ?>" class="menu-itens-mobile">PROMOÇÕES</a>
+                </div>
+            </div>
+            <hr>
+            <div style="margin-bottom: 10px; margin-top: 20px" class="row">
+                <div class="col-md-12">
+                    <a href="<?= BASE_URL ?>como-funciona" class="menu-itens-mobile">COMO FUNCIONA</a>
                 </div>
             </div>
             <hr>
