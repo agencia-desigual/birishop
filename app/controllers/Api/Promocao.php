@@ -396,7 +396,14 @@ class Promocao extends Controller
 
                     // Convertando a data para o padrão
                     $auxData = explode("/",$put["data_validade"]);
-                    $put["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
+                    if(strlen($auxData[2]) == 4)
+                    {
+                        $put["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
+                    }
+                    else
+                    {
+                        unset($put['data_validade']);
+                    }
 
                     $put["valor"] = str_replace(".",'',$put["valor"]);
                     $put["valor"] = str_replace(",",'.',$put["valor"]);
@@ -406,7 +413,7 @@ class Promocao extends Controller
 
 
                     // Verifica se informou a imagem
-                    if($_FILES["arquivo"]["size"] > 0)
+                    if(isset($_FILES["arquivo"]) && $_FILES['arquivo']["size"] > 0)
                     {
                         // Caminho
                         $caminho = "./storage/promocao/";
@@ -505,6 +512,67 @@ class Promocao extends Controller
         $this->api($dados);
 
     } // End >> fun::update()
+
+
+    /**
+     * Método responsável por alterar os dados de uma
+     * determinada promoção.
+     * ------------------------------------------------------
+     * @param $id [Id Promoção]
+     * ------------------------------------------------------
+     * @url api/promocao/pausar-anuncio/[ID]
+     * @method POST
+     */
+    public function pausarAnuncio($id)
+    {
+        // Variaveis
+        $dados = null;
+        $usuario = null;
+        $obj = null;
+        $objAlterado = null;
+
+        // Verifica se está logado
+        $usuario = $this->objSeguranca->security();
+
+        // Recupera os dados put
+        $post = $_POST;
+
+        // Recupera os dados do objeto
+        $obj = $this->objModelPromocao
+            ->get(["id_promocao" => $id])
+            ->fetch(\PDO::FETCH_OBJ);
+
+        // Verifica existe
+        if(!empty($obj))
+        {
+            // Atualiza a promocao
+            $update = $this->objModelPromocao->update($post,["id_promocao" => $id]);
+
+            if ($update)
+            {
+                // Retorna
+                $dados = [
+                    "tipo" => true,
+                    "code" => 200,
+                    "mensagem" => "Alterado com sucesso."
+                ];
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Erro ao alterar o status."];
+            }
+        }
+        else
+        {
+            // Msg
+            $dados = ["mensagem" => "A promoção informada não foi encontrada."];
+        } // Error >> Promoção não encontrada
+
+        // Retorno
+        $this->api($dados);
+
+    } // End >> fun::pausarAnuncio()
 
 
 

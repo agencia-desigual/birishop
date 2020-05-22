@@ -50,7 +50,7 @@
                                     <tbody>
                                     <?php if (!empty($promocoesUsuario)) : ?>
                                         <?php foreach ($promocoesUsuario as $promo) : ?>
-                                            <tr id="tb_<?= $promo->id_promocao; ?>">
+                                            <tr id="promocao_<?= $promo->id_promocao; ?>">
                                                 <td><?= $promo->nome ?></td>
                                                 <td><?= $promo->empresa ?></td>
                                                 <td>R$<?= number_format($promo->valor, 2, ",", "."); ?></td>
@@ -69,10 +69,13 @@
                                                 <td><?= $promo->data_cadastro ?></td>
                                                 <td class="text-center">
                                                     <?php if($promo->status == 'ativo') : ?>
-                                                        <a style="color: #fff" class="btn btn-danger btn-icon btn-sm pausarAnuncio">
-                                                            PAUSAR ANUNCIO
+                                                        <a style="color: #000" class="btn btn-warning btn-icon btn-sm pausarAnuncio" data-id="<?= $promo->id_promocao ?>">
+                                                            PAUSAR ANÚNCIO
                                                         </a>
                                                     <?php endif; ?>
+                                                    <button data-id="<?= $promo->id_promocao; ?>" class="btn btn-icon deletarPromocao">
+                                                        <i class="fas fa-window-close reprovar"></i>
+                                                    </button>
                                                     <a href="<?= BASE_URL; ?>painel/promocao/alterar/<?= $promo->id_promocao; ?>" class="btn btn-primary btn-icon btn-sm">
                                                         <i class="far fa-edit"></i>
                                                     </a>

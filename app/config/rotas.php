@@ -50,6 +50,7 @@ $Rotas->onGroup("api-promocao","GET","get","getAll");
 $Rotas->onGroup("api-promocao","GET","get/{p}","get");
 $Rotas->onGroup("api-promocao","POST","insert","insert");
 $Rotas->onGroup("api-promocao","POST","update/{p}","update");
+$Rotas->onGroup("api-promocao","POST","pausar-anuncio/{p}","pausarAnuncio");
 $Rotas->onGroup("api-promocao","DELETE","delete/{p}","delete");
 
 

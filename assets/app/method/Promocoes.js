@@ -147,48 +147,43 @@ $("#formAlteraPromocao").on("submit", function () {
  */
 $(".pausarAnuncio").on("click", function () {
 
-    // Não atualiza a página
-    event.preventDefault();
-
     // Busca as informações necessarias
     var id = $(this).data("id");
-    var altera = $(this).data("tipo");
 
     // Instancia o formulário
     var form = new FormData();
 
     // Insere os dados
-    form.set("status", altera);
+    form.set("status", "cancelado");
 
     // Url e Token
-    var url = Global.config.urlApi + "usuario/update/" + id;
+    var url = Global.config.urlApi + "promocao/pausar-anuncio/" + id;
     var token = Global.session.get("token");
-
 
     Swal.fire({
         title: 'Aterar status',
-        text: "Deseja realmente aprovar a empresa?",
+        text: "Deseja realmente pausar o anúncio?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim, aprovar!',
+        confirmButtonText: 'Sim, pausar!',
         cancelButtonText: 'Cancelar',
     }).then((result) => {
         if (result.value) {
 
             // Realiza a requisição
-            Global.enviaApi("PUT", url, form, token.token)
+            Global.enviaApi("POST", url, form, token.token)
                 .then((data) => {
 
                     // Avisa que deu certo
-                    Global.setSuccess("Associado aprovado");
+                    Global.setSuccess("Anúncio pausado");
 
                     // Atualiza a página
                     setTimeout(() => {
 
                         // Manda para o painel
-                        location.href = Global.config.url + 'painel';
+                        location.reload();
 
                     }, 1500);
 
