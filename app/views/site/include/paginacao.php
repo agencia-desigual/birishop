@@ -14,7 +14,7 @@
     <div class="page-number">
         <?php for($i = ($pag - 4); $i <= ($pag + 4); $i++): ?>
             <?php if($i > 0 && $i <= $total): ?>
-                <a href="<?= $url; ?>pag=<?= $i; ?>" class="<?php if($i == $pag){echo 'active';} ?>"><?= $i; ?></a>
+                <a href="<?= $url; ?>?pag=<?= $i; ?>" class="<?php if($i == $pag){echo 'active';} ?>"><?= $i; ?></a>
             <?php endif; ?>
         <?php endfor; ?>
     </div>
@@ -22,7 +22,7 @@
 
     <?php if(($pag + 1) <= $total): ?>
         <div class="btn-next">
-            <a href="<?= $url; ?>pag=<?= ($pag + 1); ?>">
+            <a href="<?= $url; ?>?pag=<?= ($pag + 1); ?>">
                 Próximo <i class="fas fa-angle-double-right"></i>
             </a>
         </div>

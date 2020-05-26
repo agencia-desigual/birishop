@@ -67,18 +67,18 @@
                         <br>
                         <a href="<?= BASE_URL ?>promocoes" class="btn-promocoes">Todas Promoções</a>
                     </div>
-                    <div style="display: none" class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-space-sm">
-                        <div class="heading-layout2">
+                    <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-space-sm">
+                        <div style="display: none" class="heading-layout2">
                             <h4 style="letter-spacing: 5px" class="heading-title">LOJAS</h4>
                         </div>
                         <div class="widget-bottom-margin widget-banner">
                             <a href="#">
-                                <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
+                                <img src="<?= BASE_URL; ?>assets/custom/img/banner-lateral.png" alt="<?= SITE_NOME ?>">
                             </a>
                         </div>
                         <div class="widget-bottom-margin widget-banner">
                             <a href="#">
-                                <img src="<?= BASE_URL; ?>assets/theme/site/media/figure/widget-banner.png" alt="banner">
+                                <img src="<?= BASE_URL; ?>assets/custom/img/banner-lateral.png" alt="<?= SITE_NOME ?>">
                             </a>
                         </div>
                     </div>
