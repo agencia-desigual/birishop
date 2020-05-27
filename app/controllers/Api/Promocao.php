@@ -193,7 +193,8 @@ class Promocao extends Controller
             {
                 $caracteres = ["(",")",",","-"," "];
                 $post['link-whats'] = str_replace($caracteres,"",$post['link-whats']);
-                $post['link'] = "https://api.whatsapp.com/send?phone=55{$post['link-whats']}&text=Encontrei%20sua%20promoção%20no%20Birishop.&source=&data=";
+                $nomePromocao = urldecode($post['nome']);
+                $post['link'] = "https://api.whatsapp.com/send?phone=55{$post['link-whats']}&text=Vi%20no%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
             }
             else
             {
@@ -357,7 +358,7 @@ class Promocao extends Controller
         if(!empty($obj))
         {
             // Verifica se possui permissão
-            if(($usuario->nivel == "admin") || ($usuario->nivel == "associado" || $obj->id_usuario == $usuario->id_usuario))
+            if(($usuario->nivel == "admin") || ($obj->id_usuario == $usuario->id_usuario))
             {
                 // Verifica se não é admin
                 if($usuario->nivel != "admin")
@@ -368,35 +369,63 @@ class Promocao extends Controller
                         // Deleta o status
                         unset($put["status"]);
                     }
+
+                    // Validando o link
+                    if(($put['link-site'] == "" || $put['link-site'] == null) &&
+                        ($put['link-whats'] != "" || $put['link-whats'] != null))
+                    {
+                        $caracteres = ["(",")",",","-"," "];
+                        $put['link-whats'] = str_replace($caracteres,"",$put['link-whats']);
+                        $nomePromocao = urldecode($put['nome']);
+                        $post['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Vi%20no%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
+
+                    }
+                    elseif(($put['link-site'] != "" || $put['link-site'] != null) &&
+                        ($put['link-whats'] == "" || $put['link-whats'] == null))
+                    {
+                        $put['link'] = $put['link-site'];
+                    }
+
+
+                    if(empty($put['link-site']) && empty($put['link-whats']))
+                    {
+                        $this->api(["mensagem" => "informe o link da promoção"]);
+                    }
+                    else
+                    {
+                        if (!empty($put['link-site']))
+                        {
+                            $put['link'] = $put['link-site'];
+                        }
+                        else
+                        {
+                            $caracteres = ["(",")",",","-"," "];
+                            $put['link-whats'] = str_replace($caracteres,"",$put['link-whats']);
+                            $nomePromocao = urlencode($put['nome']);
+                            $put['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Vi%20no%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
+                        }
+
+                        // Removendo para não da merda
+                        unset($put['link-whats']);
+                        unset($put['link-site']);
+                    }
+
                 }
 
                 // Verifica se vai alterar algo
                 if(!empty($put))
                 {
-                    // Caso for update link do admin
-                    if(!isset($put['link']))
-                    {
-                        // Validando o link
-                        if(($put['link-site'] == "" || $put['link-site'] == null) &&
-                            ($put['link-whats'] != "" || $put['link-whats'] != null))
-                        {
-                            $caracteres = ["(",")",",","-"," "];
-                            $put['link-whats'] = str_replace($caracteres,"",$put['link-whats']);
-                            $put['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Encontrei%20sua%20promoção%20no%20Birishop.&source=&data=";
-                        }
-                        elseif(($put['link-site'] != "" || $put['link-site'] != null) &&
-                            ($put['link-whats'] == "" || $put['link-whats'] == null))
-                        {
-                            $put['link'] = $put['link-site'];
-                        }
-
-                        unset($put['link-whats']);
-                        unset($put['link-site']);
-                    }
 
                     // Convertando a data para o padrão
                     $auxData = explode("/",$put["data_validade"]);
-                    $put["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
+                    if(strlen($auxData[2]) == 4)
+                    {
+                        $put["data_validade"] = $auxData[2].'-'.$auxData[1].'-'.$auxData[0];
+                    }
+                    else
+                    {
+                        unset($put['data_validade']);
+                    }
 
                     $put["valor"] = str_replace(".",'',$put["valor"]);
                     $put["valor"] = str_replace(",",'.',$put["valor"]);
@@ -404,9 +433,8 @@ class Promocao extends Controller
                     $put["valor_antigo"] = str_replace(".",'',$put["valor_antigo"]);
                     $put["valor_antigo"] = str_replace(",",'.',$put["valor_antigo"]);
 
-
                     // Verifica se informou a imagem
-                    if($_FILES["arquivo"]["size"] > 0)
+                    if(isset($_FILES["arquivo"]) && $_FILES['arquivo']["size"] > 0)
                     {
                         // Caminho
                         $caminho = "./storage/promocao/";
@@ -505,6 +533,67 @@ class Promocao extends Controller
         $this->api($dados);
 
     } // End >> fun::update()
+
+
+    /**
+     * Método responsável por alterar os dados de uma
+     * determinada promoção.
+     * ------------------------------------------------------
+     * @param $id [Id Promoção]
+     * ------------------------------------------------------
+     * @url api/promocao/pausar-anuncio/[ID]
+     * @method POST
+     */
+    public function pausarAnuncio($id)
+    {
+        // Variaveis
+        $dados = null;
+        $usuario = null;
+        $obj = null;
+        $objAlterado = null;
+
+        // Verifica se está logado
+        $usuario = $this->objSeguranca->security();
+
+        // Recupera os dados put
+        $post = $_POST;
+
+        // Recupera os dados do objeto
+        $obj = $this->objModelPromocao
+            ->get(["id_promocao" => $id])
+            ->fetch(\PDO::FETCH_OBJ);
+
+        // Verifica existe
+        if(!empty($obj))
+        {
+            // Atualiza a promocao
+            $update = $this->objModelPromocao->update($post,["id_promocao" => $id]);
+
+            if ($update)
+            {
+                // Retorna
+                $dados = [
+                    "tipo" => true,
+                    "code" => 200,
+                    "mensagem" => "Alterado com sucesso."
+                ];
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Erro ao alterar o status."];
+            }
+        }
+        else
+        {
+            // Msg
+            $dados = ["mensagem" => "A promoção informada não foi encontrada."];
+        } // Error >> Promoção não encontrada
+
+        // Retorno
+        $this->api($dados);
+
+    } // End >> fun::pausarAnuncio()
 
 
 

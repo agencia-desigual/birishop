@@ -63,9 +63,11 @@ $(".alterarBanner").on("click", function () {
     // Recupera os dados
     var id = $(this).data("id");
     var ordem = $(this).data("ordem");
+    var link = $(this).data("link");
 
     // Altera os campos do modal
     $("#inputOrdem").val(ordem);
+    $("#inputLink").val(link);
     $("#inputId").val(id);
 
     // Abre o modal
@@ -145,7 +147,7 @@ $("#formAlteraBanner").on("submit", function () {
     var token = Global.session.get("token");
 
     // Realiza a requisição
-    Global.enviaApi("PUT", url, form, token.token)
+    Global.enviaApi("POST", url, form, token.token)
         .then((data) => {
             // Avisa que deu certo
             Global.setSuccess(data.mensagem);

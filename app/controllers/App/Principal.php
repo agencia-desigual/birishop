@@ -132,11 +132,6 @@ class Principal extends CI_controller
         $nomeCategoria = null;
         $where = ["status" => 'IN("ativo","cancelado")'];
 
-        // Quantidade de promoções
-        $qtdePromocoes = $this->objModelPromocoes
-            ->get(["status" => 'ativo'])
-            ->rowCount();
-
         // URL
         $url = BASE_URL . "promocoes";
 
@@ -190,6 +185,7 @@ class Principal extends CI_controller
 
             // Limitando a descrição
             $promo->descricao = substr($promo->descricao,0,100).'...';
+            $promo->nome = substr($promo->nome,0,25).'...';
 
             // Padrão moeda
             $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");
@@ -207,6 +203,9 @@ class Principal extends CI_controller
             $promo->imagem = BASE_STORAGE.'promocao/'.$promo->imagem;
         }
 
+        // Quantidade de promoções
+        $qtdePromocoes = count($promocoes);
+
         // Array de dados
         $dados = [
             "nomeCategoria" => $nomeCategoria,
@@ -218,6 +217,7 @@ class Principal extends CI_controller
                 "total" => $totalPaginas
             ],
         ];
+
 
         // Carrega a view
         $this->view("site/promocoes",$dados);
@@ -440,39 +440,64 @@ class Principal extends CI_controller
         // Verificando o usuario
         $usuario = $this->objHelperApoio->seguranca();
 
-        // Instanciando
-        $this->objModelPromocoes = new Promocao();
-        $this->objModelCategoria = new Categoria();
-        $this->objModelUsuario = new \Model\Usuario();
-
         // Buscando a promoção
+        $this->objModelPromocoes = new Promocao();
         $promocao = $this->objModelPromocoes->get(["id_promocao" => $id])->fetch(\PDO::FETCH_OBJ);
 
-        // Busca a categoria
-        $cateogoria = $this->objModelCategoria->get(["id_categoria" => $promocao->id_categoria])->fetch(\PDO::FETCH_OBJ);
+        // Verificando as permissões
+        if (($usuario->nivel == "admin") || ($usuario->nivel == "associado" && $usuario->id_usuario == $promocao->id_usuario))
+        {
+            // Instanciando
+            $this->objModelPromocoes = new Promocao();
+            $this->objModelCategoria = new Categoria();
+            $this->objModelUsuario = new \Model\Usuario();
 
-        // Busca o associado
-        $associado = $this->objModelUsuario->get(["id_usuario" => $promocao->id_usuario])->fetch(\PDO::FETCH_OBJ);
+            // Busca a categoria
+            $cateogoria = $this->objModelCategoria->get(["id_categoria" => $promocao->id_categoria])->fetch(\PDO::FETCH_OBJ);
 
-        // Atribuindo os valores
-        $promocao->categoria = $cateogoria;
-        $promocao->associado = $associado;
+            // Busca o associado
+            $associado = $this->objModelUsuario->get(["id_usuario" => $promocao->id_usuario])->fetch(\PDO::FETCH_OBJ);
 
-        // Padrão moeda
-        $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
-        $promocao->valor = number_format($promocao->valor, 2, ",", ".");
+            // Atribuindo os valores
+            $promocao->categoria = $cateogoria;
+            $promocao->associado = $associado;
+
+            // Padrão moeda
+            $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
+            $promocao->valor = number_format($promocao->valor, 2, ",", ".");
 
 
-        // Imagem da promocao
-        $promocao->imagem = BASE_STORAGE.'promocao/'.$promocao->imagem;
+            // Imagem da promocao
+            $promocao->imagem = BASE_STORAGE.'promocao/'.$promocao->imagem;
 
-        // Limitando a descrição
-        $promocao->descricao = substr($promocao->descricao,0,100).'...';
+            // Limitando a descrição
+            $promocao->descricao = substr($promocao->descricao,0,100).'...';
 
-        $dados = ["promocao" => $promocao];
+            $dados = [
+                "usuario" => $usuario,
+                "promocao" => $promocao
+            ];
 
-        $this->view("site/pre-visualizar",$dados);
+            $this->view("site/pre-visualizar",$dados);
+        }
+        else
+        {
+            // Erro 404
+            $this->view("site/erro404");
 
+        }
+
+
+    }
+
+    public function politicaPrivacidade()
+    {
+        $this->view("site/politica-privacidade");
+    }
+
+    public function comoFunciona()
+    {
+        $this->view("site/como-funciona");
     }
 
 

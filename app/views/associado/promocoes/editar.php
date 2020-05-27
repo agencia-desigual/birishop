@@ -84,7 +84,7 @@
                                                     <div>
                                                         <div class="input-group">
                                                             <!-- PADRÃO DA DATA -->
-                                                            <input type="text"  name="data_validade" class="form-control" value="<?= date("m/d/Y", strtotime($promocaoUsuario->data_validade)) ?>" placeholder="dd/mm/yyyy" id="datepicker2">
+                                                            <input type="text"  name="data_validade" class="form-control" value="<?= date("d/m/Y", strtotime($promocaoUsuario->data_validade)) ?>" placeholder="dd/mm/yyyy" id="datepicker2">
                                                             <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="mdi mdi-calendar"></i></span></div>
                                                         </div><!-- input-group -->
                                                     </div>
@@ -107,6 +107,18 @@
                                                 <div class="col-md-12">
                                                     <label>Decrição</label>
                                                     <textarea id="textarea" name="descricao" class="form-control" maxlength="500" rows="3" required=""><?= $promocaoUsuario->descricao ?></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- IMG ATUAL E NOVA IMG -->
+                                        <div class="form-group pt-3 pb-3">
+                                            <label>Imagem Atual</label>
+                                            <div class="row">
+                                                <div class="col-md-6 produto-painel" style="background-image: url('<?= $promocao->imagem ?>')"></div>
+                                                <div class="col-md-6">
+                                                    <label>Nova Imagem</label>
+                                                    <input name="arquivo" type="file" class="dropify">
                                                 </div>
                                             </div>
                                         </div>

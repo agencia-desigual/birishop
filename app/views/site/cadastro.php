@@ -8,12 +8,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>SEJA UM ASSOCIADO</h1>
+                        <h1>FAÇA SEU CADASTRO</h1>
                         <ul>
                             <li>
                                 <a href="<?= BASE_URL ?>">HOME</a>
                             </li>
-                            <li>CADASTRO</li>
+                            <li>FAÇA SEU CADASTRO</li>
                         </ul>
                     </div>
                 </div>
@@ -28,11 +28,9 @@
                     <div class="col"></div>
                     <div class="col-lg-10 pt-3 pb-3">
                         <div class="form-box login-form">
-                            <h3 class="item-title text-center">Seja um Associado</h3>
+                            <h3 class="item-title text-center">Faça seu cadastro</h3>
                             <p style="margin-top: -15px" class="text-center">
-                                <a class="text-center" href="https://www.acibirigui.com.br/como-associar-se" target="_blank">
-                                    Como associar-se
-                                </a>
+                                Apenas cadastros de empresas associadas a ACIB<br>serão permitidos. Caso não seja um associado, <a style="display: inline" class="text-center" href="https://www.acibirigui.com.br/como-associar-se" target="_blank">saiba como associar-se</a>
                             </p>
                             <hr style="padding-bottom: 20px">
                             <form id="formUsuarioCadastro">
@@ -72,7 +70,7 @@
                                 <div class="row mb-2 ml-2">
                                     <div class="col-md-12">
                                         <input required type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1" style="font-size: 13px;position: relative;top: -3px;">Eu aceito todos os termos da <a href="#">Politica e privacidade</a></label>
+                                        <label class="form-check-label" for="exampleCheck1" style="font-size: 13px;position: relative;top: -3px;">Eu aceito todos os <a href="<?= BASE_URL ?>termos-e-condicoes" target="_blank">Termos e condições</a></label>
                                     </div>
                                 </div>
 

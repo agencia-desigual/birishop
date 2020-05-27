@@ -191,7 +191,7 @@ class Banner extends Controller
      * -------------------------------------------------------
      * @author igorcacerez
      * -------------------------------------------------------
-     * @method PUT
+     * @method POST
      * @url api/banner/update/[ID]
      */
     public function update($id)
@@ -207,7 +207,7 @@ class Banner extends Controller
         $usuario = $this->objSeguranca->security();
 
         // Recupera os dados PUT
-        $put = $this->objInput->put();
+        $put = $_POST;
 
         // Verifica se o usuário é admin
         if($usuario->nivel == "admin")
@@ -220,6 +220,67 @@ class Banner extends Controller
             // Verifica se encontrou
             if(!empty($banner))
             {
+
+                // Verifica se informou o arquivo
+                if(isset($_FILES["arquivo"]) && $_FILES["arquivo"]["size"] > 0)
+                {
+                    // Caminho
+                    $caminho = "./storage/banner/";
+
+                    // Verifica não se existe
+                    if(!is_dir($caminho))
+                    {
+                        // Cria o diretório
+                        mkdir($caminho, 0777, true);
+                    }
+
+                    // Instancia o objeto
+                    $objFile = new File();
+
+                    // Seta as configurações
+                    $objFile->setStorange($caminho);
+                    $objFile->setMaxSize(2 * MB);
+                    $objFile->setExtensaoValida(["jpg","jpeg","png"]);
+                    $objFile->setFile($_FILES["arquivo"]);
+
+                    // Verifica se o tamanho é válido
+                    if($objFile->validaSize())
+                    {
+                        // Verifica se a extensão é válida
+                        if($objFile->validaExtensao())
+                        {
+                            // Faz o upload
+                            $arquivo = $objFile->upload();
+
+                            // Verifica se deu certo
+                            if(!empty($arquivo))
+                            {
+                                // Monta a inserção
+                                $put["arquivo"] = $arquivo;
+
+                                // Removendo a img antiga
+                                unlink($caminho.$banner->arquivo);
+                            }
+                            else
+                            {
+                                // Msg
+                                $dados = ["mensagem" => "Ocorreu um erro no upload da imagem."];
+
+                            } // Error >> Ocorreu um erro no upload da imagem.
+                        }
+                        else
+                        {
+                            // Msg
+                            $dados = ["mensagem" => "A extensão da imagem deve ser JPG, JPEG ou PNG."];
+                        } // Error >> Extensão inválida.
+                    }
+                    else
+                    {
+                        // Msg
+                        $dados = ["mensagem" => "A imagem é maior que o permitido, 2MB."];
+                    } // Error >> Imagem muito pesada.
+                }
+
                 // Altera os dados
                 if($this->objModelBanner->update($put, ["id_banner" => $id]) != false)
                 {

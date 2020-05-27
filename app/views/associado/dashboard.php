@@ -100,6 +100,11 @@
                                                         <?php endif; ?>
                                                     </td>
                                                     <td class="text-center">
+                                                        <?php if($promocao->status == 'ativo') : ?>
+                                                            <a style="color: #000" class="btn btn-warning btn-icon btn-sm pausarAnuncio" data-id="<?= $promocao->id_promocao ?>">
+                                                                PAUSAR ANÚNCIO
+                                                            </a>
+                                                        <?php endif; ?>
                                                         <button data-id="<?= $promocao->id_promocao; ?>" class="btn btn-icon deletarPromocao">
                                                             <i class="fas fa-window-close reprovar"></i>
                                                         </button>

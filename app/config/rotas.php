@@ -33,7 +33,7 @@ $Rotas->group("api-banner","api/banner","Api\Banner");
 $Rotas->onGroup("api-banner","GET","get","getAll");
 $Rotas->onGroup("api-banner","GET","get/{p}","get");
 $Rotas->onGroup("api-banner","POST","insert","insert");
-$Rotas->onGroup("api-banner","PUT","update/{p}","update");
+$Rotas->onGroup("api-banner","POST","update/{p}","update");
 $Rotas->onGroup("api-banner","DELETE","delete/{p}","delete");
 
 // Parceiro
@@ -50,6 +50,7 @@ $Rotas->onGroup("api-promocao","GET","get","getAll");
 $Rotas->onGroup("api-promocao","GET","get/{p}","get");
 $Rotas->onGroup("api-promocao","POST","insert","insert");
 $Rotas->onGroup("api-promocao","POST","update/{p}","update");
+$Rotas->onGroup("api-promocao","POST","pausar-anuncio/{p}","pausarAnuncio");
 $Rotas->onGroup("api-promocao","DELETE","delete/{p}","delete");
 
 
@@ -78,6 +79,12 @@ $Rotas->on("GET","cadastro","App\Principal::cadastro");
 
 // -- Rotas sem grupo
 $Rotas->on("GET","pre-visualizar/{p}","App\Principal::preVisualizar");
+
+// -- Rotas sem grupo
+$Rotas->on("GET","termos-e-condicoes","App\Principal::politicaPrivacidade");
+
+// -- Rotas sem grupo
+$Rotas->on("GET","como-funciona","App\Principal::comoFunciona");
 
 /**
  *  ================================================
