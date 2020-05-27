@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     <?php else: ?>
-                        <h3>Opps, não encontramos nenhuma promoção.</h3>
+                        <h3>Ops, não encontramos nenhuma promoção.</h3>
 
                         <a href="<?= BASE_URL; ?>" class="submit-btn btn-newslleter" style="padding: 10px 20px !important;">
                             Voltar Para a home
