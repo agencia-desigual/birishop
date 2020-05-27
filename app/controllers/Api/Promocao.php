@@ -225,6 +225,8 @@ class Promocao extends Controller
                 $post["valor_antigo"] = str_replace(".",'',$post["valor_antigo"]);
                 $post["valor_antigo"] = str_replace(",",'.',$post["valor_antigo"]);
 
+                $post["nome"] = strtoupper($post["nome"]);
+
 
                 // Verifica se informou a imagem
                 if($_FILES["arquivo"]["size"] > 0)
@@ -363,6 +365,11 @@ class Promocao extends Controller
                 // Verifica se não é admin
                 if($usuario->nivel != "admin")
                 {
+                    if(!empty($put["nome"]))
+                    {
+                        $put["nome"] = strtoupper($put["nome"]);
+                    }
+
                     // Verifica se o status é diferente de cancelado ou analise
                     if(!empty($put["status"]) && $put["status"] != "cancelado" && $put["status"] != "analise")
                     {

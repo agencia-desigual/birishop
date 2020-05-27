@@ -130,7 +130,7 @@ class Promocoes extends CI_controller
 
         // Buscando as categorias
         $categorias = $this->objModelCategoria
-            ->get()
+            ->get(null, "nome ASC")
             ->fetchAll(\PDO::FETCH_OBJ);
 
         // Verifica se é admin

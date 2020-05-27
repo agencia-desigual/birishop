@@ -100,6 +100,23 @@
             <div class="row">
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/10">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-gem"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Acessórios</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
                         <a href="<?= BASE_URL; ?>promocoes/1">
                             <div class="tamanho-categoria centraliza-itens">
                                 <div>
@@ -130,70 +147,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/3">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="fas fa-heartbeat"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Saúde</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/4">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="fas fa-tools"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Serviços automotivos</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/5">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="fas fa-laptop"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Eletrônicos</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/6">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="fas fa-paw"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Pet's</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="<?= BASE_URL; ?>promocoes/7">
@@ -210,22 +164,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/8">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="fas fa-tshirt"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Vestuário</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="<?= BASE_URL; ?>promocoes/9">
@@ -242,38 +181,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/10">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="fas fa-gem"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Acessórios</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-6">
-                    <div class="category-box-layout1">
-                        <a href="<?= BASE_URL; ?>promocoes/11">
-                            <div class="tamanho-categoria centraliza-itens">
-                                <div>
-                                    <div class="item-icon">
-                                        <i class="far fa-newspaper"></i>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title">Papelarias</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+
                 <div class="col-md-2 col-6">
                     <div class="category-box-layout1">
                         <a href="<?= BASE_URL; ?>promocoes/12">
@@ -290,6 +198,113 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/5">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-laptop"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Eletrônicos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/11">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-newspaper"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Papelarias</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/6">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-paw"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Pet's</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/3">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Saúde</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/4">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Serviços automotivos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-2 col-6">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/8">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-tshirt"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Vestuário</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

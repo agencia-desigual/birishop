@@ -39,7 +39,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Nome do Produto</label>
-                                                <input type="text" class="form-control" name="nome" required="" />
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" name="nome" required="" />
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Valor Antigo</label>

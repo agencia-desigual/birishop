@@ -91,7 +91,7 @@ $("#formInserirPromocao").on("submit", function () {
 
             setTimeout(function () {
 
-                location.href = Global.config.url + 'pre-visualizar/'+data.objeto.id_promocao;
+                location.href = Global.config.url + 'painel/promocoes';
 
             },2000);
 
@@ -135,7 +135,7 @@ $("#formAlteraPromocao").on("submit", function () {
 
             // Atualiza
             setTimeout(() => {
-                location.reload();
+                location.href = Global.config.url + 'painel/promocoes';
             }, 2000);
 
 

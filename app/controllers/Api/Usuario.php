@@ -348,6 +348,18 @@ class Usuario extends CI_controller
                             // Exit
                             exit;
                         }
+                        else
+                        {
+                            // Verifica se é cnpj
+                            if(strlen($post["cnpj"]) != 18)
+                            {
+                                // Avisa do erro
+                                $this->api(["mensagem" => "O CNPJ informado não é válido."]);
+
+                                // Exit
+                                exit;
+                            }
+                        }
                     }
 
                     // Insere
