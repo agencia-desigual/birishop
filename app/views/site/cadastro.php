@@ -51,8 +51,8 @@
                                         <input type="email" class="form-control" name="email" id="email">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>CNPJ</label>
-                                        <input type="text" class="form-control maskCNPJ" name="cnpj" id="cnpj">
+                                        <label>CNPJ ou CPF</label>
+                                        <input type="text" class="form-control maskNumero" maxlength="14" name="cnpj" id="cnpj">
                                     </div>
                                 </div>
 

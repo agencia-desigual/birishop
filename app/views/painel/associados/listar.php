@@ -40,7 +40,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">NOME DA LOJA</th>
-                                        <th scope="col">CNPJ</th>
+                                        <th scope="col">CNPJ ou CPF</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">STATUS</th>
                                         <th class="text-center" scope="col">AÇÕES</th>

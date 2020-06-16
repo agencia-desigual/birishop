@@ -42,8 +42,8 @@
                                                 <input type="text" class="form-control" name="nome_estabelecimento" value="" required="" />
                                             </div>
                                             <div class="col-md-6">
-                                                <label>CNPJ</label>
-                                                <input type="tel" class="form-control maskCNPJ" name="cnpj" value="" required="" />
+                                                <label>CNPJ ou CPF</label>
+                                                <input type="tel" class="form-control" name="cnpj" maxlength="14" value="" required="" />
                                             </div>
                                         </div>
                                     </div>
