@@ -9,7 +9,7 @@ $database = [
 
 //$database = [
 //    'hostname' => 'localhost',
-//    'username' => 'desigual_birisho',
+//    'username' => 'birishop_usuario',
 //    'password' => 'suporte123',
-//    'database' => 'desigual_birishop'
+//    'database' => 'birishop_banco'
 //];

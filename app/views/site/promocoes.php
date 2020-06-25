@@ -1,4 +1,7 @@
 <?php $this->view("site/include/header"); ?>
+    <head>
+        <meta charset="UTF-8">
+    </head>
 
     <!--=====================================-->
     <!--=        Inner Banner Start         =-->

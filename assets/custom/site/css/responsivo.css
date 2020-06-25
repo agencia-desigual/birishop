@@ -63,6 +63,10 @@
         width: 100%;
         height: 170px;
     }
+    .grid-view-layout2 .product-box-layout1 .item-content
+    {
+        min-height: auto !important;
+    }
 }
 
 @media only screen and (max-width: 991px) {

@@ -348,6 +348,19 @@ class Usuario extends CI_controller
                             // Exit
                             exit;
                         }
+                        else
+                        {
+                            // Verifica se é cnpj
+                            if(strlen($post["cnpj"]) != 11 && strlen($post["cnpj"]) != 14)
+                            {
+                                
+                                // Avisa do erro
+                                $this->api(["mensagem" => "Documento informado não é valido."]);
+
+                                // Exit
+                                exit;
+                            }
+                        }
                     }
 
                     // Insere

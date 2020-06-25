@@ -40,3 +40,8 @@
     position: fixed;
 }
 
+.grid-view-layout2 .product-box-layout1 .item-content
+{
+    min-height: 280px !important;
+}
+

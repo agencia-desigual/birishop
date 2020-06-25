@@ -43,7 +43,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label>CNPJ ou CPF</label>
-                                                <input type="tel" class="form-control" name="cnpj" maxlength="14" value="" required="" />
+                                                <input type="tel" class="form-control" name="cnpj" value="" required="" />
                                             </div>
                                         </div>
                                     </div>

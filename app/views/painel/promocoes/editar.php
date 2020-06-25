@@ -42,7 +42,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label>Nome do Produto</label>
-                                                    <input type="text" class="form-control" name="nome" value="<?= $promocao->nome ?>" required="" />
+                                                    <input type="text" class="form-control" style="text-transform: uppercase;" name="nome" value="<?= $promocao->nome ?>" required="" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Valor Antigo</label>
@@ -136,7 +136,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="<?= BASE_URL; ?>pre-visualizar/<?= $promocao->id_promocao ?>" target="_blank" class="btn btn-primary float-right">Pré visualizar</a>
+                                        <a href="<?= BASE_URL; ?>pre-visualizar/<?= $promocao->id_promocao ?>" class="btn btn-primary float-right">Pré visualizar</a>
                                         <button type="submit" class="btn btn-primary float-right mr-2">Alterar</button>
 
                                     </form>

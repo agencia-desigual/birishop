@@ -185,7 +185,7 @@ class Principal extends CI_controller
 
             // Limitando a descrição
             $promo->descricao = substr($promo->descricao,0,100).'...';
-            $promo->nome = substr($promo->nome,0,25).'...';
+            $promo->nome = substr($promo->nome,0,30).'...';
 
             // Padrão moeda
             $promo->valor_antigo = number_format($promo->valor_antigo, 2, ",", ".");

@@ -85,7 +85,7 @@ class Banner extends Controller
                 // Seta as configurações
                 $objFile->setStorange($caminho);
                 $objFile->setMaxSize(2 * MB);
-                $objFile->setExtensaoValida(["jpg","jpeg","png"]);
+                $objFile->setExtensaoValida(["jpg","jpeg","png","gif"]);
                 $objFile->setFile($_FILES["arquivo"]);
 
                 // Verifica se o tamanho é válido
