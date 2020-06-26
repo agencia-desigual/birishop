@@ -2,11 +2,13 @@ import Session from "./main/Session.js"
 
 // Dados importantes
 var Dados = {
-    "url": "http://localhost/git/birishop/",
-    "urlApi": "http://localhost/git/birishop/api/",
-    // "url": "https://birishop.com.br/",
-    // "urlApi": "https://birishop.com.br/api/"
+    // "url": "http://localhost/git/birishop/",
+    // "urlApi": "http://localhost/git/birishop/api/",
+    "url": "https://birishop.com.br/",
+    "urlApi": "https://birishop.com.br/api/"
 }
+
+eletrica2606
 
 
 // Mascaras
