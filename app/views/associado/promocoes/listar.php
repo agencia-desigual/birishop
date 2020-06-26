@@ -39,11 +39,10 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">NOME</th>
-                                        <th scope="col">EMPRESA</th>
                                         <th scope="col">PREÇO</th>
-                                        <th scope="col">STATUS</th>
+                                        <th class="text-center" scope="col">STATUS</th>
                                         <th scope="col">DTA. EXPIRAÇÃO</th>
-                                        <th scope="col">DTA. CADASTRO</th>
+                                        <th scope="col">ACESSOS</th>
                                         <th class="text-center" scope="col">AÇÕES</th>
                                     </tr>
                                     </thead>
@@ -52,9 +51,8 @@
                                         <?php foreach ($promocoesUsuario as $promo) : ?>
                                             <tr id="promocao_<?= $promo->id_promocao; ?>">
                                                 <td><?= $promo->nome ?></td>
-                                                <td><?= $promo->empresa ?></td>
                                                 <td>R$<?= number_format($promo->valor, 2, ",", "."); ?></td>
-                                                <td>
+                                                <td class="text-center">
                                                     <?php if($promo->status == 'ativo') : ?>
                                                         <span class="badge badge-success">ATIVO</span>
                                                     <?php elseif($promo->status == 'analise') : ?>
@@ -66,7 +64,13 @@
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?= $promo->data_validade?></td>
-                                                <td><?= $promo->data_cadastro ?></td>
+                                                <td class="text-center">
+                                                    <?php if (!empty($promo->acesso)) : ?>
+                                                        <?= $promo->acesso->acesso ?>
+                                                    <?php else: ?>
+                                                        0
+                                                    <?php endif; ?>
+                                                </td>
                                                 <td class="text-center">
                                                     <?php if($promo->status == 'ativo') : ?>
                                                         <a style="color: #000" class="btn btn-warning btn-icon btn-sm pausarAnuncio" data-id="<?= $promo->id_promocao ?>">

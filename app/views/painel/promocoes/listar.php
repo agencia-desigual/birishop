@@ -41,9 +41,9 @@
                                         <th scope="col">NOME</th>
                                         <th scope="col">EMPRESA</th>
                                         <th scope="col">PREÇO</th>
-                                        <th scope="col">STATUS</th>
+                                        <th id="status-admin" scope="col">STATUS</th>
                                         <th scope="col">DTA. EXPIRAÇÃO</th>
-                                        <th scope="col">DTA. CADASTRO</th>
+                                        <th class="text-center" scope="col">CLIQUES</th>
                                         <th class="text-center" scope="col">AÇÕES</th>
                                     </tr>
                                     </thead>
@@ -66,7 +66,13 @@
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?= $promo->data_validade?></td>
-                                                <td><?= $promo->data_cadastro ?></td>
+                                                <td class="text-center">
+                                                    <?php if (!empty($promo->acesso)) : ?>
+                                                        <?= $promo->acesso->acesso ?>
+                                                    <?php else: ?>
+                                                        0
+                                                    <?php endif; ?>
+                                                </td>
                                                 <td class="text-center">
                                                     <a href="<?= BASE_URL; ?>painel/promocao/alterar/<?= $promo->id_promocao; ?>" class="btn btn-primary btn-icon btn-sm">
                                                         <i class="far fa-edit"></i>
@@ -103,3 +109,11 @@
     <!-- ============================================================== -->
 
 <?php $this->view("painel/include/footer"); ?>
+
+<script>
+    $(document).ready(function() {
+
+        $('#status-admin').trigger('click');
+
+    } );
+</script>

@@ -9,6 +9,7 @@
 namespace Controller\App;
 
 use Helper\Apoio;
+use Model\Acesso;
 use Model\Categoria;
 use Model\Promocao;
 use Sistema\Controller as CI_controller;
@@ -22,6 +23,7 @@ class Promocoes extends CI_controller
     private $objModelUsuario;
     private $objHelperApoio;
     private $objModelCategoria;
+    private $objModelAcesso;
 
     // Método construtor
     function __construct()
@@ -34,6 +36,7 @@ class Promocoes extends CI_controller
         $this->objModelUsuario = new \Model\Usuario();
         $this->objHelperApoio = new Apoio();
         $this->objModelCategoria = new Categoria();
+        $this->objModelAcesso = new Acesso();
 
     }
 
@@ -68,7 +71,15 @@ class Promocoes extends CI_controller
                 // Convertendo a data para o padrão BR
                 $promo->data_validade = date("d/m/Y",strtotime($promo->data_validade));
                 $promo->data_cadastro = date("d/m/Y",strtotime($promo->data_cadastro));
+
+                // Buscando a quantidade de acesso
+                $acesso = $this->objModelAcesso
+                    ->get(["id_promocao" => $promo->id_promocao])
+                    ->fetch(\PDO::FETCH_OBJ);
+
+               $promo->acesso = $acesso;
             }
+
 
             // ========== LISTA DE PROMOCOES DO ASSOCIADO ========== //
             $promocoesUsuario = $this->objModelPromocoes
@@ -82,6 +93,13 @@ class Promocoes extends CI_controller
                 // Convertendo a data para o padrão BR
                 $promoUsuario->data_validade = date("d/m/Y",strtotime($promoUsuario->data_validade));
                 $promoUsuario->data_cadastro = date("d/m/Y",strtotime($promoUsuario->data_cadastro));
+
+                // Buscando a quantidade de acesso
+                $acesso = $this->objModelAcesso
+                    ->get(["id_promocao" => $promoUsuario->id_promocao])
+                    ->fetch(\PDO::FETCH_OBJ);
+
+                $promoUsuario->acesso = $acesso;
             }
 
             // Array de dados

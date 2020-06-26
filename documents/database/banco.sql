@@ -60,6 +60,7 @@ CREATE TABLE banner (
     arquivo VARCHAR (150) NOT NULL,
     link TEXT NULL DEFAULT NULL,
     ordem INT NOT NULL,
+    lateral INT DEFAULT 0,
     status BOOLEAN NOT NULL DEFAULT true,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_banner)
@@ -72,6 +73,14 @@ CREATE TABLE parceiro (
     status BOOLEAN NOT NULL DEFAULT true,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_parceiro)
+);
+
+CREATE TABLE acesso (
+    id_acesso INT NOT NULL AUTO_INCREMENT,
+    id_promocao INT NOT NULL,
+    acesso INT NOT NULL DEFAULT 0,
+    data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_acesso)
 );
 
 -- INSERT TABELA USUARIO

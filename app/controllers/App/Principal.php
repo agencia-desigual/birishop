@@ -9,6 +9,7 @@
 namespace Controller\App;
 
 use Helper\Apoio;
+use Model\Acesso;
 use Model\Categoria;
 use Model\Promocao;
 use Sistema\Controller as CI_controller;
@@ -23,6 +24,7 @@ class Principal extends CI_controller
     private $objModelParceiros;
     private $objModelBanner;
     private $objModelCategoria;
+    private $objModelAcesso;
 
 
     // Método construtor
@@ -33,6 +35,7 @@ class Principal extends CI_controller
 
         // Helpers
         $this->objHelperApoio = new Apoio();
+        $this->objModelAcesso = new Acesso();
     }
 
 
@@ -90,7 +93,7 @@ class Principal extends CI_controller
 
 
         $banners = $this->objModelBanner
-            ->get(["status" => true],"ordem ASC")
+            ->get(["status" => true, "lateral" => 0],"ordem ASC")
             ->fetchAll(\PDO::FETCH_OBJ);
 
         foreach ($banners as $banner)
@@ -100,11 +103,22 @@ class Principal extends CI_controller
         }
 
 
+        $bannersLateral = $this->objModelBanner
+            ->get(["status" => true, "lateral" => 1],"ordem ASC")
+            ->fetchAll(\PDO::FETCH_OBJ);
+
+        foreach ($bannersLateral as $lateral)
+        {
+            // Montando a URL do banner
+            $lateral->url = BASE_STORAGE.'banner/'.$lateral->arquivo;
+        }
+
         // Array de dados
         $dados = [
             "parceiros" => $parceiros,
             "promocoes" => $promocoes,
             "banners" => $banners,
+            "bannersLateral" => $bannersLateral,
             "js" => [
                 "modulos" => ["Newsletter"]
             ]
@@ -265,6 +279,7 @@ class Principal extends CI_controller
             // Array de dados
             $dados = [
                 "promocao" => $promocao,
+                "js" => ["modulos" => ["Promocoes"]]
             ];
 
             // Carrega a view
@@ -396,6 +411,13 @@ class Principal extends CI_controller
             // Padrão moeda
             $promocao->valor_antigo = number_format($promocao->valor_antigo, 2, ",", ".");
             $promocao->valor = number_format($promocao->valor, 2, ",", ".");
+
+            // Buscando a quantidade de acesso
+            $acesso = $this->objModelAcesso
+                ->get(["id_promocao" => $promocao->id_promocao])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            $promocao->acesso = $acesso;
         }
 
 

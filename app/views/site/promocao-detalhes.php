@@ -103,7 +103,7 @@
                                     </div>
                                 <?php endif; ?>
                                 <div class="author-mail">
-                                    <a href="<?= $promocao->link ?>" target="_blank" class="btn btn-pegar-promocao">
+                                    <a href="<?= $promocao->link ?>" data-id="<?= $promocao->id_promocao ?>" target="_blank" class="btn btn-pegar-promocao contarAcesso">
                                         PEGAR PROMOÇÃO
                                     </a>
                                 </div>

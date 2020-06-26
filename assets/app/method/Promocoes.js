@@ -245,3 +245,30 @@ $(".btn-link").on("click", function () {
     // Não atualiza mesmo
     return false;
 });
+
+$(".contarAcesso").on("click", function () {
+
+    // Pegando o id da promocao
+    var id = $(this).data('id');
+    var url  = Global.config.urlApi + "acesso/insert";
+
+    // Criando um form
+    var form = new FormData();
+
+    // Insere os dados
+    form.set("id_promocao", id);
+    form.set("acesso", '1');
+
+    // Realiza a requisição
+    Global.enviaApi("POST", url, form, null)
+        .then((data) => {
+
+            console.log("acesso ok")
+
+        })
+        .catch((error) => {
+            console.log("falha acesso")
+        });
+
+
+});

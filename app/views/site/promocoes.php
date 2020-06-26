@@ -1,7 +1,7 @@
 <?php $this->view("site/include/header"); ?>
-    <head>
-        <meta charset="UTF-8">
-    </head>
+    <!-- Plugin OWL -->
+    <link rel="stylesheet" href="<?= BASE_URL; ?>assets/plugins/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="<?= BASE_URL; ?>assets/plugins/owl.carousel/dist/assets/owl.theme.default.css" />
 
     <!--=====================================-->
     <!--=        Inner Banner Start         =-->
@@ -38,22 +38,223 @@
     <!--=====================================-->
     <section class="product-inner-wrap-layout1 bg-accent minpage">
         <div class="container">
+
             <div class="row">
-                <div class="col-xl-12">
-                    <?php if ($qtdePromocoes >= 1) : ?>
-                        <div class="product-filter-heading">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <h2 class="item-title">Encontramos diversas ofertas para você</h2>
-                                </div>
-                                <div class="col-md-6 d-flex justify-content-md-end justify-content-center">
-                                    <div class="product-sorting">
-                                        <div class="layout-switcher">
-                                        </div>
+                <div class="col-md-12">
+                    <div class="product-filter-heading">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <h2 class="item-title">Escolha por categorias</h2>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-md-end justify-content-center">
+                                <div class="product-sorting">
+                                    <div class="layout-switcher">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row owl-carousel owl-theme mb-2">
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/10">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-gem"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Acessórios</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/1">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-hamburger"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Alimentação</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/2">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Bares e Restaurantes</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/7">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-kiss-wink-heart"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Beleza</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/9">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-shoe-prints"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Calçados</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/12">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-stream"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Diversos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/5">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-laptop"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Eletrônicos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/11">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="far fa-newspaper"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Papelarias</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/6">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-paw"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Pet's</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/3">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Saúde</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/4">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Serviços automotivos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-box-layout1">
+                        <a href="<?= BASE_URL; ?>promocoes/8">
+                            <div class="tamanho-categoria centraliza-itens">
+                                <div>
+                                    <div class="item-icon">
+                                        <i class="fas fa-tshirt"></i>
+                                    </div>
+                                    <div class="item-content">
+                                        <h3 class="item-title">Vestuário</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <?php if ($qtdePromocoes >= 1) : ?>
 
                         <div id="product-view" class="product-box-grid">
                             <div class="row">
@@ -114,3 +315,31 @@
     </section>
 
 <?php $this->view("site/include/footer"); ?>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items:6,
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true,
+            responsive:{
+                0:{
+                    items:1,
+                },
+                600:{
+                    items:3,
+                },
+                1000:{
+                    items:5,
+                }
+            }
+
+        });
+
+    });
+</script>

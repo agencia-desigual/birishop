@@ -158,12 +158,26 @@
                             <a href="javascript:void(0);" class="waves-effect">
                                 <i class="fas fa-images"></i>
                                 <span>
-                                Banners <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                                Banners Principal<span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                             </span>
                             </a>
                             <ul class="submenu">
                                 <li><a href="<?= BASE_URL ?>painel/banners">Listar Todos</a></li>
                                 <li><a href="<?= BASE_URL ?>painel/banner/inserir">Adicionar</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- BANNERS PRINCIPAL -->
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect">
+                                <i class="fas fa-images"></i>
+                                <span>
+                                Banners Lateral<span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                            </span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="<?= BASE_URL ?>painel/banners-lateral">Listar Todos</a></li>
+                                <li><a href="<?= BASE_URL ?>painel/banner-lateral/inserir">Adicionar</a></li>
                             </ul>
                         </li>
 

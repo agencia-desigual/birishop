@@ -59,7 +59,7 @@
                                             <?php endif; ?>
                                             <td class="text-center">
                                                 <button data-id="<?= $associado->id_usuario; ?>"
-                                                        class="deletarUsuario btn btn-danger btn-icon btn-sm mr-2">
+                                                        class="deletarAssociado btn btn-danger btn-icon btn-sm mr-2">
                                                     <i class="fas fa-window-close"></i>
                                                 </button>
 

@@ -78,7 +78,7 @@ $(".alteraStatusUsuario").on("click", function () {
 
     Swal.fire({
         title: 'Aterar status',
-        text: "Deseja realmente aprovar a empresa?",
+        text: "Deseja realmente aprovar o associado?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -234,6 +234,51 @@ $("#formInserirUsuario").on("submit", function(){
 
 
 /**
+ * Método responsável por cadastrar um determinádo usuário
+ * administrador, enviado seus dados para a API correspondente.
+ * ---------------------------------------------------------
+ * @author igorcacerez
+ */
+$("#formrecuperarSenha").on("submit", function(){
+
+    // Não atualiza a página
+    event.preventDefault();
+
+    // Recupera os dados do formulário
+    var form = new FormData(this);
+
+    // Bloqueia o formulário
+    $(this).addClass("bloqueiaForm");
+
+    // Recupera o url
+    var url = Global.config.urlApi + "usuario/recuperar-senha";
+
+    // Realiza a requisição
+    Global.enviaApi("POST", url, form, token.token)
+        .then((data) => {
+
+            // Avisa que deu certo
+            Global.setSuccess(data.mensagem);
+
+            // Limpa o formulário
+            Global.limparFormulario("#formInserirUsuario");
+
+            // Desbloqueia o formulário
+            $(this).removeClass("bloqueiaForm");
+
+        })
+        .catch((error) => {
+            // Desbloqueia o formulário
+            $(this).removeClass("bloqueiaForm");
+        });
+
+    // Não atualiza mesmo
+    return false;
+});
+
+
+
+/**
  * Método responsável por alterar as informações de um
  * determinado cliente. E enviar os dados via PUT
  * para a APi
@@ -289,6 +334,11 @@ $("#formAlteraUsuario").on("submit", function () {
                     });
             }
 
+
+            setTimeout(function () {
+                location.reload();
+            },2000)
+
             // Desbloqueia
             $(this).removeClass("bloqueiaForm");
 
@@ -325,6 +375,58 @@ $(".deletarUsuario").on("click", function () {
     Swal.fire({
         title: 'Deletar o Usuário',
         text: 'Deseja realmente deletar esse usuário?',
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, delete!'
+    }).then((result) => {
+        if (result.value)
+        {
+            // Realiza a solicitação
+            Global.enviaApi("DELETE", url, null, token.token)
+                .then((data) => {
+
+                    // Avisa que deu certo
+                    Global.setSuccess(data.mensagem);
+
+                    setTimeout(function () {
+                        location.reload();
+                    },1000)
+
+                });
+        }
+    });
+
+
+    // Não atualiza mesmo
+    return false;
+});
+
+
+
+/**
+ * Método responsável por deletar uma determinada
+ * associado. Enviando a solicitação para a API
+ * ----------------------------------------------------------
+ */
+$(".deletarAssociado").on("click", function () {
+
+    // Não atualiza a página
+    event.preventDefault();
+
+    // Recupera as informações
+    var id = $(this).data("id");
+
+    // Url e Token
+    var url = Global.config.urlApi + "associado/delete/" + id;
+    var token = Global.session.get("token");
+
+    // Pergunta se realmente quer deletar
+    Swal.fire({
+        title: 'Deletar o Associado',
+        text: 'Deseja realmente deletar esse associado?',
         type: 'warning',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',

@@ -54,6 +54,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label>Imagem</label>
+                                            <p class="sub-title">O tamanho ideal para o banner lateral é 1920x690px</p>
                                             <input required name="arquivo" type="file" class="dropify">
                                         </div>
                                     </div>

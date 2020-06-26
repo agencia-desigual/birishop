@@ -90,7 +90,7 @@
                                                         <td><?= $associado->nome; ?></td>
                                                         <td><?= $associado->email; ?></td>
                                                         <td class="text-center">
-                                                            <button style="display: none" data-id="<?= $associado->id_usuario; ?>" data-tipo="0" class="btn btn-icon alteraStatusUsuario">
+                                                            <button data-id="<?= $associado->id_usuario; ?>" data-tipo="0" class="deletarAssociado btn btn-icon alteraStatusUsuario">
                                                                 <i class="fas fa-window-close reprovar"></i>
                                                             </button>
 

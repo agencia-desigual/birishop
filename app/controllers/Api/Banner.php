@@ -63,6 +63,8 @@ class Banner extends Controller
         // Recupera os dados POST
         $post = $_POST;
 
+        if (isset($post['lateral'])){ $post['lateral'] = 1; } else { $post['lateral'] = 0; }
+
         // Verifica se o usuário possui permissão
         if($usuario->nivel == "admin")
         {
@@ -104,6 +106,7 @@ class Banner extends Controller
                             $salva = [
                                 "arquivo" => $arquivo,
                                 "link" => $post["link"],
+                                "lateral" => $post['lateral'],
                                 "data_cadastro" => date("Y-m-d H:i:s")
                             ];
 

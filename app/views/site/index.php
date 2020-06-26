@@ -71,16 +71,16 @@
                         <div style="display: none" class="heading-layout2">
                             <h4 style="letter-spacing: 5px" class="heading-title">LOJAS</h4>
                         </div>
-                        <div class="widget-bottom-margin widget-banner">
-                            <a href="#">
-                                <img src="<?= BASE_URL; ?>assets/custom/img/banner-lateral.png" alt="<?= SITE_NOME ?>">
-                            </a>
-                        </div>
-                        <div class="widget-bottom-margin widget-banner">
-                            <a href="#">
-                                <img src="<?= BASE_URL; ?>assets/custom/img/banner-lateral.png" alt="<?= SITE_NOME ?>">
-                            </a>
-                        </div>
+                        <?php if (!empty($bannersLateral)) : ?>
+                            <?php foreach ($bannersLateral as $lateral) : ?>
+                                <div class="widget-bottom-margin widget-banner">
+                                    <a href="#">
+                                        <img src="<?= $lateral->url; ?>" alt="<?= SITE_NOME ?>">
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             <?php else: ?>
@@ -90,7 +90,7 @@
     </section>
 
     <!--=====================================-->
-    <!--=            Category Start           =-->
+    <!--=          Category Start           =-->
     <!--=====================================-->
     <section id="#produtos" class="section-padding-top-heading">
         <div class="container">

@@ -75,8 +75,8 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">NOME</th>
-                                                <th scope="col">VALOR ANTIGO</th>
                                                 <th scope="col">VALOR</th>
+                                                <th scope="col">CLIQUES</th>
                                                 <th scope="col">STATUS</th>
                                                 <th class="text-center" scope="col">AÇÕES</th>
                                             </tr>
@@ -86,8 +86,14 @@
                                                 <tr id="promocao_<?= $promocao->id_promocao; ?>">
                                                     <td><?= $promocao->id_promocao; ?></td>
                                                     <td style="text-transform: capitalize;"><?= $promocao->nome; ?></td>
-                                                    <td>R$<?= $promocao->valor_antigo; ?></td>
                                                     <td>R$<?= $promocao->valor ?></td>
+                                                    <td class="text-center">
+                                                        <?php if (!empty($promocao->acesso)) : ?>
+                                                            <?= $promocao->acesso->acesso ?>
+                                                        <?php else: ?>
+                                                            0
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td>
                                                         <?php if($promocao->status == 'ativo') : ?>
                                                             <span class="badge badge-success">ATIVO</span>

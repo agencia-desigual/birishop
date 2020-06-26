@@ -9,6 +9,10 @@ $Rotas->onError("404", "App\Principal::error404");
  *  ================================================
  */
 
+// Acesso
+$Rotas->group("api-acesso","api/acesso","Api\Acesso");
+$Rotas->onGroup("api-acesso","POST","insert","insert");
+
 // Usuário
 $Rotas->group("api-usuario","api/usuario","Api\Usuario");
 $Rotas->onGroup("api-usuario","GET","get","getAll");
@@ -20,6 +24,11 @@ $Rotas->onGroup("api-usuario","PUT","update/{p}","update");
 $Rotas->onGroup("api-usuario","DELETE","delete/{p}","delete");
 $Rotas->onGroup("api-usuario","POST","alterar-senha","alterarSenha");
 $Rotas->onGroup("api-usuario","POST","recuperar-senha","recuperarSenha");
+
+// Associado
+$Rotas->group("api-associado","api/associado","Api\Usuario");
+$Rotas->onGroup("api-associado","DELETE","delete/{p}","deleteAssociado");
+
 
 // NewsLatter
 $Rotas->group("api-newslatter","api/newsletter","Api\Newsletter");
@@ -105,12 +114,19 @@ $Rotas->on("GET","painel/promocoes","App\Promocoes::listar");
 $Rotas->on("GET","painel/promocao/inserir","App\Promocoes::inserir");
 $Rotas->on("GET","painel/promocao/alterar/{p}","App\Promocoes::alterar");
 
+// Páginas de perfil
+$Rotas->on("GET","painel/perfil/alterar/{p}","App\Usuario::associadosEditar");
+
 // Páginas newsletter
 $Rotas->on("GET","painel/newsletter","App\Newsletter::listar");
 
 // Páginas banners
 $Rotas->on("GET","painel/banners","App\Banner::listar");
 $Rotas->on("GET","painel/banner/inserir","App\Banner::inserir");
+
+// Páginas banners
+$Rotas->on("GET","painel/banners-lateral","App\Banner::listarLateral");
+$Rotas->on("GET","painel/banner-lateral/inserir","App\Banner::inserirLateral");
 
 // Páginas parceiros
 $Rotas->on("GET","painel/parceiros","App\Parceiro::listar");

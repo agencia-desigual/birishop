@@ -1,4 +1,8 @@
-<?php $this->view("painel/include/header"); ?>
+<?php if ($usuario->nivel == "associado") : ?>
+    <?php $this->view("associado/include/header"); ?>
+<?php else: ?>
+    <?php $this->view("painel/include/header"); ?>
+<?php endif; ?>
 
     <!-- ============================================================== -->
     <!-- INICIO editar usuario -->
@@ -29,9 +33,13 @@
                         <div class="col-lg-12">
                             <div class="card m-b-30">
                                 <div class="card-body">
-
-                                    <h4 class="mt-0 header-title">Editar Associado</h4>
-                                    <p class="sub-title">Revise todos os dados do associado</p>
+                                    <?php if ($usuario->nivel == "associado") : ?>
+                                        <h4 class="mt-0 header-title">Alterar perfil</h4>
+                                        <p class="sub-title">Revise todos os dados e altere</p>
+                                    <?php else: ?>
+                                        <h4 class="mt-0 header-title">Editar Associado</h4>
+                                        <p class="sub-title">Revise todos os dados do associado</p>
+                                    <?php endif; ?>
 
                                     <form id="formAlteraUsuario"
                                           data-id="<?= $associado->id_usuario; ?>"
@@ -47,7 +55,11 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>CNPJ</label>
-                                                    <input type="tel" class="form-control maskCNPJ" name="cnpj" value="<?= $associado->cnpj ?>" required="" />
+                                                    <?php if ($usuario->nivel == "associado") : ?>
+                                                        <p><?= $associado->cnpj ?></p>
+                                                    <?php else: ?>
+                                                        <input type="tel" class="form-control maskCNPJ" name="cnpj" value="<?= $associado->cnpj ?>" required="" />
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,18 +93,23 @@
                                             </div>
                                         </div>
 
-                                        <!-- STATUS -->
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label>Status</label>
-                                                    <select name="status" class="form-control">
-                                                        <option value="1" <?php if($associado->status == true){ echo "selected";} ?>>Ativo</option>
-                                                        <option value="0" <?php if($associado->status == false){ echo "selected";} ?>>Destivado</option>
-                                                    </select>
+
+                                        <?php if ($usuario->nivel == "admin") : ?>
+
+                                            <!-- STATUS -->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Status</label>
+                                                        <select name="status" class="form-control">
+                                                            <option value="1" <?php if($associado->status == true){ echo "selected";} ?>>Ativo</option>
+                                                            <option value="0" <?php if($associado->status == false){ echo "selected";} ?>>Destivado</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+
+                                        <?php endif; ?>
 
                                         <button type="submit" class="btn btn-primary float-right">Alterar</button>
                                     </form>

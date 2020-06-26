@@ -227,6 +227,18 @@
                             </ul>
                         </li>
 
+                        <!-- PERFIL -->
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect">
+                                <i class="fas fa-user"></i>
+                                <span>Perfil<span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                            </span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="<?= BASE_URL ?>painel/perfil/alterar/<?= $usuario->id_usuario ?>">Meus dados</a></li>
+                            </ul>
+                        </li>
+
                         <!-- SAIR -->
                         <li>
                             <a href="<?= BASE_URL ?>sair" class="waves-effect"><i class="fas fa-running"></i><span> Sair </span></a>

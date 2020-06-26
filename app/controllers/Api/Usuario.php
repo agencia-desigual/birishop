@@ -21,6 +21,7 @@ class Usuario extends CI_controller
     private $objSeguranca;
     private $objInput;
     private $objEmail;
+    private $objModelPromocao;
 
 
     // Método construtor
@@ -36,6 +37,7 @@ class Usuario extends CI_controller
         $this->objSeguranca = new Seguranca();
         $this->objInput = new Input();
         $this->objEmail = new Email();
+        $this->objModelPromocao = new \Model\Promocao();
 
     } // End >> fun::__construct()
 
@@ -642,5 +644,85 @@ class Usuario extends CI_controller
         $this->api($dados);
 
     } // End >> fun::delete()
+
+
+    /**
+     * Método responsável por deletar ou desativar um
+     * determinado associado.
+     * ------------------------------------------------------------------
+     * @param $id [Id do usuário]
+     * ------------------------------------------------------------------
+     * @url api/associado/delete/[ID]
+     * @method DELETE
+     */
+    public function deleteAssociado($id)
+    {
+        // Variaveis
+        $dados = null;
+        $usuario = null;
+        $obj = null;
+
+        // Verifica se está logado
+        $usuario = $this->objSeguranca->security();
+
+        // Busca o usuário
+        $obj = $this->objModelUsuario
+            ->get(['id_usuario' => $id])
+            ->fetch(\PDO::FETCH_OBJ);
+
+        // Verifica se encontrou o usuário
+        if(!empty($obj))
+        {
+            // Verifica se o usuário possui permissão
+            if($usuario->nivel == "admin")
+            {
+
+                // Busca as promoções do usuário
+                $promocoes = $this->objModelPromocao
+                    ->get(["id_usuario" => $obj->id_usuario])
+                    ->rowCount();
+
+                if ($promocoes > 0)
+                {
+                    // Msg
+                    $dados = ["mensagem" => "O Associado tem promoções cadastradas, apague todas as promoções antes."];
+                }
+                else
+                {
+                    // Deleta o usuário
+                    if($this->objModelUsuario->delete(["id_usuario" => $id]) != false)
+                    {
+                        // Msg
+                        $dados = [
+                            "tipo" => true,
+                            "code" => 200,
+                            "mensagem" => "Associado deletado com sucesso",
+                            "objeto" => $obj
+                        ];
+                    }
+                    else
+                    {
+                        // Msg
+                        $dados = ["mensagem" => "Ocorreu um erro ao deletar o usuário."];
+                    } // Error >> Ocorreu um erro ao deletar o usuário.
+                }
+
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Usuário sem permissão."];
+            } // Error >> Usuário sem permissão
+        }
+        else
+        {
+            // Msg
+            $dados = ["mensagem" => "Usuário não encontrado."];
+        } // Error >> Usuário não encontrado
+
+        // Retorno
+        $this->api($dados);
+
+    } // End >> fun::deleteAssociado()
 
 } // END::Class Principal

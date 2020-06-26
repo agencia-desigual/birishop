@@ -194,7 +194,7 @@ class Promocao extends Controller
                 $caracteres = ["(",")",",","-"," "];
                 $post['link-whats'] = str_replace($caracteres,"",$post['link-whats']);
                 $nomePromocao = urldecode($post['nome']);
-                $post['link'] = "https://api.whatsapp.com/send?phone=55{$post['link-whats']}&text=Vi%20no%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
+                $post['link'] = "https://api.whatsapp.com/send?phone=55{$post['link-whats']}&text=Vi%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
             }
             else
             {
@@ -350,6 +350,7 @@ class Promocao extends Controller
 
         // Recupera os dados put
         $put = $_POST;
+        $put["nome"] = strtoupper($put["nome"]);
 
         // Recupera os dados do objeto
         $obj = $this->objModelPromocao
@@ -384,7 +385,7 @@ class Promocao extends Controller
                         $caracteres = ["(",")",",","-"," "];
                         $put['link-whats'] = str_replace($caracteres,"",$put['link-whats']);
                         $nomePromocao = urldecode($put['nome']);
-                        $post['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Vi%20no%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
+                        $post['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Vi%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
 
                     }
                     elseif(($put['link-site'] != "" || $put['link-site'] != null) &&

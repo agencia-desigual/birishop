@@ -252,7 +252,7 @@ class Usuario extends Controller
          $usuario = $this->objHelperApoio->seguranca();
 
         // Verifica se é admin
-        if($usuario->nivel == "admin")
+        if($usuario->nivel == "admin" || $usuario->nivel == "associado")
         {
 
             // ===== BUSCA O ASSOCIADO ===== //
@@ -287,7 +287,6 @@ class Usuario extends Controller
         } // Error >> Usuário sem permissão
 
     } // End >> fun::associadosEditar()
-
 
 
 } // End >> Class::App\Usuario
