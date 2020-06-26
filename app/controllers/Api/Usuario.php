@@ -353,18 +353,11 @@ class Usuario extends CI_controller
                         else
                         {
                             // Verifica se é cnpj
-<<<<<<< HEAD
                             if(strlen($post["cnpj"]) != 11 && strlen($post["cnpj"]) != 14)
                             {
                                 
                                 // Avisa do erro
                                 $this->api(["mensagem" => "Documento informado não é valido."]);
-=======
-                            if(strlen($post["cnpj"]) != 18)
-                            {
-                                // Avisa do erro
-                                $this->api(["mensagem" => "O CNPJ informado não é válido."]);
->>>>>>> f00a39e52e21429e3a0a61146ec3049c17049dc3
 
                                 // Exit
                                 exit;
