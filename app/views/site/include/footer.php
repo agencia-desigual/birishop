@@ -57,6 +57,17 @@
 <?php $this->view("autoload/js"); ?>
 
 <script>
+
+    function modal(param)
+    {
+
+        if (param === "fecha")
+        {
+            $(".modalBirishop").css("display","none");
+        }
+
+    }
+
     function menu(tipo)
     {
         if(tipo === "abre")
@@ -70,6 +81,19 @@
             $(".fundo-menu").fadeOut();
         }
     }
+
+    if(sessionStorage.visita != '' && sessionStorage.visita != null && sessionStorage.visita != undefined)
+    {
+        modal('fecha');
+    }
+    else
+    {
+        modal('abre');
+        sessionStorage.setItem("visita", "visitou");
+    }
+
+    console.log(sessionStorage.visita);
+
 </script>
 </body>
 

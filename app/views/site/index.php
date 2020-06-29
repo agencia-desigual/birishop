@@ -1,5 +1,9 @@
 <?php $this->view("site/include/header"); ?>
 
+    <div onclick="modal('fecha')" class="centraliza-itens modalBirishop">
+        <img src="<?= BASE_URL ?>assets/theme/site/img/modal.png">
+    </div>
+
     <!--=====================================-->
     <!--=            Banner Start           =-->
     <!--=====================================-->
