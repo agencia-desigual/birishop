@@ -78,6 +78,24 @@ class Promocoes extends CI_controller
                     ->fetch(\PDO::FETCH_OBJ);
 
                $promo->acesso = $acesso;
+
+
+                // Cortar texto em 20 caracteres
+                $nomeCaracteres = strlen($promo->nome);
+
+                if ($nomeCaracteres > 20)
+                {
+                    $promo->nome = substr($promo->nome,0,21).'...';
+                }
+
+                // Cortar texto em 20 caracteres
+                $empresaCaracteres = strlen($promo->empresa);
+
+                if ($empresaCaracteres > 30)
+                {
+                    $promo->empresa = substr($promo->empresa,0,31).'...';
+                }
+
             }
 
 
