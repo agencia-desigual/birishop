@@ -7,6 +7,7 @@ CREATE TABLE usuario (
     senha VARCHAR (150) NOT NULL,
     telefone VARCHAR(150) NOT NULL,
     nivel VARCHAR (150) NOT NULL DEFAULT 'associado',
+    promocao INT NOT NULL DEFAULT 0,
     status BOOLEAN NOT NULL DEFAULT 0,
     data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_usuario)
