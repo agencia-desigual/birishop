@@ -410,7 +410,7 @@ class Promocao extends Controller
                             $caracteres = ["(",")",",","-"," "];
                             $put['link-whats'] = str_replace($caracteres,"",$put['link-whats']);
                             $nomePromocao = urlencode($put['nome']);
-                            $put['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Vi%20no%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
+                            $put['link'] = "https://api.whatsapp.com/send?phone=55{$put['link-whats']}&text=Vi%20no%20Birishop%20essa%20promoção:%20{$nomePromocao}.&source=&data=";
                         }
 
                         // Removendo para não da merda

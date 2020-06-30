@@ -65,6 +65,10 @@
         {
             $(".modalBirishop").css("display","none");
         }
+        else
+        {
+            $(".modalBirishop").css("display","flex");
+        }
 
     }
 
