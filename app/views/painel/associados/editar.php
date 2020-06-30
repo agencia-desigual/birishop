@@ -96,14 +96,21 @@
 
                                         <?php if ($usuario->nivel == "admin") : ?>
 
-                                            <!-- STATUS -->
+                                            <!-- STATUS E PROMOÇÃO -->
                                             <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <label>Status</label>
                                                         <select name="status" class="form-control">
                                                             <option value="1" <?php if($associado->status == true){ echo "selected";} ?>>Ativo</option>
                                                             <option value="0" <?php if($associado->status == false){ echo "selected";} ?>>Destivado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Participa da promoção?</label>
+                                                        <select name="promocao" class="form-control">
+                                                            <option value="1" <?php if($associado->promocao == true){ echo "selected";} ?>>Sim</option>
+                                                            <option value="0" <?php if($associado->promocao == false){ echo "selected";} ?>>Não</option>
                                                         </select>
                                                     </div>
                                                 </div>

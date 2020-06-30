@@ -41,8 +41,8 @@
                                     <tr>
                                         <th scope="col">NOME DA LOJA</th>
                                         <th scope="col">CNPJ ou CPF</th>
-                                        <th scope="col">EMAIL</th>
                                         <th scope="col">STATUS</th>
+                                        <th scope="col">PROMOÇÃO</th>
                                         <th class="text-center" scope="col">AÇÕES</th>
                                     </tr>
                                     </thead>
@@ -51,11 +51,15 @@
                                         <tr id="tb_<?= $associado->id_usuario; ?>">
                                             <td><?= $associado->nome_estabelecimento ?></td>
                                             <td><?= $associado->cnpj ?></td>
-                                            <td><?= $associado->email ?></td>
                                             <?php if ($associado->status == 1) : ?>
                                                 <td><span class="badge badge-success">ATIVO</span></td>
                                             <?php else: ?>
                                                 <td><span class="badge badge-danger">INATIVO</span></td>
+                                            <?php endif; ?>
+                                            <?php if ($associado->promocao == 1) : ?>
+                                                <td><span class="badge badge-success">SIM</span></td>
+                                            <?php else: ?>
+                                                <td><span class="badge badge-danger">NÃO</span></td>
                                             <?php endif; ?>
                                             <td class="text-center">
                                                 <button data-id="<?= $associado->id_usuario; ?>"

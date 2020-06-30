@@ -260,6 +260,9 @@
                             <div class="row">
                                 <?php foreach ($promocoes as $promo) : ?>
                                     <div class="col-xl-3 col-md-6 <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?>">
+                                        <?php if ($promo->empresa->promocao == 1) : ?>
+                                            <img style="width: 75px;height: 45px;position: absolute;right: 7px;" src="<?= BASE_URL ?>assets/theme/site/img/selo.png">
+                                        <?php endif; ?>
                                         <div class="product-grid-view">
                                             <div class="grid-view-layout2">
                                                 <div class="product-box-layout1 top-rated-grid">

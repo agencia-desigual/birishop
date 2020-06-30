@@ -80,12 +80,20 @@
                                     <!-- STATUS -->
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <label>Status</label>
-                                                <select name="status" class="form-control">
+                                                <select name="status" class="form-control" required>
                                                     <option selected disabled>Selecione</option>
                                                     <option value="1">Ativo</option>
                                                     <option value="0">Destivado</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Participa da promoção?</label>
+                                                <select name="promocao" class="form-control" required>
+                                                    <option selected disabled>Selecione</option>
+                                                    <option value="1">Sim</option>
+                                                    <option value="0">Não</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -46,6 +46,9 @@
                             <a href="<?= BASE_URL ?>promocao/detalhes/<?= $promo->id_promocao ?>">
                                 <div class="card-promocao container <?= ($promo->data_validade < date("Y-m-d") || $promo->status == "cancelado" ) ? 'opacidade' : '' ?>">
                                     <div class="row">
+                                        <?php if ($promo->empresa->promocao == 1) : ?>
+                                            <img style="width: 75px;height: 45px;position: absolute;right: 0px;" src="<?= BASE_URL ?>assets/theme/site/img/selo.png">
+                                        <?php endif; ?>
                                         <div class="col-4 img-promocao" style="background-image: url('<?= $promo->imagem ?>');"></div>
                                         <div class="col-8  justify-content-start">
                                             <div class="conteudo-promocao">

@@ -53,6 +53,7 @@ class Principal extends CI_controller
         $this->objModelPromocoes = new Promocao();
         $this->objModelBanner = new \Model\Banner();
         $this->objModelCategoria = new Categoria();
+        $this->objModelUsuario = new \Model\Usuario();
 
         $parceiros = $this->objModelParceiros
             ->get()
@@ -71,6 +72,14 @@ class Principal extends CI_controller
 
         foreach ($promocoes as $promo)
         {
+
+            // Buscando a empresa
+            $empresa = $this->objModelUsuario
+                ->get(["id_usuario" => $promo->id_usuario])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            // Vinculando a empresa na promoção
+            $promo->empresa = $empresa;
 
             // Limitando a descrição
             $promo->descricao = substr($promo->descricao,0,100).'...';
