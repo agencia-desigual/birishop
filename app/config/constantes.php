@@ -4,6 +4,18 @@
 define("SITE_NOME", "Birishop");
 
 
+
+/**
+ * =========================================
+ *          Envio de E-mail
+ * =========================================
+ */
+
+define("EMAIL_ENVIA","mail@desigual.com.br");
+define("EMAIL_PROPRIETARIO", "edilson@desigual.com.br");
+
+
+
 /**
  * =========================================
  *          Unidades de Medida

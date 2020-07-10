@@ -84,6 +84,17 @@ CREATE TABLE acesso (
     PRIMARY KEY (id_acesso)
 );
 
+CREATE TABLE esqueceusenha (
+  id_esqueceusenha INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  ip VARCHAR(150) NOT NULL,
+  data_solicitacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  data_expira timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  token TEXT NOT NULL,
+  PRIMARY KEY (id_esqueceusenha),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
 -- INSERT TABELA USUARIO
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `nome_estabelecimento`, `cnpj`, `email`, `senha`, `telefone`, `nivel`, `status`, `data_cadastro`)

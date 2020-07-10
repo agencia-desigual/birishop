@@ -63,6 +63,13 @@ $Rotas->onGroup("api-promocao","POST","pausar-anuncio/{p}","pausarAnuncio");
 $Rotas->onGroup("api-promocao","DELETE","delete/{p}","delete");
 
 
+
+// Templates de Email
+$Rotas->group("email","template/email","App\Email");
+$Rotas->onGroup("email","GET","recuperar-senha","recuperarSenha");
+
+
+
 /**
  *  ================================================
  *  =================== SITE ======================
@@ -94,6 +101,10 @@ $Rotas->on("GET","termos-e-condicoes","App\Principal::politicaPrivacidade");
 
 // -- Rotas sem grupo
 $Rotas->on("GET","como-funciona","App\Principal::comoFunciona");
+
+// Alterar Senha
+$Rotas->on("GET","nova-senha/{p}","App\Principal::novaSenha");
+
 
 /**
  *  ================================================

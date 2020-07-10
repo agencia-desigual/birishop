@@ -6,6 +6,7 @@ namespace Controller\Api;
 // Importação
 use Helper\Apoio;
 use Helper\Email;
+use Model\EsqueceuSenha;
 use Sistema\Controller as CI_controller;
 use Sistema\Helper\Input;
 use Sistema\Helper\Seguranca;
@@ -18,10 +19,11 @@ class Usuario extends CI_controller
     private $objModelUsuario;
 
     private $objHelperApoio;
+    private $objHelperEmail;
     private $objSeguranca;
     private $objInput;
-    private $objEmail;
     private $objModelPromocao;
+    private $objModelEsqueceuSenha;
 
 
     // Método construtor
@@ -34,10 +36,11 @@ class Usuario extends CI_controller
         $this->objModelUsuario = new \Model\Usuario();
 
         $this->objHelperApoio = new Apoio();
+        $this->objHelperEmail = new Email();
         $this->objSeguranca = new Seguranca();
         $this->objInput = new Input();
-        $this->objEmail = new Email();
         $this->objModelPromocao = new \Model\Promocao();
+        $this->objModelEsqueceuSenha = new EsqueceuSenha();
 
     } // End >> fun::__construct()
 
@@ -355,7 +358,7 @@ class Usuario extends CI_controller
                             // Verifica se é cnpj
                             if(strlen($post["cnpj"]) != 11 && strlen($post["cnpj"]) != 14)
                             {
-                                
+
                                 // Avisa do erro
                                 $this->api(["mensagem" => "Documento informado não é valido."]);
 
@@ -724,5 +727,166 @@ class Usuario extends CI_controller
         $this->api($dados);
 
     } // End >> fun::deleteAssociado()
+
+
+    /**
+     * Método responsável por recuperar a senha de um
+     * determinado usuário.
+     * ------------------------------------------------------------------
+     * @param $email [Email]
+     * ------------------------------------------------------------------
+     * @url api/usuario/recuperar-senha/[EMAIL]
+     * @method POST
+     */
+    public function recuperarSenha()
+    {
+        // Variaveis
+        $dados = null;
+        $email = $_POST['email'];
+
+        // Verifica se o email existe no bdd
+        $verifica = $this->objModelUsuario
+            ->get(["email" => $email])
+            ->rowCount();
+
+        if ($verifica == 1)
+        {
+            // Pega o usuario
+            $usuario = $this->objModelUsuario
+                ->get(["email" => $email])
+                ->fetch(\PDO::FETCH_OBJ);
+
+            // Montando a array de insert
+            $salva = [
+                "id_usuario" => $usuario->id_usuario,
+                "ip" => $ip = $_SERVER["REMOTE_ADDR"],
+                "data_solicitacao" => $data_solicitacao = date('Y-m-d H:i:s'),
+                "data_expira" => $data_expira = date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s', strtotime('+3 hours')))),
+                "token" => $token = md5($usuario->id_usuario.('d.m.Y.H.i.s'))
+            ];
+
+            // Insere os dados de no banco
+            if($this->objModelEsqueceuSenha->insert($salva))
+            {
+                // Dados a serem enviado
+                $dados = ["token" => $token];
+
+                // Configurações para envio do email
+                $this->objHelperEmail->setDestinatario($usuario->email,$usuario->nome);
+                $this->objHelperEmail->setAssunto('Birishop - Recuperar Senha');
+                $this->objHelperEmail->setRemetente(EMAIL_ENVIA,SITE_NOME);
+                $this->objHelperEmail->setMensagem(BASE_URL."template/email/recuperar-senha/?token={$dados['token']}",true);
+
+                // Envia o email
+                $this->objHelperEmail->send();
+
+                // Avisa que deu bom
+                $dados = [
+                    "tipo" => true,
+                    "code" => 200,
+                    "mensagem" => "O link foi enviado para seu e-mail, acesse e altere sua senha!"
+                ];
+            }
+            else
+            {
+                // Msg
+                $dados = ["mensagem" => "Ocorreu um erro ao gerar o seu link, tente mais tarde!"];
+            }
+
+        }
+        else
+        {
+            $dados = ["mensagem" => "Usuário não encontrado"];
+        }
+
+        // Retorno
+        $this->api($dados);
+
+    } // End >> fun::recuperarSenha()
+
+
+
+    /**
+     * Método responsável por alterar a senha do usuario
+     * que solicitou ela através do recuperar senha, fazendo
+     * a validação do token, vendoi se ainda está ativo
+     * -----------------------------------------------------------------
+     * @author edilson-pereira
+     * @url api/usuario/alterar-senha
+     * @method POST
+     */
+    public function alterarSenha()
+    {
+        // Variaveis
+        $dados = null;
+        $salva = null;
+
+        // Dados Post
+        $post = $_POST;
+
+        // Buscando o token enviado
+        $buscaToken = $this->objModelEsqueceuSenha->get(["token" => $post['token']]);
+
+        // Fazendo a validação do token se existe ou não
+        if ($buscaToken->rowCount() >= 1)
+        {
+            $buscaToken = $buscaToken->fetch(\PDO::FETCH_OBJ);
+
+            // Verificando se o token ainda está ativo
+            $horaExpira = $buscaToken->data_expira;
+            $horaAtual = date('Y-m-d H:i:s');
+
+            // Token ainda está válido
+            if($horaExpira >= $horaAtual)
+            {
+
+                // Faz o update da nova senha, e validando se deu bom
+                if ($this->objModelUsuario->update(["senha" => md5($post['senha'])],["id_usuario" => $buscaToken->id_usuario]))
+                {
+                    // Avisa que deu bom a alteração de senha
+                    $dados = [
+                        "tipo" => true,
+                        "code" => 200,
+                        "mensagem" => "Senha alterada com sucesso, faça o login"
+                    ];
+                }
+                else
+                {
+                    // Avisa que deu ruim ao alterar senha
+                    $dados = [
+                        "tipo" => false,
+                        "code" => 400,
+                        "mensagem" => "Ocorreu um erro ao alterar, tente mais tarde."
+                    ];
+                }
+
+            }
+            else
+            {
+                // Avisa que o token expirou
+                $dados = [
+                    "tipo" => false,
+                    "code" => 400,
+                    "mensagem" => "O token expirou, recupere a senha novamente"
+                ];
+            }
+
+        }
+        else
+        {
+            // Avisa que o token não existe
+            $dados = [
+                "tipo" => false,
+                "code" => 400,
+                "mensagem" => "O token informado não existe"
+            ];
+        }
+
+        echo json_encode($dados);
+
+    } // End >> Fun::alterarSenha()
+
+
+
 
 } // END::Class Principal

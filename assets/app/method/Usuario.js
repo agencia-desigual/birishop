@@ -239,7 +239,7 @@ $("#formInserirUsuario").on("submit", function(){
  * ---------------------------------------------------------
  * @author igorcacerez
  */
-$("#formrecuperarSenha").on("submit", function(){
+$("#formRecuperarSenha").on("submit", function(){
 
     // Não atualiza a página
     event.preventDefault();
@@ -254,23 +254,91 @@ $("#formrecuperarSenha").on("submit", function(){
     var url = Global.config.urlApi + "usuario/recuperar-senha";
 
     // Realiza a requisição
-    Global.enviaApi("POST", url, form, token.token)
+    Global.enviaApi("POST", url, form, null)
         .then((data) => {
 
             // Avisa que deu certo
             Global.setSuccess(data.mensagem);
 
             // Limpa o formulário
-            Global.limparFormulario("#formInserirUsuario");
+            Global.limparFormulario("#formRecuperarSenha");
 
             // Desbloqueia o formulário
             $(this).removeClass("bloqueiaForm");
+
+            // Atualiza a pagina
+            setTimeout(function () {
+                location.reload();
+            },2000)
 
         })
         .catch((error) => {
             // Desbloqueia o formulário
             $(this).removeClass("bloqueiaForm");
         });
+
+    // Não atualiza mesmo
+    return false;
+});
+
+
+
+/**
+ * Método responsável por receber os dados
+ * e solicitar um requisição para que seja feito a
+ * alteração de senha do usuário.
+ * ---------------------------------------------------------
+ */
+$("#formNovaSenha").on("submit", function () {
+
+    // Não atualiza
+    event.preventDefault();
+
+    // Recupera os dados do formulário
+    var form = new FormData(this);
+
+    // Bloqueia o formulário
+    $(this).addClass("bloqueiaForm");
+
+    var url = Global.config.urlApi + "usuario/alterar-senha";
+
+    // Verifica se as senhas são iguais
+    if(form.get("senha") === form.get("senha_repete"))
+    {
+        // Realiza a requisição
+        Global.enviaApi("POST", url, form, null, "alertify")
+            .then((data) => {
+
+                // Avisa que deu certo
+                alertify.success("Senha alterada com sucesso, agora faça o login");
+
+                // Limpa o formulário
+                Global.limparFormulario("#formNovaSenha");
+
+                // Redireciona para o login
+                setTimeout(() => {
+                    location.href = Global.config.url + "login";
+                }, 2000);
+
+            })
+            .catch((error) => {
+                // Desbloqueia o formulário
+                $(this).removeClass("bloqueiaForm");
+            });
+    }
+    else
+    {
+        // Msg
+        alertify.error("Senhas informadas não são idênticas.");
+
+        // Desbloqueia o formulário
+        $(this).removeClass("bloqueiaForm");
+
+    } // Error >> Senhas informadas não são idênticas.
+
+
+    // Desbloqueia o formulário
+    $(this).removeClass("bloqueiaForm");
 
     // Não atualiza mesmo
     return false;

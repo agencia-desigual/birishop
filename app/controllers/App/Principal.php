@@ -531,6 +531,33 @@ class Principal extends CI_controller
         $this->view("site/como-funciona");
     }
 
+    /**
+     * Método responsável por exibir a página de alterar a senha
+     *
+     * -------------------------------------------------
+     * @url "alterar-senha/{token}"
+     */
+    public function novaSenha($token = null)
+    {
+        // Variaveis
+        $usuario = null;
+        $categorias = null;
+        $dados = null;
+
+        // Recupera o usuario
+        $usuario = null;
+
+        // Array de exibição na view
+        $dados = [
+            "js" => ["modulos" => ["Usuario"]],
+            "token" => $token
+        ];
+
+        // Chama a view
+        $this->view("site/nova-senha",$dados);
+
+    } // End >> Fun::novaSenha()
+
 
 
 } // END::Class Principal
