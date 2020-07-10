@@ -47,7 +47,7 @@
                             </form>
                             <div class="text-center">
                                 <div style="margin-top: 25px">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter">Perdi minha senha?</a>
+                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter">Perdi minha senha</a>
                                 </div>
                             </div>
                         </div>

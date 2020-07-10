@@ -67,7 +67,7 @@ class Principal extends CI_controller
 
 
         $promocoes = $this->objModelPromocoes
-            ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade DESC, id_promocao DESC", "0,6")
+            ->get(["status" => 'IN("ativo","cancelado")'], " status ASC, data_validade ASC, id_promocao DESC", "0,6")
             ->fetchAll(\PDO::FETCH_OBJ);
 
         foreach ($promocoes as $promo)
@@ -181,7 +181,7 @@ class Principal extends CI_controller
 
         // Busca as promoções
         $promocoes = $this->objModelPromocoes
-            ->get($where, "status ASC, data_validade DESC, id_promocao DESC", "{$inicio},{$limite}")
+            ->get($where, "status ASC, data_validade ASC, id_promocao DESC", "{$inicio},{$limite}")
             ->fetchAll(\PDO::FETCH_OBJ);
 
         // Total de resultados
